@@ -1,0 +1,110 @@
+---
+// src/components/Splash.astro
+import { gsap } from 'gsap';
+---
+<div id="splash-overlay" class="fixed inset-0 z-[10000] bg-black flex items-center justify-center overflow-hidden">
+  <div class="logo-wrapper relative w-[250px] h-[250px] md:w-[350px] md:h-[350px]"> 
+    <img 
+      src="/img/gordianlogoblue.svg" 
+      id="splash-blue" 
+      class="absolute w-full h-full object-contain pointer-events-none" 
+      alt=""
+    />
+    <img 
+      src="/img/gordianlogored.svg" 
+      id="splash-red" 
+      class="absolute w-full h-full object-contain pointer-events-none" 
+      alt=""
+    />
+  </div>
+</div>
+
+<style>
+  /* Voorkom scrollen tijdens de splash */
+  :global(body.loading) {
+    overflow: hidden;
+  }
+
+  /* De zwarte achtergrond die alles afdekt */
+  #splash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 10000;
+    /* Dit centreert de .logo-wrapper exact in het midden van het scherm */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* De container bepaalt de grootte van het logo */
+  .logo-wrapper {
+    position: relative;
+    /* Verander deze waarden om het logo te schalen */
+    width: 250px !important; 
+    height: 250px !important;
+    /* Zorg dat de wrapper zelf geen onverwachte padding heeft */
+    padding: 0;
+    margin: 0;
+  }
+
+  /* De afbeeldingen vullen altijd 100% van de .logo-wrapper */
+  #splash-blue, #splash-red {
+    position: absolute;
+    /* Door top/left 0 vullen ze de wrapper vanaf de linkerbovenhoek */
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    /* Behoud de verhoudingen van je 400dpi export */
+    object-fit: contain;
+    /* Zorg dat GSAP de transformaties kan doen zonder CSS-conflicten */
+    margin: 0;
+  }
+
+  /* Optioneel: Desktop maat */
+  @media (min-width: 768px) {
+    .logo-wrapper {
+      width: 350px !important;
+      height: 350px !important;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loading');
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        const overlay = document.getElementById('splash-overlay');
+        if (overlay) overlay.style.display = 'none';
+        document.body.classList.remove('loading');
+        window.dispatchEvent(new Event('splash-finished'));
+      }
+    });
+
+    // We gebruiken nu de juiste fromTo syntaxis: {begin}, {eind}
+    // Pas de x en y waarden hieronder aan tot de cirkel perfect aansluit
+    tl.fromTo("#splash-blue", 
+      { x: -400, y: -200, opacity: 0 }, 
+      { x: -20, y: -20, opacity: 1, duration: 1.5, ease: "power4.out" }
+    )
+    .fromTo("#splash-red", 
+      { x: 400, y: 200, opacity: 0 }, 
+      { x: 20, y: 20, opacity: 1, duration: 1.5, ease: "power4.out" }, 
+      "<"
+    )
+    .to("#splash-overlay", { 
+      opacity: 0, 
+      duration: 0.8, 
+      delay: 0.8 
+    });
+  });
+</script>

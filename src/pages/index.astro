@@ -1,17 +1,62 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Splash from '../components/splash.astro';
+import Navbar from '../components/navbar.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Gordian Project">
+  <Splash />
+  
+  <div id="site-wrapper">
+    <Navbar />
+    
+    <main>
+      </section>
+    </main>
+  </div>
+
+  <style>
+    #site-wrapper {
+      opacity: 0;
+      visibility: hidden;
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: black;
+      transition: opacity 1500ms ease-in-out;
+    }
+
+    #site-wrapper.visible {
+      opacity: 1;
+      visibility: visible;
+      position: static;
+    }
+
+    #site-wrapper main {
+      flex-grow: 1;
+    }
+
+    .hero {
+      padding: 5rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      color: white;
+      font-size: 2.25rem;
+      font-family: monospace;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+    }
+  </style>
+
+  <script>
+    window.addEventListener('splash-finished', () => {
+      const wrapper = document.getElementById('site-wrapper');
+      if (wrapper) {
+        wrapper.classList.add('visible');
+      }
+    });
+  </script>
+</Layout>
