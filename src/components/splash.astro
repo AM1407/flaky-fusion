@@ -32,7 +32,8 @@ import { gsap } from 'gsap';
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: black;
+    background: #2B2F36;
+    background: linear-gradient(0deg,rgba(43, 47, 54, 1) 53%, rgba(11, 13, 16, 1) 100%);
     z-index: 10000;
     /* Dit centreert de .logo-wrapper exact in het midden van het scherm */
     display: flex;
@@ -94,11 +95,11 @@ import { gsap } from 'gsap';
     // Pas de x en y waarden hieronder aan tot de cirkel perfect aansluit
     tl.fromTo("#splash-blue", 
       { x: -400, y: -200, opacity: 0 }, 
-      { x: -20, y: -20, opacity: 1, duration: 1.5, ease: "power4.out" }
+      { x: -17, y: -17, opacity: 1, duration: 1.5, ease: "power4.out" }
     )
     .fromTo("#splash-red", 
       { x: 400, y: 200, opacity: 0 }, 
-      { x: 20, y: 20, opacity: 1, duration: 1.5, ease: "power4.out" }, 
+      { x: 17, y: 17, opacity: 1, duration: 1.5, ease: "power4.out" }, 
       "<"
     )
     .to("#splash-overlay", { 

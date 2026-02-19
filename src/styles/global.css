@@ -1,0 +1,26 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap');
+
+/* src/styles/global.css */
+
+:root {
+  --gordian-blue: #0088cc;
+  --gordian-red: #cc0000;
+  --gordian-black: #000000;
+  --gordian-white: #ffffff;
+  --font-main:'Roboto Flex', sans-serif;
+}
+
+/* Standaard stijlen die je overal wilt */
+body {
+    min-height: 100vh;
+    background: #2B2F36;
+    background: linear-gradient(0deg,rgba(43, 47, 54, 1) 53%, rgba(11, 13, 16, 1) 100%);
+    color: var(--gordian-white);
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+}
+
+.text-blue { color: var(--gordian-blue); }
+.text-red { color: var(--gordian-red); }
