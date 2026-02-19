@@ -1,6 +1,6 @@
 <style>
     .logo {
-        width: 70px;
+        width: 60px;
         height: auto;
     }
     nav {
@@ -9,31 +9,106 @@
         justify-content: space-around;
         gap: 20px;
         padding: 10px 20px;
-        margin-top:15px;
+        margin: 5px;
+        font-size: 25px;
+        border-bottom: 1px solid var(--gordian-text, 0.1);
     }
 
     .nav-links {
         display: flex;
         gap: 15px;
+        color: var(--gordian-text);
     }
     p {
         font-family: var(--font-main);
         text-transform: uppercase;
         letter-spacing: -0.05em;
-        color: white;
+        color: var(--gordian-text);
     }
+    a {
+        font-family: var(--font-main);
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        color: var(--gordian-text);
+        text-decoration: none;
+        /* Nodig voor de positionering van de underline */
+        position: relative;
+        padding-bottom: 2px;
+    }
+
+    /* Het underline effect */
+    a:not(.logo-link)::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1.5px; /* Dikte van de underline */
+        bottom: 0;
+        left: 0;
+        background-color: var(--gordian-blue);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+    }
+
+    a:hover {
+        color: var(--gordian-blue);
+        transition: color 0.3s ease;
+    }
+
+    a:not(.logo-link):hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    .ghostbtn {
+        background: transparent;
+        border: 1px solid transparent; /* Gereserveerde ruimte om 'drift' te voorkomen */
+        color: var(--gordian-text);
+        padding: 8px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        border-color: var(--gordian-text);
+        
+        /* Jouw Roboto Flex instellingen */
+        font-family: var(--font-main);
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        
+        /* Vloeiende overgang */
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        font-variation-settings: "wght" 400, "GRAD" 0;
+    }
+
+    /* De Hover Style (Jouw kleuren) */
+    .ghostbtn:hover {
+        /* Gebruikt de Ghost-stijl: subtiele achtergrond en jouw blauw */
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: var(--gordian-blue);
+        color: var(--gordian-blue);
+        
+        /* Maakt de tekst voller zonder de lay-out te verschuiven */
+        font-variation-settings: "wght" 500, "GRAD" 100;
+    }
+
+    /* Actieve klik-state */
+    .ghostbtn:active {
+        transform: scale(0.97);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
 </style>
 
 
 
 
 <nav>
-    <img src="img/Gordian400dpi.svg" alt="Logo" class="logo" />
-    <p>Placeholder text</p>
+    <a href="/" class="logo-link"><img src="img/Gordian400dpi.svg" alt="Logo" class="logo" /></a>
     <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/about">About</a>  
-    <a href="/contact">Contact</a>
+    <a href="/about">About Me</a>
+    <a href="/projects">Projects</a>  
     <a href="/blog">Blog</a>
+    <a href="/contact">Contact</a>
     </div>
+    <button class="ghostbtn">Contact</button>
 </nav>

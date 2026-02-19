@@ -1,0 +1,82 @@
+<section class="hero-container">
+  <div class="text-block">
+    <h1 class="main-title">The Gordian Project</h1>
+    <p class="description">
+      Vakmanschap in code en design. Geïnspireerd door Siciliaanse traditie, 
+      gedreven door moderne technologie. Ik ontwar complexe problemen tot 
+      elegante digitale oplossingen.
+    </p>
+    <a href="/projects" class="contact-btn inline-block mt-4">Bekijk mijn werk</a>
+  </div>
+
+  <div class="visual-block">
+    <div class="image-wrapper">
+       <img src="/img/hero-visual.png" alt="Gordian Visual" class="hero-img" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 70vh;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .text-block {
+    flex: 1;
+  }
+
+  .main-title {
+    font-family: var(--font-main);
+    font-variation-settings: "wght" 800, "wdth" 120;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 500px;
+    line-height: 1.6;
+  }
+
+  .visual-block {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-wrapper {
+    position: relative;
+    /* Een subtiele gloed achter je foto die matcht met je blauw/rood */
+    box-shadow: 0 0 50px rgba(0, 136, 204, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+  }
+
+  /* Responsive: zet ze onder elkaar op mobiel */
+  @media (max-width: 768px) {
+    .hero-container {
+      flex-direction: column-reverse;
+      text-align: center;
+      padding-top: 60px;
+    }
+    .description {
+      margin: 0 auto;
+    }
+  }
+</style>
