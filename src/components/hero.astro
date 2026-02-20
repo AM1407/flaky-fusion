@@ -1,92 +1,112 @@
-<section class="hero-container">
-  <div class="text-block">
-    <p class="role">Aspiring DevSecOps Engineer</p>
-    <h1 class="main-title">Alessio Miccichè</h1>
-    <p class="description">
-      Vakmanschap in code en design. Geïnspireerd door Siciliaanse traditie, 
-      gedreven door moderne technologie. Ik ontwar complexe problemen tot 
-      elegante digitale oplossingen.
+<section class="hero-section">
+  <div class="content">
+    <h1 class="name">Alessio Miccichè</h1>
+    <div class="roles">
+      <span class="blue-text">Full Stack Developer</span> 
+      <span style="opacity: 0.3; margin: 0 10px; color: #fff;">|</span> 
+      <span class="red-text">Aspiring DevSecOps</span>
+    </div>
+    <p class="bio">
+      Dedicated to <span class="red-text">untangling</span> complex digital challenges through logic and design. 
+      I bridge the gap between development and protection to create systems that are 
+      secure by default</span> and <span class="blue-text">scalable</span> by nature.
     </p>
-    <a href="/projects" class="contact-btn inline-block mt-4">Bekijk mijn werk</a>
+    <a href="mailto:jouw@email.com" class="contact-link">Contact Me &rarr;</a>
   </div>
 
-  <div class="visual-block">
-    <div class="image-wrapper">
-       <img src="/img/hero-visual.png" alt="Gordian Visual" class="hero-img" />
-    </div>
-  </div>
+  <div class="bg-watermark">Hello World;</div>
 </section>
 
 <style>
-  .hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 70vh;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  :root {
+    --cyber-blue: #0088cc;
+    --cyber-red: #ff4d4d;
   }
 
-  .text-block {
-    flex: 1;
-  }
-
-  .main-title {
-    font-family: var(--font-main);
-    font-variation-settings: "wght" 800, "wdth" 120;
-    font-size: 50px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-
-  .description {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 500px;
-    line-height: 1.6;
-  }
-
-  .visual-block {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  .image-wrapper {
+  .hero-section {
     position: relative;
-    /* Een subtiele gloed achter je foto die matcht met je blauw/rood */
-    box-shadow: 0 0 50px rgba(0, 136, 204, 0.15);
-    border-radius: 12px;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding: 0 5%;
     overflow: hidden;
   }
 
-  .hero-img {
+  .content {
+    position: relative;
+    z-index: 2; 
+    max-width: 900px;
     width: 100%;
-    max-width: 500px;
-    height: auto;
-    display: block;
+    text-align: left;
+    transform: translateY(-8vh);
   }
 
-  /* Responsive: zet ze onder elkaar op mobiel */
-  @media (max-width: 768px) {
-    .hero-container {
-      flex-direction: column-reverse;
-      text-align: center;
-      padding-top: 60px;
-    }
-    .description {
-      margin: 0 auto;
-    }
-  }
-
-  .role {
+  .bg-watermark {
+    position: absolute;
+    bottom: 0; 
+    left: -1vw;
+    z-index: 1; 
     font-family: var(--font-main);
-    letter-spacing: -0.05em;
-    color: var(--gordian-blue);
-    margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 16vw;
+    font-weight: 900;
+    line-height: 0.8;
+    white-space: nowrap;
+    user-select: none;
+    pointer-events: none;
+    background: linear-gradient(
+      to right, 
+      rgba(255, 255, 255, 0.05) 0%, 
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .name {
+    font-family: var(--font-main);
+    font-variation-settings: "wght" 800, "wdth" 110;
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    color: #fff;
+    margin: 0;
+    line-height: 0.9;
+    text-shadow: 0 10px 50px rgba(0,0,0,0.9);
+  }
+
+  .roles {
+    margin: 2rem 0 1rem 0;
+    font-family: var(--font-main);
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    letter-spacing: 0.1em;
     font-weight: 500;
+  }
+
+  /* Kleur accenten */
+  .blue-text { color: var(--gordian-blue); }
+  .red-text { color: var(--gordian-red); }
+
+  .bio {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 550px;
+    margin-bottom: 3rem;
+  }
+
+  .contact-link {
+    font-family: var(--font-main);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .contact-link:hover {
+    color: var(--cyber-blue);
+    border-color: var(--cyber-blue);
+    padding-left: 10px;
   }
 </style>

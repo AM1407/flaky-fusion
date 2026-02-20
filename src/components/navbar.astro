@@ -2,22 +2,23 @@
     .logo {
         width: 60px;
         height: auto;
+        margin-left: 150px;
     }
     nav {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         gap: 20px;
         padding: 10px 20px;
         margin: 5px;
-        font-size: 25px;
-        border-bottom: 1px solid var(--gordian-text, 0.1);
+        font-size: 20px;
     }
 
     .nav-links {
         display: flex;
         gap: 15px;
         color: var(--gordian-text);
+        margin-right: 150px;
     }
     p {
         font-family: var(--font-main);
@@ -60,43 +61,6 @@
         transform-origin: bottom left;
     }
 
-    .ghostbtn {
-        background: transparent;
-        border: 1px solid transparent; /* Gereserveerde ruimte om 'drift' te voorkomen */
-        color: var(--gordian-text);
-        padding: 8px 20px;
-        border-radius: 6px;
-        cursor: pointer;
-        border-color: var(--gordian-text);
-        
-        /* Jouw Roboto Flex instellingen */
-        font-family: var(--font-main);
-        font-size: 20px;
-        text-transform: uppercase;
-        letter-spacing: -0.05em;
-        
-        /* Vloeiende overgang */
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        font-variation-settings: "wght" 400, "GRAD" 0;
-    }
-
-    /* De Hover Style (Jouw kleuren) */
-    .ghostbtn:hover {
-        /* Gebruikt de Ghost-stijl: subtiele achtergrond en jouw blauw */
-        background-color: rgba(255, 255, 255, 0.05);
-        border-color: var(--gordian-blue);
-        color: var(--gordian-blue);
-        
-        /* Maakt de tekst voller zonder de lay-out te verschuiven */
-        font-variation-settings: "wght" 500, "GRAD" 100;
-    }
-
-    /* Actieve klik-state */
-    .ghostbtn:active {
-        transform: scale(0.97);
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
 </style>
 
 
@@ -110,5 +74,4 @@
     <a href="/blog">Blog</a>
     <a href="/contact">Contact</a>
     </div>
-    <button class="ghostbtn">Contact</button>
 </nav>
