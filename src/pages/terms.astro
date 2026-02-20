@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+---
+
+<Layout title="Terms & Conditions | Alessio Miccichè">
+  <Navbar />
+  
+  <main class="terms-container">
+    <header class="terms-header">
+      <span class="label">LEGAL FRAMEWORK</span>
+      <h1>Terms & Conditions</h1>
+      <p class="last-updated">Last updated: February 20, 2026</p>
+    </header>
+
+    <div class="terms-content">
+      <section>
+        <h2>1. Website Use</h2>
+        <p>By accessing this portfolio, you agree to use it for lawful purposes. Unauthorized scraping, malware distribution, or attempting to breach the security of this site is strictly prohibited.</p>
+      </section>
+
+      <section>
+        <h2>2. Service Provision (B2B)</h2>
+        <p>The following terms apply to all professional engineering services, consultancy, and software delivery provided by Alessio Miccichè:</p>
+        <ul>
+          <li><strong>Best Efforts:</strong> Services are performed to the best of my professional ability (inspanningsverbintenis). No specific result is guaranteed unless explicitly stated in writing.</li>
+          <li><strong>Browser Support:</strong> Support is guaranteed for the last two major versions of Chrome, Safari, Firefox, and Edge. Legacy browsers are not supported.</li>
+          <li><strong>Data Provision:</strong> The client is responsible for timely delivery of necessary assets (API keys, credentials, designs). Delays caused by the client are at the client's risk.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Payments & Late Fees</h2>
+        <p>Invoices must be paid within <strong>30 days</strong>. Failure to pay on time results in an automatic default. In such cases, a late interest rate of 10% per year and a fixed compensation fee of 10% (min. €75) will be charged.</p>
+      </section>
+
+      <section>
+        <h2>4. Intellectual Property & Licensing</h2>
+        <p>All source code, designs, and documentation remain my exclusive intellectual property. The client receives a non-exclusive, non-transferable license to use the software only <strong>after full payment</strong> has been received.</p>
+      </section>
+
+      <section>
+        <h2>5. Liability & Third Parties</h2>
+        <p>My liability is limited to the invoice value of the project. I am not liable for indirect damages, data loss, or failures caused by third-party services (e.g., AWS, Stripe, hosting providers). Updates required due to third-party "breaking changes" are considered additional work (meerwerk).</p>
+      </section>
+
+      <section>
+        <h2>6. Jurisdiction</h2>
+        <p>These terms are governed by <strong>Belgian Law</strong>. Any disputes shall be settled exclusively by the courts of the judicial district of <strong>Limburg, Hasselt division</strong>.</p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .terms-container { max-width: 850px; margin: 15vh auto 10vh; padding: 0 5%; color: #fff; }
+  .terms-header { margin-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 2rem; }
+  .label { color: #0088cc; font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; }
+  h1 { font-size: 3rem; margin: 0.5rem 0; }
+  .terms-content section { margin-bottom: 3rem; }
+  h2 { color: #0088cc; font-size: 1.3rem; margin-bottom: 1.2rem; }
+  p, li { line-height: 1.8; color: rgba(255,255,255,0.7); margin-bottom: 1rem; }
+  ul { padding-left: 1.5rem; }
+  strong { color: #fff; }
+</style>

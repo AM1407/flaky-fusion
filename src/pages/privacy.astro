@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+---
+
+<Layout title="Privacy Policy | Alessio Miccichè">
+  <Navbar />
+  
+  <main class="privacy-container">
+    <header class="privacy-header">
+      <span class="label">LEGAL</span>
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: February 20, 2026</p>
+    </header>
+
+    <div class="privacy-content">
+      <section>
+        <h2>1. General</h2>
+        <p>
+          Alessio Miccichè, located in <strong>Zutendaal, Belgium</strong>, is responsible for the processing of personal data as described in this privacy statement. As a Security-Focused Engineer, I prioritize the confidentiality and protection of your data in accordance with the <strong>General Data Protection Regulation (GDPR)</strong>.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Data Collection & Processing</h2>
+        <p>I process personal data because you use my services or contact me directly. This includes:</p>
+        <ul>
+          <li><strong>Contact Form:</strong> Name, email address, and the content of your message. This data is securely routed via <em>Formspree</em>.</li>
+          <li><strong>Business Relations:</strong> If we collaborate, I process company names, addresses, VAT numbers, and billing details for project execution and legal compliance.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Purpose of Processing</h2>
+        <p>Your data is used strictly for:</p>
+        <ul>
+          <li>Communication and responding to inquiries or quotes.</li>
+          <li>Executing technical engineering tasks (e.g., DevSecOps implementations, infrastructure-as-code).</li>
+          <li>Complying with legal and tax obligations (e.g., Belgian tax declarations).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. Engineering Standards & Security</h2>
+        <p>Security is at the core of my workflow. I implement the following measures to protect your information:</p>
+        <ul>
+          <li><strong>Encryption:</strong> All traffic to this website is encrypted via SSL (TLS).</li>
+          <li><strong>Secret Management:</strong> Sensitive data, such as API keys and credentials, are never stored in source code (Git). I manage these exclusively through secure environment variables.</li>
+          <li><strong>Direct Access:</strong> You have direct contact with me. There are no third-party intermediaries with access to your project data or personal information.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>5. Data Retention</h2>
+        <p>
+          I do not store your data longer than strictly necessary. Administrative data and invoices are kept for the legal period of <strong>7 years</strong>. Project documentation and code are retained for the duration of our collaboration or until a request for deletion is made.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Your Rights</h2>
+        <p>
+          Under the GDPR, you have the right to access, correct, or delete your personal data. You may also object to the processing of your data. To exercise these rights, please contact me via the <a href="/contact">contact page</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .privacy-container {
+    max-width: 800px;
+    margin: 15vh auto 10vh;
+    padding: 0 5%;
+    color: #fff;
+  }
+
+  .privacy-header {
+    margin-bottom: 4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 2rem;
+  }
+
+  .label {
+    color: var(--gordian-blue, #0088cc);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  h1 { font-size: 3rem; margin: 0.5rem 0; }
+  .last-updated { color: rgba(255,255,255,0.4); font-size: 0.9rem; }
+
+  .privacy-content section { margin-bottom: 3rem; }
+  h2 { color: var(--gordian-blue, #0088cc); font-size: 1.25rem; margin-bottom: 1rem; }
+  p, li { line-height: 1.8; color: rgba(255,255,255,0.7); }
+  ul { padding-left: 1.2rem; }
+  li { margin-bottom: 0.5rem; }
+
+  a { color: #fff; text-decoration: underline; text-decoration-color: var(--gordian-blue); }
+  a:hover { color: var(--gordian-blue); }
+</style>
