@@ -1,0 +1,302 @@
+---
+import Layout from '../layouts/Layout.astro';
+import projectsData from '../data/projects.json';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+
+// Split: featured project op top, rest in de grid
+const featured = projectsData.find((p) => p.featured);
+const otherProjects = projectsData.filter((p) => !p.featured);
+const CARDS_PER_PAGE = 4;
+---
+
+<Layout title="Projects">
+  <Navbar />
+
+  <section class="projects-overview">
+    <h1>Projects</h1>
+
+    {/* ── Featured project hero ── */}
+    {featured && (
+      <a href={`/projects/${featured.id}`} class="featured-card">
+        <img
+          src={featured.image || "/img/placeholder.jpg"}
+          alt={featured.title}
+          class="featured-img"
+        />
+        <div class="featured-body">
+          <span class="featured-label">Featured</span>
+          <h2>{featured.title}</h2>
+          <p>{featured.description}</p>
+          <div class="tech-stack">
+            {featured.stack && featured.stack.map((tech) => (
+              <span class="badge">{tech}</span>
+            ))}
+          </div>
+          <span class="card-cta">View Project &rarr;</span>
+        </div>
+      </a>
+    )}
+
+    {/* ── 2×2 grid of other projects ── */}
+    <div class="projects-grid" id="projects-grid">
+      {otherProjects.map((project) => (
+        <a href={`/projects/${project.id}`} class="project-card" data-card>
+          <img
+            src={project.image || "/img/placeholder.jpg"}
+            alt={project.title}
+            class="card-img"
+          />
+          <div class="card-body">
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+            <div class="tech-stack">
+              {project.stack && project.stack.map((tech) => (
+                <span class="badge">{tech}</span>
+              ))}
+            </div>
+            <span class="card-cta">View Project &rarr;</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {/* ── Pagination ── */}
+    {otherProjects.length > CARDS_PER_PAGE && (
+      <nav class="pagination" id="pagination" aria-label="Project pages"></nav>
+    )}
+  </section>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Layout ── */
+  .projects-overview {
+    max-width: 1100px;
+    margin: 8vh auto 6rem;
+    padding: 0 5%;
+    color: #fff;
+  }
+
+  .projects-overview h1 {
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Featured card ── */
+  .featured-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 12rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  }
+
+  .featured-img {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    object-fit: cover;
+  }
+
+  .featured-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .featured-label {
+    display: inline-block;
+    width: fit-content;
+    background: var(--gordian-blue, #0088cc);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 3px;
+  }
+
+  .featured-body h2 {
+    margin: 0;
+    font-size: 1.6rem;
+  }
+
+  .featured-body p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+  }
+
+  /* ── 2×2 grid ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .project-card:hover .card-cta {
+    color: var(--gordian-blue, #0088cc);
+  }
+
+  .card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .card-body h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .card-body p {
+    margin: 0 0 0.75rem;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+  }
+
+  /* ── Shared ── */
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--gordian-blue, #0088cc);
+    color: var(--gordian-blue, #0088cc);
+    padding: 3px 10px;
+    margin: 4px 6px 4px 0;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .tech-stack {
+    margin-bottom: 0.5rem;
+  }
+
+  .card-cta {
+    display: inline-block;
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.2s ease;
+  }
+
+  .featured-card:hover .card-cta {
+    color: var(--gordian-blue, #0088cc);
+  }
+
+  /* ── Pagination ── */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .pagination :global(button) {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .pagination :global(button:hover) {
+    border-color: var(--gordian-blue, #0088cc);
+    color: #fff;
+  }
+
+  .pagination :global(button.active) {
+    background: var(--gordian-blue, #0088cc);
+    border-color: var(--gordian-blue, #0088cc);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .featured-card {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-img {
+      min-height: 200px;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script define:vars={{ CARDS_PER_PAGE }}>
+  // Client-side pagination for the 2×2 grid
+  const grid = document.getElementById('projects-grid');
+  const paginationNav = document.getElementById('pagination');
+  if (grid && paginationNav) {
+    const cards = Array.from(grid.querySelectorAll('[data-card]'));
+    const totalPages = Math.ceil(cards.length / CARDS_PER_PAGE);
+    let currentPage = 1;
+
+    function render(page) {
+      currentPage = page;
+      const start = (page - 1) * CARDS_PER_PAGE;
+      const end = start + CARDS_PER_PAGE;
+
+      cards.forEach((card, i) => {
+        card.style.display = i >= start && i < end ? '' : 'none';
+      });
+
+      // Build pagination buttons
+      paginationNav.innerHTML = '';
+      if (totalPages > 1) {
+        for (let p = 1; p <= totalPages; p++) {
+          const btn = document.createElement('button');
+          btn.textContent = p;
+          btn.setAttribute('aria-label', `Page ${p}`);
+          if (p === currentPage) btn.classList.add('active');
+          btn.addEventListener('click', () => render(p));
+          paginationNav.appendChild(btn);
+        }
+      }
+    }
+
+    render(1);
+  }
+</script>

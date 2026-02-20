@@ -1,0 +1,73 @@
+[
+  {
+    "id": "project-gordian",
+    "title": "Project Gordian Knot",
+    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
+    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
+    "image": "/img/Gordian400dpi.svg",
+    "stack": ["Terraform", "AWS", "Security"],
+    "featured": true
+  },
+  {
+    "id": "api-shield",
+    "title": "API Shield",
+    "description": "Rate limiting en WAF implementatie voor microservices.",
+    "image": "/img/Gordian400dpi.svg",
+    "stack": ["Go", "Kubernetes", "WAF"],
+    "featured": false
+  },
+    {
+    "id": "project-gordian",
+    "title": "Project Gordian Knot",
+    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
+    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
+    "image": "/img/Gordian400dpi.svg",
+    "stack": ["Terraform", "AWS", "Security"],
+    "featured": false
+  },
+    {
+    "id": "project-gordian",
+    "title": "Project Gordian Knot",
+    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
+    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
+    "image": "/img/Gordian400dpi.svg",
+    "stack": ["Terraform", "AWS", "Security"],
+    "featured": false
+  },
+    {
+    "id": "project-gordian",
+    "title": "Project Gordian Knot",
+    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
+    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
+    "image": "/img/Gordian400dpi.svg",
+    "stack": ["Terraform", "AWS", "Security"],
+    "featured": false
+  },
+    {
+    "id": "project-gordian",
+    "title": "Project Gordian Knot",
+    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
+    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
+    "image": "/img/Gordian400dpi.svg",
+    "stack": ["Terraform", "AWS", "Security"],
+    "featured": false
+  },
+    {
+    "id": "project-gordian",
+    "title": "Project Gordian Knot",
+    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
+    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
+    "image": "/img/Gordian400dpi.svg",
+    "stack": ["Terraform", "AWS", "Security"],
+    "featured": false
+  },
+    {
+    "id": "project-gordian",
+    "title": "Project Gordian Knot",
+    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
+    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
+    "image": "/img/Gordian400dpi.svg",
+    "stack": ["Terraform", "AWS", "Security"],
+    "featured": false
+  }
+]

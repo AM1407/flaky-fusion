@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/navbar.astro';
+// We gebruiken een relatief pad dat nu 2 mappen omhoog gaat (../../)
+import projectsData from '../../data/projects.json';
+
+// 1. getStaticPaths: Genereert de lijst met toegestane URL's tijdens de build.
+export async function getStaticPaths() {
+  return projectsData.map((project) => ({
+    // De 'id' uit je JSON wordt de URL (bijv. /projects/mijn-id)
+    params: { id: project.id },
+    // We geven het volledige project-object door als prop
+    props: { project },
+  }));
+}
+
+// 2. Props ophalen: Deze vult Astro in op basis van de URL die bezocht wordt.
+const { project } = Astro.props;
+
+// 3. Noodrem: Als er iets misgaat met de data, crasht de pagina niet.
+if (!project) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={`${project.title} | Projects`}>
+  <Navbar />
+  
+  <article class="project-detail">
+    <header>
+      <a href="/projects" class="back-link">&larr; Back to Overview</a>
+      <h1>{project.title}</h1>
+      
+      <div class="tech-stack">
+        {/* Controleer of stack bestaat voordat we mappen */}
+        {project.stack && project.stack.map((tech) => (
+          <span class="badge">{tech}</span>
+        ))}
+      </div>
+    </header>
+
+    <div class="detail-content">
+      {/* Gebruik project.image of een fallback-afbeelding */}
+      <img 
+        src={project.image || "/img/placeholder.jpg"} 
+        alt={project.title} 
+        class="hero-img" 
+      />
+      
+      <div class="description">
+        {/* Prioriteit aan fullDescription, anders de korte versie */}
+        <p>{project.fullDescription || project.description}</p>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .project-detail { 
+    max-width: 900px; 
+    margin: 15vh auto; 
+    padding: 0 5%; 
+    color: #fff;
+  }
+
+  .back-link {
+    color: var(--cyber-blue, #0088cc);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .hero-img { 
+    width: 100%; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    margin: 2rem 0; 
+    border-radius: 4px;
+  }
+
+  .badge { 
+    display: inline-block;
+    border: 1px solid var(--cyber-blue, #0088cc); 
+    color: var(--cyber-blue, #0088cc); 
+    padding: 4px 12px; 
+    margin: 5px 10px 5px 0; 
+    font-size: 0.8rem; 
+    text-transform: uppercase;
+  }
+
+  .description {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+</style>

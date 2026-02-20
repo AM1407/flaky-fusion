@@ -1,0 +1,351 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+import ContactForm from '../components/ContactForm';
+---
+
+<Layout title="Contact | Alessio Miccichè">
+  <Navbar />
+  
+  <main class="contact-main">
+    <header class="contact-header">
+      <span class="label">CONTACT</span>
+      <h1>Get in touch.</h1>
+      <p class="subtitle">Have a project, question, or just want to say hi? Drop me a line.</p>
+    </header>
+
+    <div class="contact-wrapper">
+      {/* ── Left: quick info ── */}
+      <aside class="contact-aside">
+        <div class="aside-block">
+          <h3>Email</h3>
+          <a href="mailto:hello@alessiomicciche.com">
+            <i class="fa-regular fa-envelope"></i>
+            hello@alessiomicciche.com
+          </a>
+        </div>
+
+        <div class="aside-block">
+          <h3>Location</h3>
+          <span>
+            <i class="fa-solid fa-location-dot"></i>
+            Zutendaal, Belgium
+          </span>
+        </div>
+
+        <div class="aside-block">
+          <h3>FAQ</h3>
+          <a href="/faq" class="faq-link">
+            <i class="fa-solid fa-circle-question"></i>
+            Frequently Asked Questions
+          </a>
+        </div>
+
+        <div class="aside-socials">
+          <a href="https://linkedin.com/in/alessiomicciche" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/AM1407" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+      </aside>
+
+      {/* ── Right: the form ── */}
+      <div class="form-wrapper">
+        <ContactForm client:load />
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  /* ── Page layout ── */
+  .contact-main {
+    max-width: 960px;
+    margin: 10vh auto 8vh;
+    padding: 0 5%;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .contact-header {
+    margin-bottom: 4rem;
+  }
+
+  .contact-header .label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gordian-blue, #0088cc);
+    margin-bottom: 1rem;
+  }
+
+  .contact-header h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 0.75rem;
+    line-height: 1.1;
+  }
+
+  .contact-header .subtitle {
+    color: rgba(255,255,255,0.45);
+    font-size: 1.05rem;
+    margin: 0;
+    max-width: 420px;
+  }
+
+  /* ── Two-col wrapper ── */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* ── Aside ── */
+  .contact-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 0.25rem;
+  }
+
+  .aside-block h3 {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.3);
+    margin: 0 0 8px;
+  }
+
+  .aside-block a,
+  .aside-block span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: color 0.25s ease;
+  }
+
+  .aside-block a i,
+  .aside-block span i {
+    color: var(--gordian-blue, #0088cc);
+    font-size: 0.95rem;
+    width: 16px;
+    text-align: center;
+  }
+
+  .aside-block a:hover {
+    color: var(--gordian-blue, #0088cc);
+  }
+
+  /* FAQ link */
+  .faq-link {
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .faq-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gordian-blue, #0088cc);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+
+  .faq-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  /* Aside socials */
+  .aside-socials {
+    display: flex;
+    gap: 12px;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1.5rem;
+  }
+
+  .aside-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+  }
+
+  .aside-socials a:hover {
+    color: var(--gordian-blue, #0088cc);
+    border-color: var(--gordian-blue, #0088cc);
+    transform: translateY(-2px);
+  }
+
+  /* ── Form ── */
+  .form-wrapper {
+    /* no explicit background — sits on the page bg for a clean look */
+  }
+
+  .contact-form-island {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  .input-group label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  input, select, textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 14px;
+    color: #fff;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    transition: border-color 0.25s ease;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(255,255,255,0.2);
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--gordian-blue, #0088cc);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 1px solid var(--gordian-blue, #0088cc);
+    padding: 14px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 6px;
+  }
+
+  .submit-btn:hover {
+    background: var(--gordian-blue, #0088cc);
+    box-shadow: 0 0 24px rgba(0,136,204,0.25);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* ── Toast notifications ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #fff;
+    z-index: 9999;
+    animation: toast-in 0.35s ease, toast-out 0.35s ease 3.6s forwards;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  .toast i {
+    font-size: 1rem;
+  }
+
+  .toast-success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+  }
+
+  .toast-error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
+  }
+
+  @keyframes toast-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes toast-out {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 700px) {
+    .contact-wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .contact-aside {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+    }
+
+    .aside-socials {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
