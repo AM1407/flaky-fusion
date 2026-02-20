@@ -1,0 +1,253 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+
+const faqs = [
+  {
+    category: "Working Together",
+    items: [
+      {
+        q: "What services do you offer?",
+        a: "I specialise in full stack development, DevSecOps consulting, and secure infrastructure design. Whether you need a web application built from scratch, an existing codebase hardened, or a CI/CD pipeline with integrated security — I can help."
+      },
+      {
+        q: "What is your typical project process?",
+        a: "Every project starts with a discovery call to understand the scope, followed by a written quote. Once approved, I work in short sprints with regular check-ins so you always know where things stand. Delivery includes source code, documentation, and a handover session."
+      },
+      {
+        q: "Do you work with international clients?",
+        a: "Absolutely. I'm based in Belgium but work remotely with clients across Europe and beyond. Communication is typically via email, video calls, or your preferred project management tool."
+      }
+    ]
+  },
+  {
+    category: "Technical",
+    items: [
+      {
+        q: "What tech stack do you typically use?",
+        a: "It depends on the project. For front-end work I lean towards Astro, React, and Tailwind CSS. On the back-end I work with Node.js, Python, and cloud platforms like AWS and Azure. Security tooling includes Snyk, SonarQube, and custom SAST/DAST pipelines."
+      },
+      {
+        q: "Can you work with my existing codebase?",
+        a: "Yes. I regularly audit and extend existing projects. I'll start with a code review and security assessment, then propose a roadmap for improvements before writing a single line."
+      },
+      {
+        q: "Do you offer ongoing maintenance?",
+        a: "I offer retainer agreements for clients who need continuous support, dependency updates, and security monitoring after the initial project is delivered."
+      }
+    ]
+  },
+  {
+    category: "Pricing & Legal",
+    items: [
+      {
+        q: "How do you handle pricing?",
+        a: "Most projects are quoted at a fixed price based on scope. For longer engagements or advisory work I also offer hourly or monthly retainer rates. You'll always receive a transparent breakdown before any work begins."
+      },
+      {
+        q: "What are your payment terms?",
+        a: "Invoices are due within 30 days. For larger projects I typically work with a 40 % upfront deposit and the remainder upon delivery. Full details are in my Terms & Conditions."
+      },
+      {
+        q: "Who owns the code after delivery?",
+        a: "You receive a non-exclusive, non-transferable license to use the delivered software after full payment. Intellectual property details are outlined in my Terms & Conditions."
+      }
+    ]
+  }
+];
+---
+
+<Layout title="FAQ | Alessio Miccichè">
+  <Navbar />
+
+  <main class="faq-container">
+    <header class="faq-header">
+      <span class="label">SUPPORT</span>
+      <h1>Frequently Asked Questions</h1>
+      <p class="subtitle">Can't find what you're looking for? <a href="/contact">Get in touch</a> and I'll get back to you.</p>
+    </header>
+
+    <div class="faq-content">
+      {faqs.map((group) => (
+        <section class="faq-group">
+          <h2>{group.category}</h2>
+
+          <div class="faq-list">
+            {group.items.map((item) => (
+              <details class="faq-item">
+                <summary>
+                  <span class="question-text">{item.q}</span>
+                  <span class="faq-icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </span>
+                </summary>
+                <div class="faq-answer">
+                  <p>{item.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Layout ── */
+  .faq-container {
+    max-width: 800px;
+    margin: 15vh auto 10vh;
+    padding: 0 5%;
+    color: #fff;
+  }
+
+  /* ── Header ── */
+  .faq-header {
+    margin-bottom: 4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 2rem;
+  }
+
+  .label {
+    color: var(--gordian-blue, #0088cc);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .faq-header h1 {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    color: rgba(255,255,255,0.45);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .subtitle a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: var(--gordian-blue, #0088cc);
+    text-underline-offset: 3px;
+    transition: color 0.25s ease;
+  }
+
+  .subtitle a:hover {
+    color: var(--gordian-blue, #0088cc);
+  }
+
+  /* ── Category groups ── */
+  .faq-group {
+    margin-bottom: 3.5rem;
+  }
+
+  .faq-group h2 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--gordian-blue, #0088cc);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── Accordion items ── */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .faq-item:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.25s ease;
+  }
+
+  /* Remove default marker in Safari / Chrome */
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::marker { display: none; content: ''; }
+
+  .question-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    transition: color 0.25s ease;
+  }
+
+  .faq-item[open] .question-text,
+  .faq-item summary:hover .question-text {
+    color: #fff;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.35);
+    font-size: 0.7rem;
+    transition: transform 0.3s ease, border-color 0.25s ease, color 0.25s ease;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+    border-color: var(--gordian-blue, #0088cc);
+    color: var(--gordian-blue, #0088cc);
+  }
+
+  .faq-answer {
+    padding: 0 0 1.5rem;
+  }
+
+  .faq-answer p {
+    line-height: 1.8;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    margin: 0;
+    max-width: 620px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .faq-container {
+      margin-top: 10vh;
+    }
+
+    .faq-header h1 {
+      font-size: 2rem;
+    }
+
+    .question-text {
+      font-size: 0.95rem;
+    }
+  }
+</style>
