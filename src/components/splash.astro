@@ -76,10 +76,26 @@ import { gsap } from 'gsap';
   }
 </style>
 
+<!-- Synchroon inline script: verbergt overlay VOOR render als splash al gezien is -->
+<script is:inline>
+  if (sessionStorage.getItem('splashSeen')) {
+    document.getElementById('splash-overlay').style.display = 'none';
+  }
+</script>
+
 <script>
   import { gsap } from 'gsap';
 
   window.addEventListener('DOMContentLoaded', () => {
+    const hasSeenSplash = sessionStorage.getItem('splashSeen');
+
+    if (hasSeenSplash) {
+      // Overlay is al verborgen door inline script, alleen event dispatchen
+      window.dispatchEvent(new Event('splash-finished'));
+      return;
+    }
+
+    // Eerste bezoek: speel de animatie af
     document.body.classList.add('loading');
 
     const tl = gsap.timeline({
@@ -87,12 +103,11 @@ import { gsap } from 'gsap';
         const overlay = document.getElementById('splash-overlay');
         if (overlay) overlay.style.display = 'none';
         document.body.classList.remove('loading');
+        sessionStorage.setItem('splashSeen', 'true');
         window.dispatchEvent(new Event('splash-finished'));
       }
     });
 
-    // We gebruiken nu de juiste fromTo syntaxis: {begin}, {eind}
-    // Pas de x en y waarden hieronder aan tot de cirkel perfect aansluit
     tl.fromTo("#splash-blue", 
       { x: -400, y: -200, opacity: 0 }, 
       { x: -17, y: -17, opacity: 1, duration: 1.5, ease: "power4.out" }
