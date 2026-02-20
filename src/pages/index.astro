@@ -13,27 +13,24 @@ import Footer from '../components/footer.astro';
     <Navbar />
     
 	<Hero />
-	
-
   </div>
+
+  <Footer />
 
   <style>
     #site-wrapper {
       opacity: 0;
       visibility: hidden;
-      position: fixed;
-      inset: 0;
       display: flex;
       flex-direction: column;
-      transition: opacity 1500ms ease-in-out;
+      height: 100vh;
+      overflow: hidden;
+      transition: opacity 0.6s ease-in-out, visibility 0s linear 0s;
     }
 
     #site-wrapper.visible {
       opacity: 1;
       visibility: visible;
-      position: static;
-      height: 100vh;
-      overflow: hidden;
     }
 
     #site-wrapper main {
@@ -62,5 +59,4 @@ import Footer from '../components/footer.astro';
       }
     });
   </script>
-  <Footer />
 </Layout>
