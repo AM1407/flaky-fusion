@@ -2,10 +2,10 @@ import { atom } from 'nanostores';
 
 export type Locale = 'en' | 'nl';
 
-/** Holds the active language — defaults to 'en' or whatever was saved before. */
+// Active language atom, initialized from localStorage or defaulting to 'en'
 export const locale = atom<Locale>(getInitialLocale());
 
-/** Read the saved language from localStorage (SSR-safe). */
+// Read the persisted language preference (returns 'en' during SSR)
 function getInitialLocale(): Locale {
   if (typeof window !== 'undefined') {
     const saved = localStorage.getItem('lang');
@@ -14,13 +14,13 @@ function getInitialLocale(): Locale {
   return 'en';
 }
 
-/** Switch language + persist the choice. */
+// Switch language, persist to localStorage, and notify non-React listeners
 export function setLocale(lang: Locale) {
   locale.set(lang);
   if (typeof window !== 'undefined') {
     localStorage.setItem('lang', lang);
     document.documentElement.lang = lang;
-    // Dispatch a custom event so plain (non-React) scripts can react
+    // Dispatch event for scripts that don't subscribe to the nanostore
     window.dispatchEvent(new CustomEvent('locale-changed', { detail: lang }));
   }
 }

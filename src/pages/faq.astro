@@ -97,7 +97,7 @@ const faqs = [
 </Layout>
 
 <style>
-  /* ── Layout ── */
+  /* Page layout */
   .faq-container {
     max-width: 800px;
     margin: 15vh auto 10vh;
@@ -105,7 +105,7 @@ const faqs = [
     color: #fff;
   }
 
-  /* ── Header ── */
+  /* Page header */
   .faq-header {
     margin-bottom: 4rem;
     border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -147,7 +147,7 @@ const faqs = [
     color: var(--gordian-blue, #0088cc);
   }
 
-  /* ── Category groups ── */
+  /* FAQ category sections */
   .faq-group {
     margin-bottom: 3.5rem;
   }
@@ -161,7 +161,7 @@ const faqs = [
     margin-bottom: 1.5rem;
   }
 
-  /* ── Accordion items ── */
+  /* Expandable question/answer items */
   .faq-list {
     display: flex;
     flex-direction: column;
@@ -188,7 +188,7 @@ const faqs = [
     transition: color 0.25s ease;
   }
 
-  /* Remove default marker in Safari / Chrome */
+  /* Hide native disclosure marker across browsers */
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::marker { display: none; content: ''; }
 
@@ -236,7 +236,7 @@ const faqs = [
     max-width: 620px;
   }
 
-  /* ── Responsive ── */
+  /* Mobile layout adjustments */
   @media (max-width: 600px) {
     .faq-container {
       margin-top: 10vh;

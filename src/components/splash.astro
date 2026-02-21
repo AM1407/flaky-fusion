@@ -1,6 +1,5 @@
 ---
-// src/components/Splash.astro
-import { gsap } from 'gsap';
+// Splash screen overlay with animated logo reveal using GSAP
 ---
 <div id="splash-overlay" class="fixed inset-0 z-[10000] bg-black flex items-center justify-center overflow-hidden">
   <div class="logo-wrapper relative w-[250px] h-[250px] md:w-[350px] md:h-[350px]"> 
@@ -20,12 +19,12 @@ import { gsap } from 'gsap';
 </div>
 
 <style>
-  /* Voorkom scrollen tijdens de splash */
+  /* Prevent scrolling while splash is visible */
   :global(body.loading) {
     overflow: hidden;
   }
 
-  /* De zwarte achtergrond die alles afdekt */
+  /* Full-screen overlay background */
   #splash-overlay {
     position: fixed;
     top: 0;
@@ -35,39 +34,35 @@ import { gsap } from 'gsap';
     background: #2B2F36;
     background: linear-gradient(0deg,rgba(43, 47, 54, 1) 53%, rgba(11, 13, 16, 1) 100%);
     z-index: 10000;
-    /* Dit centreert de .logo-wrapper exact in het midden van het scherm */
+    /* Center the logo wrapper */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
   }
 
-  /* De container bepaalt de grootte van het logo */
+  /* Logo container — controls splash logo dimensions */
   .logo-wrapper {
     position: relative;
-    /* Verander deze waarden om het logo te schalen */
+    /* Adjust these values to scale the logo */
     width: 250px !important; 
     height: 250px !important;
-    /* Zorg dat de wrapper zelf geen onverwachte padding heeft */
     padding: 0;
     margin: 0;
   }
 
-  /* De afbeeldingen vullen altijd 100% van de .logo-wrapper */
+  /* Logo images fill the wrapper and preserve aspect ratio */
   #splash-blue, #splash-red {
     position: absolute;
-    /* Door top/left 0 vullen ze de wrapper vanaf de linkerbovenhoek */
     top: 0;
     left: 0;
     width: 100% !important;
     height: 100% !important;
-    /* Behoud de verhoudingen van je 400dpi export */
     object-fit: contain;
-    /* Zorg dat GSAP de transformaties kan doen zonder CSS-conflicten */
     margin: 0;
   }
 
-  /* Optioneel: Desktop maat */
+  /* Larger logo on desktop viewports */
   @media (min-width: 768px) {
     .logo-wrapper {
       width: 350px !important;
@@ -90,12 +85,12 @@ import { gsap } from 'gsap';
     const hasSeenSplash = sessionStorage.getItem('splashSeen');
 
     if (hasSeenSplash) {
-      // Overlay is al verborgen door inline script, alleen event dispatchen
+      // Splash already shown this session — skip animation
       window.dispatchEvent(new Event('splash-finished'));
       return;
     }
 
-    // Eerste bezoek: speel de animatie af
+    // First visit: play the logo entrance animation
     document.body.classList.add('loading');
 
     const tl = gsap.timeline({

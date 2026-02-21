@@ -7,9 +7,7 @@ const LanguageSwitcher: React.FC = () => {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    // Sync atom from localStorage after mount to fix SSR hydration mismatch.
-    // During SSR, the atom defaults to 'en' because localStorage isn't available.
-    // After hydration, we read the real persisted value and correct the store.
+    // Hydrate the store from localStorage to correct SSR default ('en')
     const saved = localStorage.getItem('lang') as Locale | null;
     if (saved === 'en' || saved === 'nl') {
       if (locale.get() !== saved) {
@@ -19,8 +17,7 @@ const LanguageSwitcher: React.FC = () => {
     setHasMounted(true);
   }, []);
 
-  // Before mount, match the SSR output ('en') to avoid hydration warnings.
-  // After mount, use the real store value.
+  // Use SSR default before mount; switch to real store value after hydration
   const lang = hasMounted ? storeLang : 'en';
 
   return (

@@ -4,7 +4,7 @@ import Navbar from '../components/navbar.astro';
 import Footer from '../components/footer.astro';
 import blogs from '../data/blogs.json';
 
-// Sort newest first at build time
+// Sort posts by date, newest first
 const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
@@ -16,7 +16,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       <p class="page-subtitle" data-i18n="blog.subtitle">Thoughts on security, infrastructure, and modern web development.</p>
     </header>
 
-    <!-- Search & Filter Controls -->
+    <!-- Search and date filter controls -->
     <div class="controls">
       <div class="search-bar">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -46,22 +46,22 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       </div>
     </div>
 
-    <!-- Cards rendered client-side -->
+    <!-- Blog cards rendered via client-side JS -->
     <div class="blog-list" id="blog-list"></div>
 
-    <!-- Empty state -->
+    <!-- No results message -->
     <div class="empty-state" id="empty-state" style="display:none;">
       <i class="fa-solid fa-magnifying-glass"></i>
       <p data-i18n="blog.noResults">No posts match your search.</p>
     </div>
 
-    <!-- Pagination -->
+    <!-- Page navigation -->
     <nav class="pagination" id="pagination" aria-label="Blog pagination"></nav>
   </main>
   <Footer />
 </Layout>
 
-<!-- Blog data embedded for client-side use -->
+<!-- Inject blog data for client-side rendering -->
 <script is:inline define:vars={{ blogData: sortedBlogs }}>
   window.__BLOG_DATA__ = blogData;
 </script>
@@ -85,7 +85,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
 
     let currentPage = 1;
 
-    /** Get translated post data if available, falling back to original */
+    // Return translated title/excerpt if available, otherwise use the original
     function getTranslatedPost(post: typeof allPosts[0]) {
       const lang = locale.get();
       const blogPosts = tObj('blog.posts', lang) as Array<{slug:string; title:string; excerpt:string}> | undefined;
@@ -98,19 +98,19 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       return post;
     }
 
-    // ── Sanitisation: escape HTML entities ──
+    // Escape HTML entities to prevent XSS
     function esc(str: string): string {
       const div = document.createElement('div');
       div.textContent = str;
       return div.innerHTML;
     }
 
-    // ── Strip non-printable chars & limit length ──
+    // Remove non-printable characters and cap input length
     function sanitiseQuery(raw: string): string {
       return raw.replace(/[^\x20-\x7E\u00C0-\u024F]/g, '').trim().slice(0, 120);
     }
 
-    // ── Filter posts ──
+    // Apply search query and date range filters to the post list
     function getFilteredPosts() {
       const query = sanitiseQuery(searchInput.value).toLowerCase();
       const from = dateFrom.value ? new Date(dateFrom.value) : null;
@@ -118,12 +118,12 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
 
       return allPosts.filter((post) => {
         const tp = getTranslatedPost(post);
-        // Text search across title, excerpt, tags
+        // Match against title, excerpt, and tags
         if (query) {
           const haystack = `${tp.title} ${tp.excerpt} ${post.tags.join(' ')}`.toLowerCase();
           if (!haystack.includes(query)) return false;
         }
-        // Date range
+        // Exclude posts outside the selected date range
         const postDate = new Date(post.date);
         if (from && postDate < from) return false;
         if (to && postDate > to) return false;
@@ -131,7 +131,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       });
     }
 
-    // ── Render cards ──
+    // Build and insert blog card HTML for the current page
     function renderCards(posts: typeof allPosts, page: number) {
       const lang = locale.get();
       const readMoreText = t('blog.readMore', lang);
@@ -174,7 +174,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
         `;
       }).join('');
 
-      // Trigger reveal animation
+      // Stagger card entrance animations
       requestAnimationFrame(() => {
         listEl.querySelectorAll('.blog-card').forEach((card, i) => {
           setTimeout(() => card.classList.add('in-view'), i * 100);
@@ -182,21 +182,21 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       });
     }
 
-    // ── Render pagination ──
+    // Build pagination buttons with prev/next navigation
     function renderPagination(totalPosts: number, page: number) {
       const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
       if (totalPages <= 1) { paginationEl.innerHTML = ''; return; }
 
       let html = '';
 
-      // Prev
+      // Previous page button
       html += `<button class="page-btn ${page <= 1 ? 'disabled' : ''}" data-page="${page - 1}" ${page <= 1 ? 'disabled' : ''} aria-label="Previous page">&laquo;</button>`;
 
       for (let p = 1; p <= totalPages; p++) {
         html += `<button class="page-btn ${p === page ? 'active' : ''}" data-page="${p}" aria-label="Page ${p}">${p}</button>`;
       }
 
-      // Next
+      // Next page button
       html += `<button class="page-btn ${page >= totalPages ? 'disabled' : ''}" data-page="${page + 1}" ${page >= totalPages ? 'disabled' : ''} aria-label="Next page">&raquo;</button>`;
 
       paginationEl.innerHTML = html;
@@ -213,7 +213,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       });
     }
 
-    // ── Update view ──
+    // Re-filter and re-render the visible posts
     function update() {
       const filtered = getFilteredPosts();
       const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
@@ -222,7 +222,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       renderPagination(filtered.length, currentPage);
     }
 
-    // ── Events ──
+    // Event listeners for search, date filters, and clear button
     let debounceTimer: ReturnType<typeof setTimeout>;
     searchInput.addEventListener('input', () => {
       searchClear.style.display = searchInput.value ? 'flex' : 'none';
@@ -250,17 +250,17 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       update();
     });
 
-    // Prevent form submission on Enter
+    // Block Enter key from submitting the search form
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') e.preventDefault();
     });
 
-    // Re-render on language change
+    // Update cards when language changes
     locale.listen(() => {
       update();
     });
 
-    // Initial render
+    // Render the initial view
     update();
   });
 </script>
@@ -272,7 +272,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     padding: 0 24px 80px;
   }
 
-  /* ── Header ── */
+  /* Page header */
   .blog-header {
     text-align: center;
     padding: 48px 0 32px;
@@ -293,7 +293,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     margin: 0;
   }
 
-  /* ── Controls ── */
+  /* Search and filter controls */
   .controls {
     margin-bottom: 40px;
     display: flex;
@@ -397,7 +397,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.12);
   }
 
-  /* Chromium date picker icon colour */
+  /* Chromium-specific date picker icon styling */
   .date-filter input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(0.6);
     cursor: pointer;
@@ -423,7 +423,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     color: var(--gordian-blue);
   }
 
-  /* ── Empty state ── */
+  /* No results state */
   .empty-state {
     display: flex;
     flex-direction: column;
@@ -444,14 +444,14 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     margin: 0;
   }
 
-  /* ── Blog list ── */
+  /* Blog post list container */
   .blog-list {
     display: flex;
     flex-direction: column;
     gap: 32px;
   }
 
-  /* ── Card base ── */
+  /* Blog card with entrance animation */
   .blog-list :global(.blog-card) {
     display: flex;
     border-radius: 16px;
@@ -496,7 +496,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     flex-direction: row-reverse;
   }
 
-  /* ── Card image ── */
+  /* Card thumbnail area */
   .blog-list :global(.card-image) {
     flex: 0 0 280px;
     display: flex;
@@ -529,7 +529,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     transform: scale(1.06);
   }
 
-  /* ── Card body ── */
+  /* Card text content */
   .blog-list :global(.card-body) {
     flex: 1;
     padding: 28px 32px;
@@ -622,7 +622,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     transform: translateX(4px);
   }
 
-  /* ── Pagination ── */
+  /* Pagination buttons */
   .pagination {
     display: flex;
     justify-content: center;
@@ -669,7 +669,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     cursor: not-allowed;
   }
 
-  /* ── Responsive ── */
+  /* Mobile layout adjustments */
   @media (max-width: 700px) {
     .blog-list :global(.blog-card.img-left),
     .blog-list :global(.blog-card.img-right) {

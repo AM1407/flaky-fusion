@@ -1,68 +1,59 @@
 ---
-/**
- * Drop this component into any Astro page/layout.
- * It wires up a listener for `locale-changed` events (fired by the nanostore)
- * and swaps every element that carries a `data-i18n="section.key"` attribute.
- *
- * Elements with `data-i18n-html` will have their innerHTML set (for rich content).
- * Elements with `data-i18n-placeholder` will have their placeholder set.
- * Elements with `data-i18n-aria` will have their aria-label set.
- */
+// Internationalization script: listens for locale changes and
+// swaps text content on elements with data-i18n attributes.
+// Supports plain text, innerHTML, placeholder, and aria-label translations.
 ---
 
 <script>
   import { locale } from '../stores/languageStore';
   import { t } from '../i18n/index';
 
-  /** Apply translations to every annotated element on the page. */
+  // Translate all annotated DOM elements to the given language
   function applyTranslations(lang: 'en' | 'nl') {
-    // Plain text
+    // Text content
     document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n')!;
       el.textContent = t(key, lang);
     });
 
-    // Rich HTML
+    // HTML content (supports rich markup)
     document.querySelectorAll<HTMLElement>('[data-i18n-html]').forEach((el) => {
       const key = el.getAttribute('data-i18n-html')!;
       el.innerHTML = t(key, lang);
     });
 
-    // Placeholders
+    // Input/textarea placeholders
     document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-i18n-placeholder]').forEach((el) => {
       const key = el.getAttribute('data-i18n-placeholder')!;
       el.placeholder = t(key, lang);
     });
 
-    // Aria labels
+    // Accessibility labels
     document.querySelectorAll<HTMLElement>('[data-i18n-aria]').forEach((el) => {
       const key = el.getAttribute('data-i18n-aria')!;
       el.setAttribute('aria-label', t(key, lang));
     });
 
-    // Update <html lang="">
+    // Sync the document language attribute
     document.documentElement.lang = lang;
   }
 
-  // Initial render — read directly from localStorage as source of truth,
-  // in case the atom was initialised with the SSR default ('en').
+  // Read persisted language from localStorage, falling back to the store default
   const savedLang = (localStorage.getItem('lang') as 'en' | 'nl') || locale.get();
   if (savedLang === 'en' || savedLang === 'nl') {
     applyTranslations(savedLang);
-    // Keep the atom in sync so any later .get() is correct
+    // Ensure the nanostore stays in sync with the persisted value
     if (locale.get() !== savedLang) locale.set(savedLang);
   } else {
     applyTranslations(locale.get());
   }
 
-  // Listen to nanostore changes
+  // Re-apply translations whenever the nanostore locale changes
   locale.listen((lang) => {
     applyTranslations(lang);
   });
 
-  // Fallback: if Vite splits the Astro script and the React island into
-  // separate bundles, they may hold independent atom instances. The React
-  // switcher fires a 'locale-changed' custom event so we can still react.
+  // Fallback listener for cross-bundle compatibility when Vite code-splits
   window.addEventListener('locale-changed', ((e: CustomEvent<'en' | 'nl'>) => {
     applyTranslations(e.detail);
   }) as EventListener);

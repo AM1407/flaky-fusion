@@ -4,7 +4,7 @@ import projectsData from '../data/projects.json';
 import Navbar from '../components/navbar.astro';
 import Footer from '../components/footer.astro';
 
-// Split: featured project op top, rest in de grid
+// Separate featured project from the rest for distinct layout
 const featured = projectsData.find((p) => p.featured);
 const otherProjects = projectsData.filter((p) => !p.featured);
 const CARDS_PER_PAGE = 4;
@@ -16,7 +16,7 @@ const CARDS_PER_PAGE = 4;
   <section class="projects-overview">
     <h1 data-i18n="projects.title">Projects</h1>
 
-    {/* ── Featured project hero ── */}
+    {/* Hero card for featured project */}
     {featured && (
       <a href={`/projects/${featured.id}`} class="featured-card">
         <img
@@ -38,7 +38,7 @@ const CARDS_PER_PAGE = 4;
       </a>
     )}
 
-    {/* ── 2×2 grid of other projects ── */}
+    {/* 2x2 grid of remaining projects */}
     <div class="projects-grid" id="projects-grid">
       {otherProjects.map((project) => (
         <a href={`/projects/${project.id}`} class="project-card" data-card>
@@ -61,7 +61,7 @@ const CARDS_PER_PAGE = 4;
       ))}
     </div>
 
-    {/* ── Pagination ── */}
+    {/* Page navigation for project grid */}
     {otherProjects.length > CARDS_PER_PAGE && (
       <nav class="pagination" id="pagination" aria-label="Project pages"></nav>
     )}
@@ -70,7 +70,7 @@ const CARDS_PER_PAGE = 4;
 </Layout>
 
 <style>
-  /* ── Layout ── */
+  /* Page layout */
   .projects-overview {
     max-width: 1100px;
     margin: 8vh auto 6rem;
@@ -82,7 +82,7 @@ const CARDS_PER_PAGE = 4;
     margin-bottom: 2.5rem;
   }
 
-  /* ── Featured card ── */
+  /* Featured project hero card */
   .featured-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -140,7 +140,7 @@ const CARDS_PER_PAGE = 4;
     line-height: 1.6;
   }
 
-  /* ── 2×2 grid ── */
+  /* Project grid layout */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -188,7 +188,7 @@ const CARDS_PER_PAGE = 4;
     line-height: 1.5;
   }
 
-  /* ── Shared ── */
+  /* Shared badge and CTA styles */
   .badge {
     display: inline-block;
     border: 1px solid var(--gordian-blue, #0088cc);
@@ -217,7 +217,7 @@ const CARDS_PER_PAGE = 4;
     color: var(--gordian-blue, #0088cc);
   }
 
-  /* ── Pagination ── */
+  /* Pagination controls */
   .pagination {
     display: flex;
     justify-content: center;
@@ -249,7 +249,7 @@ const CARDS_PER_PAGE = 4;
     font-weight: 700;
   }
 
-  /* ── Responsive ── */
+  /* Mobile layout adjustments */
   @media (max-width: 768px) {
     .featured-card {
       grid-template-columns: 1fr;
@@ -266,7 +266,7 @@ const CARDS_PER_PAGE = 4;
 </style>
 
 <script define:vars={{ CARDS_PER_PAGE }}>
-  // Client-side pagination for the 2×2 grid
+  // Client-side pagination for the project grid
   const grid = document.getElementById('projects-grid');
   const paginationNav = document.getElementById('pagination');
   if (grid && paginationNav) {

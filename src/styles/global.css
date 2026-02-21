@@ -1,8 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap');
 
-/* src/styles/global.css */
-
+/* Design tokens and global styles */
 :root {
   --gordian-blue: #0088cc;
   --gordian-red: #cc0000;
@@ -12,7 +11,7 @@
   --font-main:'Roboto Flex', sans-serif;
 }
 
-/* Standaard stijlen die je overal wilt */
+/* Base body styles */
 body {
     min-height: 100vh;
     background: #2B2F36;

@@ -19,7 +19,7 @@ if (!post) {
   return Astro.redirect('/404');
 }
 
-// Read the .txt file for the full blog content
+// Load the full blog post content from the corresponding .txt file
 const postsDir = path.resolve('src/data/posts');
 const filePath = path.join(postsDir, `${post.slug}.txt`);
 
@@ -30,7 +30,7 @@ try {
   content = 'Blog post content not found.';
 }
 
-// Split content into paragraphs (double newline separated)
+// Split content into paragraphs on double newlines
 const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
 ---
 
@@ -77,7 +77,7 @@ const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
     padding: 40px 24px 80px;
   }
 
-  /* ── Back link ── */
+  /* Back navigation link */
   .back-link {
     display: inline-block;
     font-family: var(--font-main);
@@ -95,7 +95,7 @@ const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
     opacity: 0.7;
   }
 
-  /* ── Header ── */
+  /* Post header and metadata */
   .post-header {
     margin-bottom: 36px;
   }
@@ -144,7 +144,7 @@ const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
     text-transform: uppercase;
   }
 
-  /* ── Hero image ── */
+  /* Featured post image */
   .post-hero {
     display: flex;
     justify-content: center;
@@ -165,7 +165,7 @@ const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
     filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
   }
 
-  /* ── Body text ── */
+  /* Article body text */
   .post-body p {
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.05rem;
@@ -180,7 +180,7 @@ const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
     line-height: 1.75;
   }
 
-  /* ── Responsive ── */
+  /* Mobile layout adjustments */
   @media (max-width: 600px) {
     .post-container {
       padding: 24px 16px 60px;

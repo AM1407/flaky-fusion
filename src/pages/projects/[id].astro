@@ -1,23 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/navbar.astro';
-// We gebruiken een relatief pad dat nu 2 mappen omhoog gaat (../../)
 import projectsData from '../../data/projects.json';
 
-// 1. getStaticPaths: Genereert de lijst met toegestane URL's tijdens de build.
+// Generate a static page for each project ID
 export async function getStaticPaths() {
   return projectsData.map((project) => ({
-    // De 'id' uit je JSON wordt de URL (bijv. /projects/mijn-id)
     params: { id: project.id },
-    // We geven het volledige project-object door als prop
     props: { project },
   }));
 }
 
-// 2. Props ophalen: Deze vult Astro in op basis van de URL die bezocht wordt.
+// Retrieve the project matching the current URL
 const { project } = Astro.props;
 
-// 3. Noodrem: Als er iets misgaat met de data, crasht de pagina niet.
+// Redirect to 404 if no matching project is found
 if (!project) {
   return Astro.redirect('/404');
 }
@@ -32,7 +29,7 @@ if (!project) {
       <h1>{project.title}</h1>
       
       <div class="tech-stack">
-        {/* Controleer of stack bestaat voordat we mappen */}
+        {/* Render tech badges if stack data exists */}
         {project.stack && project.stack.map((tech) => (
           <span class="badge">{tech}</span>
         ))}
@@ -40,7 +37,7 @@ if (!project) {
     </header>
 
     <div class="detail-content">
-      {/* Gebruik project.image of een fallback-afbeelding */}
+      {/* Project hero image with fallback */}
       <img 
         src={project.image || "/img/placeholder.jpg"} 
         alt={project.title} 
@@ -48,7 +45,7 @@ if (!project) {
       />
       
       <div class="description">
-        {/* Prioriteit aan fullDescription, anders de korte versie */}
+        {/* Show full description if available, otherwise the short one */}
         <p>{project.fullDescription || project.description}</p>
       </div>
     </div>

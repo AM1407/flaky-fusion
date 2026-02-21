@@ -16,7 +16,7 @@ import ContactForm from '../components/ContactForm';
     </header>
 
     <div class="contact-wrapper">
-      {/* ── Left: quick info ── */}
+      {/* Contact details sidebar */}
       <aside class="contact-aside">
         <div class="aside-block">
           <h3 data-i18n="contact.emailLabel">Email</h3>
@@ -52,7 +52,7 @@ import ContactForm from '../components/ContactForm';
         </div>
       </aside>
 
-      {/* ── Right: the form ── */}
+      {/* Contact form */}
       <div class="form-wrapper">
         <ContactForm client:load />
       </div>
@@ -63,7 +63,7 @@ import ContactForm from '../components/ContactForm';
 </Layout>
 
 <style is:global>
-  /* ── Page layout ── */
+  /* Page layout */
   .contact-main {
     max-width: 960px;
     margin: 10vh auto 8vh;
@@ -71,7 +71,7 @@ import ContactForm from '../components/ContactForm';
     min-height: 100vh;
   }
 
-  /* ── Header ── */
+  /* Header */
   .contact-header {
     margin-bottom: 4rem;
   }
@@ -101,7 +101,7 @@ import ContactForm from '../components/ContactForm';
     max-width: 420px;
   }
 
-  /* ── Two-col wrapper ── */
+  /* Two-column layout */
   .contact-wrapper {
     display: grid;
     grid-template-columns: 280px 1fr;
@@ -109,7 +109,7 @@ import ContactForm from '../components/ContactForm';
     align-items: start;
   }
 
-  /* ── Aside ── */
+  /* Sidebar with contact info */
   .contact-aside {
     display: flex;
     flex-direction: column;
@@ -202,7 +202,7 @@ import ContactForm from '../components/ContactForm';
     transform: translateY(-2px);
   }
 
-  /* ── Form ── */
+  /* Form inputs and submit button */
   .form-wrapper {
     /* no explicit background — sits on the page bg for a clean look */
   }
@@ -282,7 +282,7 @@ import ContactForm from '../components/ContactForm';
     cursor: not-allowed;
   }
 
-  /* ── Toast notifications ── */
+  /* Toast notification popups */
   .toast {
     position: fixed;
     bottom: 2rem;
@@ -326,7 +326,7 @@ import ContactForm from '../components/ContactForm';
     to { opacity: 0; transform: translateY(20px); }
   }
 
-  /* ── Responsive ── */
+  /* Mobile layout adjustments */
   @media (max-width: 700px) {
     .contact-wrapper {
       grid-template-columns: 1fr;

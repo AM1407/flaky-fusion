@@ -45,7 +45,7 @@ const whyMeCards = [
 <Layout title="About Me">
   <Navbar />
   <main class="container">
-    <!-- About Section -->
+    <!-- Bio and profile picture -->
     <section class="about-section">
       <h1 class="section-title" data-i18n="about.title">About Me</h1>
       <div class="aboutcontent">
@@ -60,7 +60,7 @@ const whyMeCards = [
       </div>
     </section>
 
-    <!-- Tech Stack Section -->
+    <!-- Technologies and tools -->
     <section class="stack-section">
       <h2 class="section-title" data-i18n="about.stackTitle">Tech Stack</h2>
       <p class="section-subtitle" data-i18n="about.stackSubtitle">The tools and technologies I use to bring ideas to life.</p>
@@ -74,7 +74,7 @@ const whyMeCards = [
       </div>
     </section>
 
-    <!-- Why Me Section -->
+    <!-- Differentiators -->
     <section class="why-section">
       <h2 class="section-title" data-i18n="about.whyTitle">Why Me?</h2>
       <p class="section-subtitle" data-i18n="about.whySubtitle">Here's what sets me apart from the rest.</p>
@@ -95,7 +95,7 @@ const whyMeCards = [
 </Layout>
 
 <style>
-  /* ── Layout ── */
+  /* Page layout */
   .container {
     max-width: 960px;
     margin: 0 auto;
@@ -118,7 +118,7 @@ const whyMeCards = [
     line-height: 1.6;
   }
 
-  /* ── About Section ── */
+  /* Bio section */
   .about-section {
     padding-top: 16px;
     margin-bottom: 48px;
@@ -143,7 +143,7 @@ const whyMeCards = [
     font-size: 1rem;
   }
 
-  /* ── Profile Picture 3D Border ── */
+  /* Profile image with 3D border ring */
   .profile-pic-wrapper {
     flex-shrink: 0;
     position: relative;
@@ -195,7 +195,7 @@ const whyMeCards = [
     display: block;
   }
 
-  /* ── Tech Stack 3D Blocks ── */
+  /* Technology stack grid blocks */
   .stack-section {
     margin-bottom: 48px;
   }
@@ -263,7 +263,7 @@ const whyMeCards = [
     color: #fff;
   }
 
-  /* ── Why Me Cards ── */
+  /* Differentiator cards */
   .why-section {
     margin-bottom: 20px;
   }
@@ -331,7 +331,7 @@ const whyMeCards = [
     margin: 0;
   }
 
-  /* ── Responsive ── */
+  /* Mobile layout adjustments */
   @media (max-width: 700px) {
     .aboutcontent {
       flex-direction: column;

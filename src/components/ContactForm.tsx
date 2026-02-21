@@ -8,7 +8,7 @@ const ContactForm = () => {
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const lang = useStore(locale);
 
-  // Auto-dismiss toast after 4 seconds
+  // Automatically hide toast after 4.2 seconds
   useEffect(() => {
     if (toast) {
       const timer = setTimeout(() => setToast(null), 4200);
@@ -44,7 +44,7 @@ const ContactForm = () => {
 
   return (
     <>
-      {/* Toast notification */}
+      {/* Toast notification banner */}
       {toast && (
         <div className={`toast toast-${toast.type}`}>
           <i className={toast.type === 'success' ? 'fa-solid fa-check' : 'fa-solid fa-xmark'}></i>
@@ -53,7 +53,7 @@ const ContactForm = () => {
       )}
 
       <form onSubmit={handleSubmit} className="contact-form-island">
-        {/* Honeypot field for Formspree bot detection */}
+        {/* Hidden honeypot field to prevent spam bots */}
         <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
         <div className="form-row">

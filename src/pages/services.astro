@@ -10,13 +10,13 @@ const { hero, services, process: processSteps, cta } = servicesData;
 <Layout title="Services">
   <Navbar />
   <main class="container">
-    <!-- Hero -->
+    <!-- Page header -->
     <header class="hero">
       <h1 class="hero-title" data-i18n="services.heroTitle">{hero.title}</h1>
       <p class="hero-subtitle" data-i18n="services.heroSubtitle">{hero.subtitle}</p>
     </header>
 
-    <!-- Services Grid -->
+    <!-- Service offering cards -->
     <section class="services-section">
       <div class="services-grid">
         {services.map((service, i) => (
@@ -36,7 +36,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
       </div>
     </section>
 
-    <!-- Process -->
+    <!-- Step-by-step workflow -->
     <section class="process-section">
       <h2 class="section-heading" data-i18n="services.processTitle">How I Work</h2>
       <p class="section-subheading" data-i18n="services.processSubtitle">A straightforward process designed around clarity and results.</p>
@@ -53,7 +53,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- Call to action -->
     <section class="cta-section">
       <div class="cta-card">
         <h2 class="cta-title" data-i18n="services.ctaTitle">{cta.title}</h2>
@@ -68,14 +68,14 @@ const { hero, services, process: processSteps, cta } = servicesData;
 </Layout>
 
 <style>
-  /* ── Layout ── */
+  /* Page layout */
   .container {
     max-width: 1040px;
     margin: 0 auto;
     padding: 0 24px 80px;
   }
 
-  /* ── Hero ── */
+  /* Hero banner */
   .hero {
     text-align: center;
     padding: 48px 0 56px;
@@ -98,7 +98,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
     line-height: 1.6;
   }
 
-  /* ── Services Grid ── */
+  /* Service cards grid */
   .services-section {
     margin-bottom: 72px;
   }
@@ -193,7 +193,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
     color: var(--gordian-blue);
   }
 
-  /* ── Section headings ── */
+  /* Shared section headings */
   .section-heading {
     font-family: var(--font-main);
     font-variation-settings: "wght" 800, "wdth" 110;
@@ -212,7 +212,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
     line-height: 1.6;
   }
 
-  /* ── Process Timeline ── */
+  /* Process timeline with connecting line */
   .process-section {
     margin-bottom: 72px;
   }
@@ -224,7 +224,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
     position: relative;
   }
 
-  /* Connecting line */
+  /* Horizontal line connecting timeline steps */
   .process-timeline::before {
     content: '';
     position: absolute;
@@ -294,7 +294,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
     margin: 0;
   }
 
-  /* ── CTA ── */
+  /* Call to action card */
   .cta-section {
     margin-bottom: 20px;
   }
@@ -313,7 +313,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
     overflow: hidden;
   }
 
-  /* Subtle glow behind CTA */
+  /* Subtle glow effect behind the CTA card */
   .cta-card::before {
     content: '';
     position: absolute;
@@ -373,7 +373,7 @@ const { hero, services, process: processSteps, cta } = servicesData;
     transform: translateX(4px);
   }
 
-  /* ── Responsive ── */
+  /* Mobile layout adjustments */
   @media (max-width: 800px) {
     .services-grid {
       grid-template-columns: 1fr;

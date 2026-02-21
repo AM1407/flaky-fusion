@@ -57,8 +57,7 @@ import Footer from '../components/footer.astro';
       if (wrapper) wrapper.classList.add('visible');
     });
 
-    // Safety fallback: guarantee the wrapper becomes visible even if
-    // the splash event never fires (e.g. module-loading delay).
+    // Fallback: force-show content if splash event never fires
     setTimeout(function () {
       var wrapper = document.getElementById('site-wrapper');
       if (wrapper && !wrapper.classList.contains('visible')) {
