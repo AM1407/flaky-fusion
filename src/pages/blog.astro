@@ -8,7 +8,7 @@ import blogs from '../data/blogs.json';
 const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
-<Layout title="Blog">
+<Layout title="Blog" description="Articles on web security, DevSecOps, infrastructure as code, and modern web development by Alessio Miccichè.">
   <Navbar />
   <main class="container">
     <header class="blog-header">

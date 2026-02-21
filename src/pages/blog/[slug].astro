@@ -34,7 +34,7 @@ try {
 const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
 ---
 
-<Layout title={`${post.title} | Blog`}>
+<Layout title={`${post.title} | Blog`} description={post.excerpt}>
   <Navbar />
 
   <article class="post-container">
