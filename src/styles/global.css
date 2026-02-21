@@ -19,7 +19,7 @@ body {
     background: linear-gradient(0deg,rgba(43, 47, 54, 1) 53%, rgba(11, 13, 16, 1) 100%);
     color: var(--gordian-white);
     margin: 0;
-    padding: 0;
+    padding: 80px 0 0;
     font-family: var(--font-main);
 }
 
