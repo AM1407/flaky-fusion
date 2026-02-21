@@ -115,7 +115,8 @@ import LanguageSwitcher from './LanguageSwitcher.tsx';
 </style>
 
 <nav>
-    <a href="/" class="logo-link"><img src="img/Gordian400dpi.svg" alt="Logo" class="logo" /></a>
+    <!-- SECURITY FIX: Fixed relative logo path — was breaking on nested routes -->
+    <a href="/" class="logo-link"><img src="/img/Gordian400dpi.svg" alt="Logo" class="logo" /></a>
     <div class="nav-right">
       <div class="nav-links">
         <a href="/about" data-i18n="nav.about">About Me</a>

@@ -7,6 +7,8 @@
 <script>
   import { locale } from '../stores/languageStore';
   import { t } from '../i18n/index';
+  // SECURITY FIX: Sanitize HTML before inserting via innerHTML to prevent XSS
+  import DOMPurify from 'dompurify';
 
   // Translate all annotated DOM elements to the given language
   function applyTranslations(lang: 'en' | 'nl') {
@@ -16,10 +18,10 @@
       el.textContent = t(key, lang);
     });
 
-    // HTML content (supports rich markup)
+    // HTML content (sanitized to prevent XSS from compromised translation data)
     document.querySelectorAll<HTMLElement>('[data-i18n-html]').forEach((el) => {
       const key = el.getAttribute('data-i18n-html')!;
-      el.innerHTML = t(key, lang);
+      el.innerHTML = DOMPurify.sanitize(t(key, lang));
     });
 
     // Input/textarea placeholders

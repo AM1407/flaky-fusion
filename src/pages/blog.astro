@@ -132,6 +132,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     }
 
     // Build and insert blog card HTML for the current page
+    // SECURITY NOTE: All dynamic values are escaped via esc() before insertion into innerHTML
     function renderCards(posts: typeof allPosts, page: number) {
       const lang = locale.get();
       const readMoreText = t('blog.readMore', lang);

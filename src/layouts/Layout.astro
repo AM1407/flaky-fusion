@@ -12,7 +12,14 @@ import I18nScript from '../components/I18nScript.astro';
 		{description && <meta name="description" content={description} />}
 		<title>{title}</title>
 
-		<link rel="icon" type="image/svg+xml" href="img/Gordian400dpi.svg" />
+		<!-- SECURITY FIX: Added essential security meta tags -->
+		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+		<meta http-equiv="X-Frame-Options" content="DENY" />
+		<meta name="referrer" content="strict-origin-when-cross-origin" />
+		<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+
+		<!-- SECURITY FIX: Fixed relative favicon path — was breaking on nested routes -->
+		<link rel="icon" type="image/svg+xml" href="/img/Gordian400dpi.svg" />
 
 		<!-- Preconnect to external font and icon CDNs -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />

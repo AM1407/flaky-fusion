@@ -22,7 +22,8 @@ const ContactForm = () => {
 
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("https://formspree.io/f/jouw_id", {
+      // SECURITY FIX: Replace placeholder Formspree ID with your real form ID
+      const response = await fetch("https://formspree.io/f/YOUR_REAL_FORM_ID", {
         method: "POST",
         body: formData,
         headers: { 'Accept': 'application/json' }
@@ -56,20 +57,21 @@ const ContactForm = () => {
         {/* Hidden honeypot field to prevent spam bots */}
         <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
+        {/* SECURITY FIX: Added maxLength constraints to prevent oversized payloads */}
         <div className="form-row">
           <div className="input-group">
             <label>{t('contact.formName', lang)}</label>
-            <input type="text" name="name" placeholder={t('contact.formNamePlaceholder', lang)} required />
+            <input type="text" name="name" placeholder={t('contact.formNamePlaceholder', lang)} required maxLength={100} />
           </div>
           <div className="input-group">
             <label>{t('contact.formEmail', lang)}</label>
-            <input type="email" name="email" placeholder={t('contact.formEmailPlaceholder', lang)} required />
+            <input type="email" name="email" placeholder={t('contact.formEmailPlaceholder', lang)} required maxLength={254} />
           </div>
         </div>
 
         <div className="input-group">
           <label>{t('contact.formMessage', lang)}</label>
-          <textarea name="message" rows={6} placeholder={t('contact.formMessagePlaceholder', lang)} required></textarea>
+          <textarea name="message" rows={6} placeholder={t('contact.formMessagePlaceholder', lang)} required maxLength={5000}></textarea>
         </div>
 
         <button type="submit" disabled={status === 'SENDING'} className="submit-btn">
