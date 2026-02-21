@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/navbar.astro';
+import Footer from '../../components/footer.astro';
+import blogs from '../../data/blogs.json';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  return blogs.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+// Read the .txt file for the full blog content
+const postsDir = path.resolve('src/data/posts');
+const filePath = path.join(postsDir, `${post.slug}.txt`);
+
+let content = '';
+try {
+  content = fs.readFileSync(filePath, 'utf-8');
+} catch {
+  content = 'Blog post content not found.';
+}
+
+// Split content into paragraphs (double newline separated)
+const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
+---
+
+<Layout title={`${post.title} | Blog`}>
+  <Navbar />
+
+  <article class="post-container">
+    <a href="/blog" class="back-link">&larr; Back to Blog</a>
+
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime={post.date}>
+          {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </time>
+        <span class="meta-sep">·</span>
+        <span class="author">{post.author}</span>
+      </div>
+      <h1 class="post-title">{post.title}</h1>
+      <div class="post-tags">
+        {post.tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    </header>
+
+    <div class="post-hero">
+      <img src={post.image} alt={post.title} />
+    </div>
+
+    <div class="post-body">
+      {paragraphs.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  .post-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── Back link ── */
+  .back-link {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--gordian-blue);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+    transition: opacity 0.3s ease;
+  }
+
+  .back-link:hover {
+    opacity: 0.7;
+  }
+
+  /* ── Header ── */
+  .post-header {
+    margin-bottom: 36px;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.82rem;
+    color: var(--gordian-text);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  .meta-sep {
+    opacity: 0.4;
+  }
+
+  .post-title {
+    font-family: var(--font-main);
+    font-variation-settings: "wght" 800, "wdth" 110;
+    color: #fff;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .post-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(0, 136, 204, 0.1);
+    border: 1px solid rgba(0, 136, 204, 0.2);
+    color: var(--gordian-blue);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* ── Hero image ── */
+  .post-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #33373f, #282c33);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow:
+      6px 6px 16px rgba(0, 0, 0, 0.35),
+      -3px -3px 10px rgba(255, 255, 255, 0.02);
+  }
+
+  .post-hero img {
+    max-width: 200px;
+    height: auto;
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
+  }
+
+  /* ── Body text ── */
+  .post-body p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin: 0 0 24px;
+  }
+
+  /* Style first paragraph as a lead */
+  .post-body p:first-child {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.75;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .post-container {
+      padding: 24px 16px 60px;
+    }
+
+    .post-hero {
+      padding: 24px;
+    }
+
+    .post-hero img {
+      max-width: 140px;
+    }
+  }
+</style>

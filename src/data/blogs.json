@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "securing-your-ci-cd-pipeline",
+    "title": "Securing Your CI/CD Pipeline: A Practical Guide",
+    "excerpt": "Most teams bolt security on at the end. Here's how to weave it into every stage of your CI/CD pipeline — from commit hooks to production deploy gates — without slowing anyone down.",
+    "image": "/img/Gordian400dpi.svg",
+    "date": "2026-02-18",
+    "author": "Alessio Miccichè",
+    "tags": ["DevSecOps", "CI/CD", "Security"]
+  },
+  {
+    "slug": "why-i-switched-to-astro",
+    "title": "Why I Switched to Astro (And Never Looked Back)",
+    "excerpt": "After years of heavy SPA frameworks, I built my portfolio with Astro. Zero client-side JS by default, islands architecture, and blazing build times — here's my honest take after six months.",
+    "image": "/img/gordianlogoblue.svg",
+    "date": "2026-02-10",
+    "author": "Alessio Miccichè",
+    "tags": ["Astro", "Web Dev", "Performance"]
+  },
+  {
+    "slug": "infrastructure-as-code-101",
+    "title": "Infrastructure as Code 101: Terraform for Beginners",
+    "excerpt": "Clicking through cloud consoles doesn't scale. This post walks you through your first Terraform project — from provider setup to deploying a real VPC — in under thirty minutes.",
+    "image": "/img/gordianlogored.svg",
+    "date": "2026-01-28",
+    "author": "Alessio Miccichè",
+    "tags": ["Terraform", "AWS", "IaC"]
+  },
+  {
+    "slug": "zero-trust-architecture",
+    "title": "Zero Trust Architecture: Beyond the Buzzword",
+    "excerpt": "Everyone talks about Zero Trust, but few implement it properly. I break down the core principles, show real network diagrams, and share the mistakes I made so you don't have to.",
+    "image": "/img/Gordian400dpi.svg",
+    "date": "2026-01-15",
+    "author": "Alessio Miccichè",
+    "tags": ["Security", "Architecture", "Networking"]
+  },
+    {
+    "slug": "zero-trust-architecture",
+    "title": "Zero Trust Architecture: Beyond the Buzzword",
+    "excerpt": "Everyone talks about Zero Trust, but few implement it properly. I break down the core principles, show real network diagrams, and share the mistakes I made so you don't have to.",
+    "image": "/img/Gordian400dpi.svg",
+    "date": "2026-01-15",
+    "author": "Alessio Miccichè",
+    "tags": ["Security", "Architecture", "Networking"]
+  }
+]

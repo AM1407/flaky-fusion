@@ -1,0 +1,44 @@
+Infrastructure as Code 101: Terraform for Beginners
+
+If you've ever spent an afternoon clicking through the AWS console to set up a VPC, subnets, security groups, and an EC2 instance — only to realise you need to do it all again for staging — you already understand why Infrastructure as Code exists.
+
+IaC lets you define your cloud resources in configuration files. You version them in Git, review them in pull requests, and apply them with a single command. Terraform, by HashiCorp, is the most popular tool for this.
+
+What is Terraform?
+
+Terraform is a declarative IaC tool. You describe the desired state of your infrastructure in .tf files, and Terraform figures out how to make reality match that description. It works with AWS, Azure, GCP, and dozens of other providers.
+
+The core workflow is three commands:
+- terraform init — sets up the project and downloads provider plugins
+- terraform plan — shows you what will change without touching anything
+- terraform apply — makes the changes
+
+Your First Project: A VPC on AWS
+
+Let's build something real. Create a new directory and a file called main.tf:
+
+You'd define a provider block for AWS, a VPC resource with a CIDR block, public and private subnets across two availability zones, an internet gateway, and route tables. Each resource references others by their Terraform identifier, building a dependency graph automatically.
+
+Run terraform init, then terraform plan. Terraform will show you exactly what it intends to create — 6 resources in this case. Review it, then run terraform apply and type "yes".
+
+In about 30 seconds, your entire network infrastructure exists. And it's reproducible. Want the same setup for staging? Copy the folder, change a few variables, and apply again.
+
+State Management
+
+Terraform tracks what it's created in a state file. This is how it knows the difference between "create new" and "update existing." For team projects, store state remotely — an S3 bucket with DynamoDB locking is the standard AWS pattern.
+
+Never commit terraform.tfstate to Git. It can contain sensitive data and will cause merge conflicts.
+
+Best Practices for Beginners
+
+Start small. Don't try to Terraform your entire infrastructure on day one. Pick one environment or one service and grow from there.
+
+Use variables and outputs. Hardcoded values make your configs brittle. Parameterise everything — region, instance type, CIDR ranges.
+
+Use modules. Once you find yourself copying resource blocks, extract them into reusable modules. Terraform's module registry has hundreds of community-maintained modules.
+
+Always run plan before apply. Read the output carefully. Terraform will happily destroy and recreate resources if it thinks that's the path to your desired state.
+
+Conclusion
+
+Terraform transforms infrastructure from a manual, error-prone process into a reviewable, repeatable, version-controlled workflow. The learning curve is gentle, the documentation is excellent, and the community is massive. If you manage any cloud resources, learning Terraform is one of the highest-leverage skills you can invest in.

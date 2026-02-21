@@ -1,0 +1,35 @@
+Why I Switched to Astro (And Never Looked Back)
+
+For years, my go-to stack for any web project was React with Next.js. It's powerful, well-documented, and has an enormous ecosystem. But for content-heavy sites — portfolios, blogs, documentation — I kept feeling like I was shipping way too much JavaScript to the browser.
+
+Then I found Astro.
+
+The Problem with SPAs for Content Sites
+
+Single Page Applications are fantastic for interactive dashboards and complex web apps. But for a portfolio site? The user lands on a page, reads some text, clicks a link, reads more text. There's no state management, no real-time updates, no complex client-side logic.
+
+Yet with a typical React setup, you're shipping the entire React runtime, your component tree, and hydration logic — all so the browser can re-render what the server already rendered. It felt wasteful.
+
+Astro's Zero-JS Philosophy
+
+Astro takes a radically different approach: ship zero JavaScript by default. Your components render to static HTML at build time. The browser receives clean, fast, lightweight pages.
+
+But here's the clever part — Astro's "islands architecture" lets you selectively hydrate interactive components. Need a contact form with validation? Mark that one component as client-side. The rest stays static.
+
+What I Love
+
+Build speed is incredible. My portfolio builds in under 2 seconds. There's no hydration mismatch debugging, no "flash of unstyled content" from client-side rendering, and Lighthouse scores are basically perfect out of the box.
+
+The component model is framework-agnostic. I write most things in .astro files (which feel like enhanced HTML), but I can drop in a React component for the contact form and a Svelte component for an interactive widget — in the same project.
+
+The developer experience is thoughtful. File-based routing, scoped styles by default, built-in Markdown support, and TypeScript just works.
+
+What I Miss
+
+The ecosystem is younger. When I need a specific integration, sometimes I have to build it myself rather than grabbing a battle-tested npm package. Community resources are growing fast, but they're not at Next.js levels yet.
+
+Server-side rendering is supported but feels more mature in Next.js. For purely static or mostly-static sites though, Astro is unbeatable.
+
+Conclusion
+
+If you're building a content-focused website — a portfolio, blog, docs site, marketing page — I genuinely believe Astro is the best tool for the job right now. It respects the platform, ships minimal code, and gets out of your way. Six months in, I have zero regrets.

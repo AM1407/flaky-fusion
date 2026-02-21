@@ -1,0 +1,674 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+import blogs from '../data/blogs.json';
+
+// Sort newest first at build time
+const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<Layout title="Blog">
+  <Navbar />
+  <main class="container">
+    <header class="blog-header">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-subtitle">Thoughts on security, infrastructure, and modern web development.</p>
+    </header>
+
+    <!-- Search & Filter Controls -->
+    <div class="controls">
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search posts..."
+          autocomplete="off"
+          maxlength="120"
+          aria-label="Search blog posts"
+        />
+        <button id="search-clear" class="search-clear" aria-label="Clear search" style="display:none;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="filter-row">
+        <div class="date-filter">
+          <label for="date-from">From</label>
+          <input type="date" id="date-from" aria-label="Filter from date" />
+        </div>
+        <div class="date-filter">
+          <label for="date-to">To</label>
+          <input type="date" id="date-to" aria-label="Filter to date" />
+        </div>
+        <button id="clear-filters" class="clear-filters-btn">Clear Filters</button>
+      </div>
+    </div>
+
+    <!-- Cards rendered client-side -->
+    <div class="blog-list" id="blog-list"></div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <p>No posts match your search.</p>
+    </div>
+
+    <!-- Pagination -->
+    <nav class="pagination" id="pagination" aria-label="Blog pagination"></nav>
+  </main>
+  <Footer />
+</Layout>
+
+<!-- Blog data embedded for client-side use -->
+<script is:inline define:vars={{ blogData: sortedBlogs }}>
+  window.__BLOG_DATA__ = blogData;
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const POSTS_PER_PAGE = 4;
+    const allPosts: Array<{slug:string; title:string; excerpt:string; image:string; date:string; author:string; tags:string[]}> = (window as any).__BLOG_DATA__;
+
+    const listEl = document.getElementById('blog-list')!;
+    const paginationEl = document.getElementById('pagination')!;
+    const emptyEl = document.getElementById('empty-state')!;
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const searchClear = document.getElementById('search-clear')!;
+    const dateFrom = document.getElementById('date-from') as HTMLInputElement;
+    const dateTo = document.getElementById('date-to') as HTMLInputElement;
+    const clearFilters = document.getElementById('clear-filters')!;
+
+    let currentPage = 1;
+
+    // ── Sanitisation: escape HTML entities ──
+    function esc(str: string): string {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    // ── Strip non-printable chars & limit length ──
+    function sanitiseQuery(raw: string): string {
+      return raw.replace(/[^\x20-\x7E\u00C0-\u024F]/g, '').trim().slice(0, 120);
+    }
+
+    // ── Filter posts ──
+    function getFilteredPosts() {
+      const query = sanitiseQuery(searchInput.value).toLowerCase();
+      const from = dateFrom.value ? new Date(dateFrom.value) : null;
+      const to = dateTo.value ? new Date(dateTo.value + 'T23:59:59') : null;
+
+      return allPosts.filter((post) => {
+        // Text search across title, excerpt, tags
+        if (query) {
+          const haystack = `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase();
+          if (!haystack.includes(query)) return false;
+        }
+        // Date range
+        const postDate = new Date(post.date);
+        if (from && postDate < from) return false;
+        if (to && postDate > to) return false;
+        return true;
+      });
+    }
+
+    // ── Render cards ──
+    function renderCards(posts: typeof allPosts, page: number) {
+      const start = (page - 1) * POSTS_PER_PAGE;
+      const pageSlice = posts.slice(start, start + POSTS_PER_PAGE);
+
+      if (posts.length === 0) {
+        listEl.innerHTML = '';
+        emptyEl.style.display = 'flex';
+        paginationEl.innerHTML = '';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      listEl.innerHTML = pageSlice.map((post, i) => {
+        const globalIndex = start + i;
+        const dir = globalIndex % 2 === 0 ? 'img-left' : 'img-right';
+        const dateFormatted = new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+        const tagsHtml = post.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('');
+
+        return `
+          <article class="blog-card ${dir}">
+            <div class="card-image">
+              <img src="${esc(post.image)}" alt="${esc(post.title)}" />
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <time datetime="${esc(post.date)}">${esc(dateFormatted)}</time>
+                <div class="card-tags">${tagsHtml}</div>
+              </div>
+              <h2 class="card-title">${esc(post.title)}</h2>
+              <p class="card-excerpt">${esc(post.excerpt)}</p>
+              <a href="/blog/${encodeURIComponent(post.slug)}" class="read-more">
+                Read Article <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Trigger reveal animation
+      requestAnimationFrame(() => {
+        listEl.querySelectorAll('.blog-card').forEach((card, i) => {
+          setTimeout(() => card.classList.add('in-view'), i * 100);
+        });
+      });
+    }
+
+    // ── Render pagination ──
+    function renderPagination(totalPosts: number, page: number) {
+      const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+      if (totalPages <= 1) { paginationEl.innerHTML = ''; return; }
+
+      let html = '';
+
+      // Prev
+      html += `<button class="page-btn ${page <= 1 ? 'disabled' : ''}" data-page="${page - 1}" ${page <= 1 ? 'disabled' : ''} aria-label="Previous page">&laquo;</button>`;
+
+      for (let p = 1; p <= totalPages; p++) {
+        html += `<button class="page-btn ${p === page ? 'active' : ''}" data-page="${p}" aria-label="Page ${p}">${p}</button>`;
+      }
+
+      // Next
+      html += `<button class="page-btn ${page >= totalPages ? 'disabled' : ''}" data-page="${page + 1}" ${page >= totalPages ? 'disabled' : ''} aria-label="Next page">&raquo;</button>`;
+
+      paginationEl.innerHTML = html;
+
+      paginationEl.querySelectorAll('.page-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = Number((btn as HTMLElement).dataset.page);
+          if (target >= 1 && target <= totalPages) {
+            currentPage = target;
+            update();
+            listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    }
+
+    // ── Update view ──
+    function update() {
+      const filtered = getFilteredPosts();
+      const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
+      if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
+      renderCards(filtered, currentPage);
+      renderPagination(filtered.length, currentPage);
+    }
+
+    // ── Events ──
+    let debounceTimer: ReturnType<typeof setTimeout>;
+    searchInput.addEventListener('input', () => {
+      searchClear.style.display = searchInput.value ? 'flex' : 'none';
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => { currentPage = 1; update(); }, 250);
+    });
+
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      searchClear.style.display = 'none';
+      currentPage = 1;
+      update();
+      searchInput.focus();
+    });
+
+    dateFrom.addEventListener('change', () => { currentPage = 1; update(); });
+    dateTo.addEventListener('change', () => { currentPage = 1; update(); });
+
+    clearFilters.addEventListener('click', () => {
+      searchInput.value = '';
+      searchClear.style.display = 'none';
+      dateFrom.value = '';
+      dateTo.value = '';
+      currentPage = 1;
+      update();
+    });
+
+    // Prevent form submission on Enter
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') e.preventDefault();
+    });
+
+    // Initial render
+    update();
+  });
+</script>
+
+<style>
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Header ── */
+  .blog-header {
+    text-align: center;
+    padding: 48px 0 32px;
+  }
+
+  .page-title {
+    font-family: var(--font-main);
+    font-variation-settings: "wght" 800, "wdth" 110;
+    color: #fff;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .page-subtitle {
+    color: var(--gordian-text);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  /* ── Controls ── */
+  .controls {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--gordian-text);
+    font-size: 0.95rem;
+    pointer-events: none;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 14px 44px 14px 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(145deg, #33373f, #2a2e35);
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .search-bar input:focus {
+    border-color: rgba(0, 136, 204, 0.5);
+    box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.12), inset 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .search-clear {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--gordian-text);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .search-clear:hover {
+    background: rgba(0, 136, 204, 0.25);
+    color: #fff;
+  }
+
+  .filter-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .date-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .date-filter label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gordian-text);
+    font-weight: 600;
+  }
+
+  .date-filter input[type="date"] {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(145deg, #33373f, #2a2e35);
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .date-filter input[type="date"]:focus {
+    border-color: rgba(0, 136, 204, 0.5);
+    box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.12);
+  }
+
+  /* Chromium date picker icon colour */
+  .date-filter input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6);
+    cursor: pointer;
+  }
+
+  .clear-filters-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: var(--gordian-text);
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .clear-filters-btn:hover {
+    border-color: rgba(0, 136, 204, 0.4);
+    color: var(--gordian-blue);
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    gap: 16px;
+    color: var(--gordian-text);
+  }
+
+  .empty-state i {
+    font-size: 2.5rem;
+    opacity: 0.3;
+  }
+
+  .empty-state p {
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  /* ── Blog list ── */
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* ── Card base ── */
+  .blog-list :global(.blog-card) {
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #33373f, #282c33);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow:
+      6px 6px 16px rgba(0, 0, 0, 0.4),
+      -3px -3px 10px rgba(255, 255, 255, 0.02),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition:
+      transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.4s ease,
+      border-color 0.4s ease;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .blog-list :global(.blog-card.in-view) {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s ease,
+      border-color 0.4s ease;
+  }
+
+  .blog-list :global(.blog-card:hover) {
+    border-color: rgba(0, 136, 204, 0.3);
+    box-shadow:
+      0 14px 36px rgba(0, 136, 204, 0.12),
+      0 6px 16px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .blog-list :global(.blog-card.img-left) {
+    flex-direction: row;
+  }
+
+  .blog-list :global(.blog-card.img-right) {
+    flex-direction: row-reverse;
+  }
+
+  /* ── Card image ── */
+  .blog-list :global(.card-image) {
+    flex: 0 0 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 136, 204, 0.05);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-list :global(.card-image::after) {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 136, 204, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .blog-list :global(.card-image img) {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  }
+
+  .blog-list :global(.blog-card:hover .card-image img) {
+    transform: scale(1.06);
+  }
+
+  /* ── Card body ── */
+  .blog-list :global(.card-body) {
+    flex: 1;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .blog-list :global(.card-meta) {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .blog-list :global(.card-meta time) {
+    font-size: 0.8rem;
+    color: var(--gordian-text);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .blog-list :global(.card-tags) {
+    display: flex;
+    gap: 6px;
+  }
+
+  .blog-list :global(.tag) {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(0, 136, 204, 0.1);
+    border: 1px solid rgba(0, 136, 204, 0.2);
+    color: var(--gordian-blue);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .blog-list :global(.card-title) {
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .blog-list :global(.card-excerpt) {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .blog-list :global(.read-more) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(0, 136, 204, 0.15);
+    border: 1px solid rgba(0, 136, 204, 0.3);
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  .blog-list :global(.read-more:hover) {
+    background: var(--gordian-blue);
+    border-color: var(--gordian-blue);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0, 136, 204, 0.35);
+  }
+
+  .blog-list :global(.read-more .arrow) {
+    transition: transform 0.3s ease;
+  }
+
+  .blog-list :global(.read-more:hover .arrow) {
+    transform: translateX(4px);
+  }
+
+  /* ── Pagination ── */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 48px;
+  }
+
+  .pagination :global(.page-btn) {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(145deg, #33373f, #282c33);
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:
+      4px 4px 10px rgba(0, 0, 0, 0.3),
+      -2px -2px 6px rgba(255, 255, 255, 0.02);
+  }
+
+  .pagination :global(.page-btn:hover:not(.disabled):not(.active)) {
+    border-color: rgba(0, 136, 204, 0.4);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(0, 136, 204, 0.15);
+  }
+
+  .pagination :global(.page-btn.active) {
+    background: var(--gordian-blue);
+    border-color: var(--gordian-blue);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0, 136, 204, 0.35);
+  }
+
+  .pagination :global(.page-btn.disabled) {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 700px) {
+    .blog-list :global(.blog-card.img-left),
+    .blog-list :global(.blog-card.img-right) {
+      flex-direction: column;
+    }
+
+    .blog-list :global(.card-image) {
+      flex: none;
+      padding: 24px;
+    }
+
+    .blog-list :global(.card-image img) {
+      max-width: 120px;
+    }
+
+    .blog-list :global(.card-body) {
+      padding: 20px 24px 24px;
+    }
+
+    .blog-list :global(.card-title) {
+      font-size: 1.15rem;
+    }
+
+    .filter-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
