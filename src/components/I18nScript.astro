@@ -44,11 +44,26 @@
     document.documentElement.lang = lang;
   }
 
-  // Initial render
-  applyTranslations(locale.get());
+  // Initial render — read directly from localStorage as source of truth,
+  // in case the atom was initialised with the SSR default ('en').
+  const savedLang = (localStorage.getItem('lang') as 'en' | 'nl') || locale.get();
+  if (savedLang === 'en' || savedLang === 'nl') {
+    applyTranslations(savedLang);
+    // Keep the atom in sync so any later .get() is correct
+    if (locale.get() !== savedLang) locale.set(savedLang);
+  } else {
+    applyTranslations(locale.get());
+  }
 
   // Listen to nanostore changes
   locale.listen((lang) => {
     applyTranslations(lang);
   });
+
+  // Fallback: if Vite splits the Astro script and the React island into
+  // separate bundles, they may hold independent atom instances. The React
+  // switcher fires a 'locale-changed' custom event so we can still react.
+  window.addEventListener('locale-changed', ((e: CustomEvent<'en' | 'nl'>) => {
+    applyTranslations(e.detail);
+  }) as EventListener);
 </script>
