@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "title": "Services",
+    "subtitle": "From concept to deployment — I offer end-to-end solutions tailored to your business needs."
+  },
+  "services": [
+    {
+      "icon": "fa-solid fa-code",
+      "title": "Full Stack Web Development",
+      "description": "Custom web applications built from the ground up using modern frameworks. Responsive front-ends paired with robust, scalable back-end APIs — designed for performance and maintainability.",
+      "highlights": ["React / Astro / Next.js", "Node.js / Python APIs", "PostgreSQL / MongoDB", "REST & GraphQL"]
+    },
+    {
+      "icon": "fa-solid fa-shield-halved",
+      "title": "DevSecOps Consulting",
+      "description": "Security woven into every stage of your development pipeline. I help teams shift left by integrating automated scanning, policy-as-code, and secure architecture patterns from day one.",
+      "highlights": ["CI/CD hardening", "SAST & DAST integration", "Container security", "Compliance automation"]
+    },
+    {
+      "icon": "fa-solid fa-cloud",
+      "title": "Cloud Architecture & Infrastructure",
+      "description": "Scalable, cost-efficient cloud infrastructure on AWS, Azure, or GCP. Infrastructure as Code ensures your environments are reproducible, version-controlled, and audit-ready.",
+      "highlights": ["Terraform / Pulumi", "AWS / Azure / GCP", "Kubernetes & Docker", "Cost optimisation"]
+    },
+    {
+      "icon": "fa-solid fa-arrows-spin",
+      "title": "CI/CD Pipeline Design",
+      "description": "Automated build, test, and deployment pipelines that get your code to production faster and safer. From GitHub Actions to GitLab CI — I design workflows that teams actually enjoy using.",
+      "highlights": ["GitHub Actions / GitLab CI", "Automated testing gates", "Blue-green deployments", "Rollback strategies"]
+    },
+    {
+      "icon": "fa-solid fa-magnifying-glass-chart",
+      "title": "Security Audits & Penetration Testing",
+      "description": "Comprehensive security assessments of your applications and infrastructure. I identify vulnerabilities, provide actionable remediation steps, and help you build a stronger security posture.",
+      "highlights": ["Web app pen testing", "Infrastructure review", "Dependency auditing", "Remediation roadmaps"]
+    },
+    {
+      "icon": "fa-solid fa-users-gear",
+      "title": "Technical Consulting & Mentoring",
+      "description": "Strategic guidance for teams looking to level up their engineering practices. Whether it's adopting IaC, improving code review culture, or upskilling on security — I meet you where you are.",
+      "highlights": ["Architecture reviews", "Team workshops", "Best practice guides", "1-on-1 mentoring"]
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Discovery",
+      "description": "We discuss your goals, challenges, and requirements to define a clear project scope."
+    },
+    {
+      "step": 2,
+      "title": "Proposal",
+      "description": "I deliver a detailed plan with timelines, milestones, and transparent pricing — no surprises."
+    },
+    {
+      "step": 3,
+      "title": "Build",
+      "description": "Development begins with regular check-ins, demos, and iterative feedback loops."
+    },
+    {
+      "step": 4,
+      "title": "Deliver",
+      "description": "Thorough testing, handover documentation, and post-launch support to ensure everything runs smoothly."
+    }
+  ],
+  "cta": {
+    "title": "Ready to get started?",
+    "text": "Let's talk about your project and see how I can help.",
+    "buttonText": "Get In Touch",
+    "buttonLink": "/contact"
+  }
+}

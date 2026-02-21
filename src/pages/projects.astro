@@ -14,7 +14,7 @@ const CARDS_PER_PAGE = 4;
   <Navbar />
 
   <section class="projects-overview">
-    <h1>Projects</h1>
+    <h1 data-i18n="projects.title">Projects</h1>
 
     {/* ── Featured project hero ── */}
     {featured && (
@@ -25,7 +25,7 @@ const CARDS_PER_PAGE = 4;
           class="featured-img"
         />
         <div class="featured-body">
-          <span class="featured-label">Featured</span>
+          <span class="featured-label" data-i18n="projects.featured">Featured</span>
           <h2>{featured.title}</h2>
           <p>{featured.description}</p>
           <div class="tech-stack">
@@ -33,7 +33,7 @@ const CARDS_PER_PAGE = 4;
               <span class="badge">{tech}</span>
             ))}
           </div>
-          <span class="card-cta">View Project &rarr;</span>
+          <span class="card-cta"><span data-i18n="projects.viewProject">View Project</span> &rarr;</span>
         </div>
       </a>
     )}
@@ -55,7 +55,7 @@ const CARDS_PER_PAGE = 4;
                 <span class="badge">{tech}</span>
               ))}
             </div>
-            <span class="card-cta">View Project &rarr;</span>
+            <span class="card-cta"><span data-i18n="projects.viewProject">View Project</span> &rarr;</span>
           </div>
         </a>
       ))}

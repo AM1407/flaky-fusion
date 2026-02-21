@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useStore } from '@nanostores/react';
+import { locale } from '../stores/languageStore';
+import { t } from '../i18n/index';
 
 const ContactForm = () => {
   const [status, setStatus] = useState<'IDLE' | 'SENDING' | 'SUCCESS' | 'ERROR'>('IDLE');
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const lang = useStore(locale);
 
   // Auto-dismiss toast after 4 seconds
   useEffect(() => {
@@ -26,15 +30,15 @@ const ContactForm = () => {
 
       if (response.ok) {
         setStatus('SUCCESS');
-        setToast({ message: 'Message sent successfully!', type: 'success' });
+        setToast({ message: t('contact.toastSuccess', lang), type: 'success' });
         (e.target as HTMLFormElement).reset();
       } else {
         setStatus('ERROR');
-        setToast({ message: 'Something went wrong. Please try again.', type: 'error' });
+        setToast({ message: t('contact.toastError', lang), type: 'error' });
       }
     } catch {
       setStatus('ERROR');
-      setToast({ message: 'Network error. Please check your connection.', type: 'error' });
+      setToast({ message: t('contact.toastNetwork', lang), type: 'error' });
     }
   };
 
@@ -54,22 +58,22 @@ const ContactForm = () => {
 
         <div className="form-row">
           <div className="input-group">
-            <label>NAME</label>
-            <input type="text" name="name" placeholder="John Doe" required />
+            <label>{t('contact.formName', lang)}</label>
+            <input type="text" name="name" placeholder={t('contact.formNamePlaceholder', lang)} required />
           </div>
           <div className="input-group">
-            <label>EMAIL</label>
-            <input type="email" name="email" placeholder="john@example.com" required />
+            <label>{t('contact.formEmail', lang)}</label>
+            <input type="email" name="email" placeholder={t('contact.formEmailPlaceholder', lang)} required />
           </div>
         </div>
 
         <div className="input-group">
-          <label>MESSAGE</label>
-          <textarea name="message" rows={6} placeholder="Tell me about your project..." required></textarea>
+          <label>{t('contact.formMessage', lang)}</label>
+          <textarea name="message" rows={6} placeholder={t('contact.formMessagePlaceholder', lang)} required></textarea>
         </div>
 
         <button type="submit" disabled={status === 'SENDING'} className="submit-btn">
-          {status === 'SENDING' ? 'SENDING...' : 'Send Message →'}
+          {status === 'SENDING' ? t('contact.formSending', lang) : t('contact.formSubmit', lang)}
         </button>
       </form>
     </>

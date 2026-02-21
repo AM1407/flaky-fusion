@@ -1,0 +1,54 @@
+---
+/**
+ * Drop this component into any Astro page/layout.
+ * It wires up a listener for `locale-changed` events (fired by the nanostore)
+ * and swaps every element that carries a `data-i18n="section.key"` attribute.
+ *
+ * Elements with `data-i18n-html` will have their innerHTML set (for rich content).
+ * Elements with `data-i18n-placeholder` will have their placeholder set.
+ * Elements with `data-i18n-aria` will have their aria-label set.
+ */
+---
+
+<script>
+  import { locale } from '../stores/languageStore';
+  import { t } from '../i18n/index';
+
+  /** Apply translations to every annotated element on the page. */
+  function applyTranslations(lang: 'en' | 'nl') {
+    // Plain text
+    document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n')!;
+      el.textContent = t(key, lang);
+    });
+
+    // Rich HTML
+    document.querySelectorAll<HTMLElement>('[data-i18n-html]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-html')!;
+      el.innerHTML = t(key, lang);
+    });
+
+    // Placeholders
+    document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-i18n-placeholder]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-placeholder')!;
+      el.placeholder = t(key, lang);
+    });
+
+    // Aria labels
+    document.querySelectorAll<HTMLElement>('[data-i18n-aria]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-aria')!;
+      el.setAttribute('aria-label', t(key, lang));
+    });
+
+    // Update <html lang="">
+    document.documentElement.lang = lang;
+  }
+
+  // Initial render
+  applyTranslations(locale.get());
+
+  // Listen to nanostore changes
+  locale.listen((lang) => {
+    applyTranslations(lang);
+  });
+</script>

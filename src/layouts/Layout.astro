@@ -2,6 +2,7 @@
 // This is the Frontmatter (logic)
 const { title = "My Portfolio" } = Astro.props;
 import '../styles/global.css';
+import I18nScript from '../components/I18nScript.astro';
 ---
 
 <html lang="en">
@@ -33,6 +34,7 @@ import '../styles/global.css';
 	</head>
 	<body>
 		<slot />
+		<I18nScript />
 
 		<!-- Reveal page once DOM + external resources (fonts, images) are loaded -->
 		<script is:inline>

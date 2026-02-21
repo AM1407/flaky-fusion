@@ -46,24 +46,24 @@ const whyMeCards = [
   <Navbar />
   <main class="container">
     <!-- About Section -->
-    <section class="about-section snap-section">
-      <h1 class="section-title">About Me</h1>
+    <section class="about-section">
+      <h1 class="section-title" data-i18n="about.title">About Me</h1>
       <div class="aboutcontent">
         <div class="about-text">
-          <p>Hi, I'm Alessio, a full stack developer and DevSecOps consultant based in Belgium. With experience across the tech industry, I specialise in building secure, scalable web applications and infrastructure for clients across Europe and beyond.</p>
-          <p>My journey in tech started with a passion for coding and problem-solving, which led me to explore various programming languages and frameworks. Over the years, I've honed my skills in both front-end and back-end development, as well as cloud architecture and security best practices.</p>
-          <p>When I'm not coding, you can find me exploring the latest trends in technology, contributing to open source projects, or enjoying the great outdoors. I'm always eager to take on new challenges and collaborate with like-minded individuals to create impactful solutions.</p>
+          <p data-i18n="about.paragraphs.0">Hi, I'm Alessio, a full stack developer and DevSecOps consultant based in Belgium. With experience across the tech industry, I specialise in building secure, scalable web applications and infrastructure for clients across Europe and beyond.</p>
+          <p data-i18n="about.paragraphs.1">My journey in tech started with a passion for coding and problem-solving, which led me to explore various programming languages and frameworks. Over the years, I've honed my skills in both front-end and back-end development, as well as cloud architecture and security best practices.</p>
+          <p data-i18n="about.paragraphs.2">When I'm not coding, you can find me exploring the latest trends in technology, contributing to open source projects, or enjoying the great outdoors. I'm always eager to take on new challenges and collaborate with like-minded individuals to create impactful solutions.</p>
         </div>
         <div class="profile-pic-wrapper">
-          <img src="/img/Gordian400dpi.svg" alt="Profile Picture" class="profile-pic" />
+          <img src="/img/Gordian400dpi.svg" data-i18n-aria="about.profileAlt" alt="Profile Picture" class="profile-pic" />
         </div>
       </div>
     </section>
 
     <!-- Tech Stack Section -->
-    <section class="stack-section snap-section">
-      <h2 class="section-title">Tech Stack</h2>
-      <p class="section-subtitle">The tools and technologies I use to bring ideas to life.</p>
+    <section class="stack-section">
+      <h2 class="section-title" data-i18n="about.stackTitle">Tech Stack</h2>
+      <p class="section-subtitle" data-i18n="about.stackSubtitle">The tools and technologies I use to bring ideas to life.</p>
       <div class="stack-grid">
         {techStack.map((tech) => (
           <div class="stack-block">
@@ -75,17 +75,17 @@ const whyMeCards = [
     </section>
 
     <!-- Why Me Section -->
-    <section class="why-section snap-section">
-      <h2 class="section-title">Why Me?</h2>
-      <p class="section-subtitle">Here's what sets me apart from the rest.</p>
+    <section class="why-section">
+      <h2 class="section-title" data-i18n="about.whyTitle">Why Me?</h2>
+      <p class="section-subtitle" data-i18n="about.whySubtitle">Here's what sets me apart from the rest.</p>
       <div class="why-grid">
-        {whyMeCards.map((card) => (
+        {whyMeCards.map((card, i) => (
           <div class="why-card">
             <div class="why-card-icon">
               <i class={card.icon}></i>
             </div>
-            <h3>{card.title}</h3>
-            <p>{card.text}</p>
+            <h3 data-i18n={`about.whyCards.${i}.title`}>{card.title}</h3>
+            <p data-i18n={`about.whyCards.${i}.text`}>{card.text}</p>
           </div>
         ))}
       </div>
@@ -94,46 +94,12 @@ const whyMeCards = [
   <Footer />
 </Layout>
 
-<script>
-  // Scroll-triggered reveal animations
-  document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll<HTMLElement>('.snap-section');
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-
-            // Stagger children (stack blocks, why cards)
-            const staggerItems = entry.target.querySelectorAll<HTMLElement>('.stack-block, .why-card');
-            staggerItems.forEach((item, i) => {
-              item.style.transitionDelay = `${i * 70}ms`;
-              item.classList.add('child-visible');
-            });
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    sections.forEach((s) => observer.observe(s));
-  });
-</script>
-
 <style>
-  /* ── Scroll Snap on page ── */
-  :global(html) {
-    scroll-snap-type: y proximity;
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-  }
-
   /* ── Layout ── */
   .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 24px 60px;
   }
 
   .section-title {
@@ -148,51 +114,14 @@ const whyMeCards = [
   .section-subtitle {
     color: var(--gordian-text);
     font-size: 1.05rem;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     line-height: 1.6;
-  }
-
-  /* ── Snap sections: full-viewport, centred content ── */
-  .snap-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    scroll-snap-align: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    /* Reveal animation – hidden by default */
-    opacity: 0;
-    transform: translateY(50px);
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .snap-section.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Staggered child animation */
-  .snap-section :global(.stack-block),
-  .snap-section :global(.why-card) {
-    opacity: 0;
-    transform: translateY(30px) scale(0.96);
-    transition:
-      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .snap-section :global(.stack-block.child-visible),
-  .snap-section :global(.why-card.child-visible) {
-    opacity: 1;
-    transform: translateY(0) scale(1);
   }
 
   /* ── About Section ── */
   .about-section {
-    /* extra top space for navbar clearance */
+    padding-top: 16px;
+    margin-bottom: 48px;
   }
 
   .aboutcontent {
@@ -268,7 +197,7 @@ const whyMeCards = [
 
   /* ── Tech Stack 3D Blocks ── */
   .stack-section {
-    /* spacing handled by snap-section */
+    margin-bottom: 48px;
   }
 
   .stack-grid {
@@ -336,7 +265,7 @@ const whyMeCards = [
 
   /* ── Why Me Cards ── */
   .why-section {
-    /* spacing handled by snap-section */
+    margin-bottom: 20px;
   }
 
   .why-grid {
@@ -431,12 +360,6 @@ const whyMeCards = [
 
     .stack-block i {
       font-size: 1.5rem;
-    }
-
-    .snap-section {
-      min-height: auto;
-      padding-top: 60px;
-      padding-bottom: 60px;
     }
   }
 </style>

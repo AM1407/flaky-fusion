@@ -1,0 +1,313 @@
+{
+  "nav": {
+    "about": "About Me",
+    "services": "Services",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Alessio Miccichè",
+    "role1": "Full Stack Engineer",
+    "role2": "Aspiring DevSecOps",
+    "bio": "Dedicated to <span class=\"red-text\">untangling</span> complex digital challenges through logic and design. I bridge the gap between development and protection to create systems that are <span class=\"blue-text\">secure by default</span> and <span class=\"blue-text\">scalable</span> by nature.",
+    "contactLink": "Contact Me",
+    "watermark": "Hello World;"
+  },
+  "about": {
+    "title": "About Me",
+    "paragraphs": [
+      "Hi, I'm Alessio, a full stack developer and DevSecOps consultant based in Belgium. With experience across the tech industry, I specialise in building secure, scalable web applications and infrastructure for clients across Europe and beyond.",
+      "My journey in tech started with a passion for coding and problem-solving, which led me to explore various programming languages and frameworks. Over the years, I've honed my skills in both front-end and back-end development, as well as cloud architecture and security best practices.",
+      "When I'm not coding, you can find me exploring the latest trends in technology, contributing to open source projects, or enjoying the great outdoors. I'm always eager to take on new challenges and collaborate with like-minded individuals to create impactful solutions."
+    ],
+    "profileAlt": "Profile Picture",
+    "stackTitle": "Tech Stack",
+    "stackSubtitle": "The tools and technologies I use to bring ideas to life.",
+    "whyTitle": "Why Me?",
+    "whySubtitle": "Here's what sets me apart from the rest.",
+    "whyCards": [
+      {
+        "title": "Security-First Approach",
+        "text": "Every line of code is written with security in mind. From secure architecture design to automated vulnerability scanning, I embed protection into the development lifecycle — not as an afterthought, but as a foundation."
+      },
+      {
+        "title": "Fast & Reliable Delivery",
+        "text": "I combine agile workflows with CI/CD pipelines to deliver production-ready features quickly. You get clean, tested code on schedule — without sacrificing quality or cutting corners."
+      },
+      {
+        "title": "Full Stack Expertise",
+        "text": "From responsive front-ends to robust back-end APIs and cloud infrastructure, I handle the entire stack. One point of contact, one cohesive vision — no gaps between design and deployment."
+      },
+      {
+        "title": "Clear Communication",
+        "text": "No jargon, no disappearing acts. I keep you in the loop with transparent updates, honest timelines, and straightforward explanations — so you always know where your project stands."
+      }
+    ]
+  },
+  "services": {
+    "heroTitle": "Services",
+    "heroSubtitle": "From concept to deployment — I offer end-to-end solutions tailored to your business needs.",
+    "items": [
+      {
+        "title": "Full Stack Web Development",
+        "description": "Custom web applications built from the ground up using modern frameworks. Responsive front-ends paired with robust, scalable back-end APIs — designed for performance and maintainability.",
+        "highlights": ["React / Astro / Next.js", "Node.js / Python APIs", "PostgreSQL / MongoDB", "REST & GraphQL"]
+      },
+      {
+        "title": "DevSecOps Consulting",
+        "description": "Security woven into every stage of your development pipeline. I help teams shift left by integrating automated scanning, policy-as-code, and secure architecture patterns from day one.",
+        "highlights": ["CI/CD hardening", "SAST & DAST integration", "Container security", "Compliance automation"]
+      },
+      {
+        "title": "Cloud Architecture & Infrastructure",
+        "description": "Scalable, cost-efficient cloud infrastructure on AWS, Azure, or GCP. Infrastructure as Code ensures your environments are reproducible, version-controlled, and audit-ready.",
+        "highlights": ["Terraform / Pulumi", "AWS / Azure / GCP", "Kubernetes & Docker", "Cost optimisation"]
+      },
+      {
+        "title": "CI/CD Pipeline Design",
+        "description": "Automated build, test, and deployment pipelines that get your code to production faster and safer. From GitHub Actions to GitLab CI — I design workflows that teams actually enjoy using.",
+        "highlights": ["GitHub Actions / GitLab CI", "Automated testing gates", "Blue-green deployments", "Rollback strategies"]
+      },
+      {
+        "title": "Security Audits & Penetration Testing",
+        "description": "Comprehensive security assessments of your applications and infrastructure. I identify vulnerabilities, provide actionable remediation steps, and help you build a stronger security posture.",
+        "highlights": ["Web app pen testing", "Infrastructure review", "Dependency auditing", "Remediation roadmaps"]
+      },
+      {
+        "title": "Technical Consulting & Mentoring",
+        "description": "Strategic guidance for teams looking to level up their engineering practices. Whether it's adopting IaC, improving code review culture, or upskilling on security — I meet you where you are.",
+        "highlights": ["Architecture reviews", "Team workshops", "Best practice guides", "1-on-1 mentoring"]
+      }
+    ],
+    "processTitle": "How I Work",
+    "processSubtitle": "A straightforward process designed around clarity and results.",
+    "processSteps": [
+      { "title": "Discovery", "description": "We discuss your goals, challenges, and requirements to define a clear project scope." },
+      { "title": "Proposal", "description": "I deliver a detailed plan with timelines, milestones, and transparent pricing — no surprises." },
+      { "title": "Build", "description": "Development begins with regular check-ins, demos, and iterative feedback loops." },
+      { "title": "Deliver", "description": "Thorough testing, handover documentation, and post-launch support to ensure everything runs smoothly." }
+    ],
+    "ctaTitle": "Ready to get started?",
+    "ctaText": "Let's talk about your project and see how I can help.",
+    "ctaButton": "Get In Touch"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts on security, infrastructure, and modern web development.",
+    "searchPlaceholder": "Search posts...",
+    "filterFrom": "From",
+    "filterTo": "To",
+    "clearFilters": "Clear Filters",
+    "noResults": "No posts match your search.",
+    "readMore": "Read Article",
+    "backToBlog": "← Back to Blog",
+    "posts": [
+      {
+        "slug": "securing-your-ci-cd-pipeline",
+        "title": "Securing Your CI/CD Pipeline: A Practical Guide",
+        "excerpt": "Most teams bolt security on at the end. Here's how to weave it into every stage of your CI/CD pipeline — from commit hooks to production deploy gates — without slowing anyone down."
+      },
+      {
+        "slug": "why-i-switched-to-astro",
+        "title": "Why I Switched to Astro (And Never Looked Back)",
+        "excerpt": "After years of heavy SPA frameworks, I built my portfolio with Astro. Zero client-side JS by default, islands architecture, and blazing build times — here's my honest take after six months."
+      },
+      {
+        "slug": "infrastructure-as-code-101",
+        "title": "Infrastructure as Code 101: Terraform for Beginners",
+        "excerpt": "Clicking through cloud consoles doesn't scale. This post walks you through your first Terraform project — from provider setup to deploying a real VPC — in under thirty minutes."
+      },
+      {
+        "slug": "zero-trust-architecture",
+        "title": "Zero Trust Architecture: Beyond the Buzzword",
+        "excerpt": "Everyone talks about Zero Trust, but few implement it properly. I break down the core principles, show real network diagrams, and share the mistakes I made so you don't have to."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "featured": "Featured",
+    "viewProject": "View Project"
+  },
+  "projectDetail": {
+    "backLink": "← Back to Overview"
+  },
+  "contact": {
+    "label": "CONTACT",
+    "title": "Get in touch.",
+    "subtitle": "Have a project, question, or just want to say hi? Drop me a line.",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "location": "Zutendaal, Belgium",
+    "faqLabel": "FAQ",
+    "faqLink": "Frequently Asked Questions",
+    "formName": "NAME",
+    "formNamePlaceholder": "John Doe",
+    "formEmail": "EMAIL",
+    "formEmailPlaceholder": "john@example.com",
+    "formMessage": "MESSAGE",
+    "formMessagePlaceholder": "Tell me about your project...",
+    "formSending": "SENDING...",
+    "formSubmit": "Send Message →",
+    "toastSuccess": "Message sent successfully!",
+    "toastError": "Something went wrong. Please try again.",
+    "toastNetwork": "Network error. Please check your connection."
+  },
+  "faq": {
+    "label": "SUPPORT",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Can't find what you're looking for?",
+    "subtitleLink": "Get in touch",
+    "subtitleEnd": "and I'll get back to you.",
+    "categories": [
+      {
+        "name": "Working Together",
+        "items": [
+          {
+            "q": "What services do you offer?",
+            "a": "I specialise in full stack development, DevSecOps consulting, and secure infrastructure design. Whether you need a web application built from scratch, an existing codebase hardened, or a CI/CD pipeline with integrated security — I can help."
+          },
+          {
+            "q": "What is your typical project process?",
+            "a": "Every project starts with a discovery call to understand the scope, followed by a written quote. Once approved, I work in short sprints with regular check-ins so you always know where things stand. Delivery includes source code, documentation, and a handover session."
+          },
+          {
+            "q": "Do you work with international clients?",
+            "a": "Absolutely. I'm based in Belgium but work remotely with clients across Europe and beyond. Communication is typically via email, video calls, or your preferred project management tool."
+          }
+        ]
+      },
+      {
+        "name": "Technical",
+        "items": [
+          {
+            "q": "What tech stack do you typically use?",
+            "a": "It depends on the project. For front-end work I lean towards Astro, React, and Tailwind CSS. On the back-end I work with Node.js, Python, and cloud platforms like AWS and Azure. Security tooling includes Snyk, SonarQube, and custom SAST/DAST pipelines."
+          },
+          {
+            "q": "Can you work with my existing codebase?",
+            "a": "Yes. I regularly audit and extend existing projects. I'll start with a code review and security assessment, then propose a roadmap for improvements before writing a single line."
+          },
+          {
+            "q": "Do you offer ongoing maintenance?",
+            "a": "I offer retainer agreements for clients who need continuous support, dependency updates, and security monitoring after the initial project is delivered."
+          }
+        ]
+      },
+      {
+        "name": "Pricing & Legal",
+        "items": [
+          {
+            "q": "How do you handle pricing?",
+            "a": "Most projects are quoted at a fixed price based on scope. For longer engagements or advisory work I also offer hourly or monthly retainer rates. You'll always receive a transparent breakdown before any work begins."
+          },
+          {
+            "q": "What are your payment terms?",
+            "a": "Invoices are due within 30 days. For larger projects I typically work with a 40 % upfront deposit and the remainder upon delivery. Full details are in my Terms & Conditions."
+          },
+          {
+            "q": "Who owns the code after delivery?",
+            "a": "You receive a non-exclusive, non-transferable license to use the delivered software after full payment. Intellectual property details are outlined in my Terms & Conditions."
+          }
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "label": "LEGAL",
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: February 20, 2026",
+    "sections": [
+      {
+        "heading": "1. General",
+        "body": "Alessio Miccichè, located in <strong>Zutendaal, Belgium</strong>, is responsible for the processing of personal data as described in this privacy statement. As a Security-Focused Engineer, I prioritize the confidentiality and protection of your data in accordance with the <strong>General Data Protection Regulation (GDPR)</strong>."
+      },
+      {
+        "heading": "2. Data Collection & Processing",
+        "body": "I process personal data because you use my services or contact me directly. This includes:",
+        "list": [
+          "<strong>Contact Form:</strong> Name, email address, and the content of your message. This data is securely routed via <em>Formspree</em>.",
+          "<strong>Business Relations:</strong> If we collaborate, I process company names, addresses, VAT numbers, and billing details for project execution and legal compliance."
+        ]
+      },
+      {
+        "heading": "3. Purpose of Processing",
+        "body": "Your data is used strictly for:",
+        "list": [
+          "Communication and responding to inquiries or quotes.",
+          "Executing technical engineering tasks (e.g., DevSecOps implementations, infrastructure-as-code).",
+          "Complying with legal and tax obligations (e.g., Belgian tax declarations)."
+        ]
+      },
+      {
+        "heading": "4. Engineering Standards & Security",
+        "body": "Security is at the core of my workflow. I implement the following measures to protect your information:",
+        "list": [
+          "<strong>Encryption:</strong> All traffic to this website is encrypted via SSL (TLS).",
+          "<strong>Secret Management:</strong> Sensitive data, such as API keys and credentials, are never stored in source code (Git). I manage these exclusively through secure environment variables.",
+          "<strong>Direct Access:</strong> You have direct contact with me. There are no third-party intermediaries with access to your project data or personal information."
+        ]
+      },
+      {
+        "heading": "5. Data Retention",
+        "body": "I do not store your data longer than strictly necessary. Administrative data and invoices are kept for the legal period of <strong>7 years</strong>. Project documentation and code are retained for the duration of our collaboration or until a request for deletion is made."
+      },
+      {
+        "heading": "6. Your Rights",
+        "body": "Under the GDPR, you have the right to access, correct, or delete your personal data. You may also object to the processing of your data. To exercise these rights, please contact me via the <a href=\"/contact\">contact page</a>."
+      }
+    ]
+  },
+  "terms": {
+    "label": "LEGAL FRAMEWORK",
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last updated: February 20, 2026",
+    "sections": [
+      {
+        "heading": "1. Website Use",
+        "body": "By accessing this portfolio, you agree to use it for lawful purposes. Unauthorized scraping, malware distribution, or attempting to breach the security of this site is strictly prohibited."
+      },
+      {
+        "heading": "2. Service Provision (B2B)",
+        "body": "The following terms apply to all professional engineering services, consultancy, and software delivery provided by Alessio Miccichè:",
+        "list": [
+          "<strong>Best Efforts:</strong> Services are performed to the best of my professional ability (inspanningsverbintenis). No specific result is guaranteed unless explicitly stated in writing.",
+          "<strong>Browser Support:</strong> Support is guaranteed for the last two major versions of Chrome, Safari, Firefox, and Edge. Legacy browsers are not supported.",
+          "<strong>Data Provision:</strong> The client is responsible for timely delivery of necessary assets (API keys, credentials, designs). Delays caused by the client are at the client's risk."
+        ]
+      },
+      {
+        "heading": "3. Payments & Late Fees",
+        "body": "Invoices must be paid within <strong>30 days</strong>. Failure to pay on time results in an automatic default. In such cases, a late interest rate of 10% per year and a fixed compensation fee of 10% (min. €75) will be charged."
+      },
+      {
+        "heading": "4. Intellectual Property & Licensing",
+        "body": "All source code, designs, and documentation remain my exclusive intellectual property. The client receives a non-exclusive, non-transferable license to use the software only <strong>after full payment</strong> has been received."
+      },
+      {
+        "heading": "5. Liability & Third Parties",
+        "body": "My liability is limited to the invoice value of the project. I am not liable for indirect damages, data loss, or failures caused by third-party services (e.g., AWS, Stripe, hosting providers). Updates required due to third-party \"breaking changes\" are considered additional work (meerwerk)."
+      },
+      {
+        "heading": "6. Jurisdiction",
+        "body": "These terms are governed by <strong>Belgian Law</strong>. Any disputes shall be settled exclusively by the courts of the judicial district of <strong>Limburg, Hasselt division</strong>."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Full Stack Engineer & Aspiring DevSecOps",
+    "navTitle": "Navigation",
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "connectTitle": "Connect",
+    "sponsor": "Sponsor",
+    "termsLink": "Terms & Conditions",
+    "privacyLink": "Privacy Policy",
+    "copyright": "Built with Passion & Security"
+  }
+}

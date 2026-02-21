@@ -1,0 +1,313 @@
+{
+  "nav": {
+    "about": "Over Mij",
+    "services": "Diensten",
+    "projects": "Projecten",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Alessio Miccichè",
+    "role1": "Full Stack Engineer",
+    "role2": "Aspiring DevSecOps",
+    "bio": "Gedreven om complexe digitale uitdagingen te <span class=\"red-text\">ontwarren</span> door middel van logica en design. Ik overbrug de kloof tussen development en beveiliging om systemen te bouwen die <span class=\"blue-text\">standaard veilig</span> en <span class=\"blue-text\">schaalbaar</span> zijn.",
+    "contactLink": "Contacteer Mij",
+    "watermark": "Hello World;"
+  },
+  "about": {
+    "title": "Over Mij",
+    "paragraphs": [
+      "Hallo, ik ben Alessio — full stack developer en DevSecOps consultant gevestigd in België. Met ervaring doorheen de tech-industrie specialiseer ik mij in het bouwen van veilige, schaalbare webapplicaties en infrastructuur voor klanten in heel Europa en daarbuiten.",
+      "Mijn reis in tech begon met een passie voor programmeren en het oplossen van uitdagingen, wat mij ertoe bracht om allerlei programmeertalen en frameworks te verkennen. Doorheen de jaren heb ik mijn vaardigheden verfijnd in zowel front-end als back-end development, alsook cloud architecture en security best practices.",
+      "Als ik niet aan het programmeren ben, vind je mij bezig met de nieuwste technologische trends, bijdragen aan open source projecten, of genieten van de natuur. Ik sta altijd klaar om nieuwe uitdagingen aan te gaan en samen te werken met gelijkgestemde mensen aan impactvolle oplossingen."
+    ],
+    "profileAlt": "Profielfoto",
+    "stackTitle": "Tech Stack",
+    "stackSubtitle": "De tools en technologieën die ik gebruik om ideeën tot leven te brengen.",
+    "whyTitle": "Waarom Ik?",
+    "whySubtitle": "Dit onderscheidt mij van de rest.",
+    "whyCards": [
+      {
+        "title": "Security-First Aanpak",
+        "text": "Elke lijn code wordt geschreven met security in het achterhoofd. Van veilige architectuur tot geautomatiseerde vulnerability scanning — ik bouw beveiliging in de development lifecycle in, niet als bijzaak maar als fundament."
+      },
+      {
+        "title": "Snelle & Betrouwbare Oplevering",
+        "text": "Ik combineer agile workflows met CI/CD pipelines om production-ready features snel op te leveren. Je krijgt clean, geteste code op schema — zonder kwaliteit op te offeren of bochten af te snijden."
+      },
+      {
+        "title": "Full Stack Expertise",
+        "text": "Van responsive front-ends tot robuuste back-end APIs en cloud infrastructuur — ik neem de volledige stack voor mijn rekening. Eén aanspreekpunt, één samenhangende visie — geen gaten tussen design en deployment."
+      },
+      {
+        "title": "Duidelijke Communicatie",
+        "text": "Geen jargon, geen verdwijntrucjes. Ik hou je op de hoogte met transparante updates, eerlijke deadlines en heldere uitleg — zodat je altijd weet waar je project staat."
+      }
+    ]
+  },
+  "services": {
+    "heroTitle": "Diensten",
+    "heroSubtitle": "Van concept tot deployment — ik bied end-to-end oplossingen op maat van jouw bedrijf.",
+    "items": [
+      {
+        "title": "Full Stack Web Development",
+        "description": "Op maat gemaakte webapplicaties, van de grond af opgebouwd met moderne frameworks. Responsive front-ends gecombineerd met robuuste, schaalbare back-end APIs — ontworpen voor performance en onderhoudbaarheid.",
+        "highlights": ["React / Astro / Next.js", "Node.js / Python APIs", "PostgreSQL / MongoDB", "REST & GraphQL"]
+      },
+      {
+        "title": "DevSecOps Consulting",
+        "description": "Security verweven in elke fase van je development pipeline. Ik help teams om te shiften naar links door geautomatiseerde scanning, policy-as-code en veilige architectuurpatronen te integreren vanaf dag één.",
+        "highlights": ["CI/CD hardening", "SAST & DAST integratie", "Container security", "Compliance automatisering"]
+      },
+      {
+        "title": "Cloud Architecture & Infrastructuur",
+        "description": "Schaalbare, kostenefficiënte cloud infrastructuur op AWS, Azure of GCP. Infrastructure as Code zorgt ervoor dat je omgevingen reproduceerbaar, versiebeheerd en audit-ready zijn.",
+        "highlights": ["Terraform / Pulumi", "AWS / Azure / GCP", "Kubernetes & Docker", "Kostenoptimalisatie"]
+      },
+      {
+        "title": "CI/CD Pipeline Design",
+        "description": "Geautomatiseerde build-, test- en deployment-pipelines die je code sneller en veiliger naar productie brengen. Van GitHub Actions tot GitLab CI — ik ontwerp workflows waar teams graag mee werken.",
+        "highlights": ["GitHub Actions / GitLab CI", "Geautomatiseerde test gates", "Blue-green deployments", "Rollback strategieën"]
+      },
+      {
+        "title": "Security Audits & Penetration Testing",
+        "description": "Uitgebreide security assessments van je applicaties en infrastructuur. Ik identificeer kwetsbaarheden, geef concrete remediatiestappen en help je bij het opbouwen van een sterkere security posture.",
+        "highlights": ["Web app pen testing", "Infrastructuur review", "Dependency auditing", "Remediatie roadmaps"]
+      },
+      {
+        "title": "Technisch Advies & Mentoring",
+        "description": "Strategische begeleiding voor teams die hun engineering practices naar een hoger niveau willen tillen. Of het nu gaat om IaC adopteren, code review cultuur verbeteren of bijscholen in security — ik vertrek vanuit waar jullie staan.",
+        "highlights": ["Architecture reviews", "Team workshops", "Best practice gidsen", "1-op-1 mentoring"]
+      }
+    ],
+    "processTitle": "Hoe Ik Werk",
+    "processSubtitle": "Een duidelijk proces gebouwd rond helderheid en resultaten.",
+    "processSteps": [
+      { "title": "Ontdekking", "description": "We bespreken je doelen, uitdagingen en vereisten om een helder projectkader te definiëren." },
+      { "title": "Voorstel", "description": "Ik lever een gedetailleerd plan met tijdlijnen, mijlpalen en transparante prijzen — geen verrassingen." },
+      { "title": "Bouwen", "description": "De development start met regelmatige check-ins, demo's en iteratieve feedbacklussen." },
+      { "title": "Opleveren", "description": "Grondig testen, overdracht-documentatie en support na lancering om te garanderen dat alles vlot draait." }
+    ],
+    "ctaTitle": "Klaar om te beginnen?",
+    "ctaText": "Laten we het hebben over jouw project en kijken hoe ik kan helpen.",
+    "ctaButton": "Neem Contact Op"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Gedachten over security, infrastructuur en moderne webdevelopment.",
+    "searchPlaceholder": "Zoek berichten...",
+    "filterFrom": "Van",
+    "filterTo": "Tot",
+    "clearFilters": "Filters Wissen",
+    "noResults": "Geen berichten gevonden voor je zoekopdracht.",
+    "readMore": "Lees Artikel",
+    "backToBlog": "← Terug naar Blog",
+    "posts": [
+      {
+        "slug": "securing-your-ci-cd-pipeline",
+        "title": "Je CI/CD Pipeline Beveiligen: Een Praktische Gids",
+        "excerpt": "De meeste teams schroeven security er pas op het einde bij. Hier lees je hoe je het in elke fase van je CI/CD pipeline kan verweven — van commit hooks tot production deploy gates — zonder iemand te vertragen."
+      },
+      {
+        "slug": "why-i-switched-to-astro",
+        "title": "Waarom Ik Naar Astro Ben Overgestapt (En Nooit Meer Terugging)",
+        "excerpt": "Na jaren met zware SPA frameworks bouwde ik mijn portfolio met Astro. Standaard geen client-side JS, islands architecture en razendsnelle build times — hier is mijn eerlijke mening na zes maanden."
+      },
+      {
+        "slug": "infrastructure-as-code-101",
+        "title": "Infrastructure as Code 101: Terraform voor Beginners",
+        "excerpt": "Klikken door cloud consoles schaalt niet. Dit artikel begeleidt je door je eerste Terraform project — van provider setup tot het deployen van een echte VPC — in minder dan dertig minuten."
+      },
+      {
+        "slug": "zero-trust-architecture",
+        "title": "Zero Trust Architecture: Meer Dan Een Buzzword",
+        "excerpt": "Iedereen praat over Zero Trust, maar weinigen implementeren het correct. Ik ontleed de kernprincipes, toon echte netwerkdiagrammen en deel de fouten die ik maakte zodat jij ze niet hoeft te maken."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projecten",
+    "featured": "Uitgelicht",
+    "viewProject": "Bekijk Project"
+  },
+  "projectDetail": {
+    "backLink": "← Terug naar Overzicht"
+  },
+  "contact": {
+    "label": "CONTACT",
+    "title": "Neem contact op.",
+    "subtitle": "Heb je een project, vraag, of wil je gewoon eens hallo zeggen? Stuur mij een berichtje.",
+    "emailLabel": "Email",
+    "locationLabel": "Locatie",
+    "location": "Zutendaal, België",
+    "faqLabel": "FAQ",
+    "faqLink": "Veelgestelde Vragen",
+    "formName": "NAAM",
+    "formNamePlaceholder": "Jan Peeters",
+    "formEmail": "EMAIL",
+    "formEmailPlaceholder": "jan@voorbeeld.be",
+    "formMessage": "BERICHT",
+    "formMessagePlaceholder": "Vertel mij over je project...",
+    "formSending": "VERZENDEN...",
+    "formSubmit": "Bericht Versturen →",
+    "toastSuccess": "Bericht succesvol verzonden!",
+    "toastError": "Er ging iets mis. Probeer het opnieuw.",
+    "toastNetwork": "Netwerkfout. Controleer je verbinding."
+  },
+  "faq": {
+    "label": "ONDERSTEUNING",
+    "title": "Veelgestelde Vragen",
+    "subtitle": "Niet gevonden wat je zocht?",
+    "subtitleLink": "Neem contact op",
+    "subtitleEnd": "en ik help je verder.",
+    "categories": [
+      {
+        "name": "Samenwerking",
+        "items": [
+          {
+            "q": "Welke diensten bied je aan?",
+            "a": "Ik specialiseer mij in full stack development, DevSecOps consulting en veilige infrastructuur. Of je nu een webapplicatie van nul wilt laten bouwen, een bestaande codebase wilt laten beveiligen, of een CI/CD pipeline met geïntegreerde security nodig hebt — ik kan helpen."
+          },
+          {
+            "q": "Hoe verloopt een typisch project?",
+            "a": "Elk project start met een discovery call om de scope te begrijpen, gevolgd door een schriftelijke offerte. Na goedkeuring werk ik in korte sprints met regelmatige check-ins, zodat je altijd weet waar we staan. Oplevering omvat broncode, documentatie en een overdrachtssessie."
+          },
+          {
+            "q": "Werk je met internationale klanten?",
+            "a": "Absoluut. Ik ben gevestigd in België maar werk remote met klanten uit heel Europa en daarbuiten. Communicatie verloopt doorgaans via e-mail, videogesprekken of je favoriete projectmanagement tool."
+          }
+        ]
+      },
+      {
+        "name": "Technisch",
+        "items": [
+          {
+            "q": "Welke tech stack gebruik je doorgaans?",
+            "a": "Dat hangt af van het project. Voor front-end werk ga ik richting Astro, React en Tailwind CSS. Aan de back-end werk ik met Node.js, Python en cloud platforms zoals AWS en Azure. Security tooling omvat Snyk, SonarQube en custom SAST/DAST pipelines."
+          },
+          {
+            "q": "Kan je met mijn bestaande codebase werken?",
+            "a": "Ja. Ik audit en extend regelmatig bestaande projecten. Ik start met een code review en security assessment, en stel dan een roadmap voor met verbeteringen voordat ik één lijn schrijf."
+          },
+          {
+            "q": "Bied je doorlopend onderhoud aan?",
+            "a": "Ik bied retainer-overeenkomsten aan voor klanten die continu support, dependency updates en security monitoring nodig hebben nadat het initiële project is opgeleverd."
+          }
+        ]
+      },
+      {
+        "name": "Prijzen & Juridisch",
+        "items": [
+          {
+            "q": "Hoe pak je prijzen aan?",
+            "a": "De meeste projecten worden geoffreerd tegen een vaste prijs op basis van scope. Voor langere engagementen of advieswerk bied ik ook uurtarieven of maandelijkse retainer rates aan. Je ontvangt altijd een transparante uitsplitsing voordat er werk begint."
+          },
+          {
+            "q": "Wat zijn je betalingsvoorwaarden?",
+            "a": "Facturen zijn betaalbaar binnen 30 dagen. Voor grotere projecten werk ik doorgaans met een voorschot van 40% en het restbedrag bij oplevering. Alle details staan in mijn Algemene Voorwaarden."
+          },
+          {
+            "q": "Wie is eigenaar van de code na oplevering?",
+            "a": "Je ontvangt een niet-exclusieve, niet-overdraagbare licentie om de opgeleverde software te gebruiken na volledige betaling. Details rond intellectueel eigendom staan in mijn Algemene Voorwaarden."
+          }
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "label": "JURIDISCH",
+    "title": "Privacybeleid",
+    "lastUpdated": "Laatst bijgewerkt: 20 februari 2026",
+    "sections": [
+      {
+        "heading": "1. Algemeen",
+        "body": "Alessio Miccichè, gevestigd in <strong>Zutendaal, België</strong>, is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in deze privacyverklaring. Als Security-Focused Engineer geef ik prioriteit aan de vertrouwelijkheid en bescherming van je gegevens conform de <strong>Algemene Verordening Gegevensbescherming (AVG/GDPR)</strong>."
+      },
+      {
+        "heading": "2. Gegevensverzameling & Verwerking",
+        "body": "Ik verwerk persoonsgegevens omdat je mijn diensten gebruikt of rechtstreeks contact met mij opneemt. Dit omvat:",
+        "list": [
+          "<strong>Contactformulier:</strong> Naam, e-mailadres en de inhoud van je bericht. Deze gegevens worden veilig doorgestuurd via <em>Formspree</em>.",
+          "<strong>Zakelijke Relaties:</strong> Bij samenwerking verwerk ik bedrijfsnamen, adressen, btw-nummers en facturatiegegevens voor projectuitvoering en wettelijke naleving."
+        ]
+      },
+      {
+        "heading": "3. Doel van Verwerking",
+        "body": "Je gegevens worden uitsluitend gebruikt voor:",
+        "list": [
+          "Communicatie en het beantwoorden van vragen of offertes.",
+          "Het uitvoeren van technische engineering taken (bv. DevSecOps implementaties, infrastructure-as-code).",
+          "Het naleven van wettelijke en fiscale verplichtingen (bv. Belgische belastingaangiftes)."
+        ]
+      },
+      {
+        "heading": "4. Engineering Standards & Security",
+        "body": "Security zit in het hart van mijn workflow. Ik implementeer de volgende maatregelen om je informatie te beschermen:",
+        "list": [
+          "<strong>Encryptie:</strong> Al het verkeer naar deze website is versleuteld via SSL (TLS).",
+          "<strong>Secret Management:</strong> Gevoelige gegevens zoals API keys en credentials worden nooit opgeslagen in broncode (Git). Ik beheer deze uitsluitend via veilige environment variables.",
+          "<strong>Direct Contact:</strong> Je hebt rechtstreeks contact met mij. Er zijn geen tussenpartijen met toegang tot je projectgegevens of persoonlijke informatie."
+        ]
+      },
+      {
+        "heading": "5. Bewaartermijn",
+        "body": "Ik bewaar je gegevens niet langer dan strikt noodzakelijk. Administratieve gegevens en facturen worden bewaard voor de wettelijke termijn van <strong>7 jaar</strong>. Projectdocumentatie en code worden bewaard voor de duur van onze samenwerking of tot een verzoek tot verwijdering wordt ingediend."
+      },
+      {
+        "heading": "6. Jouw Rechten",
+        "body": "Op grond van de AVG/GDPR heb je het recht om je persoonsgegevens in te zien, te corrigeren of te verwijderen. Je kan ook bezwaar maken tegen de verwerking van je gegevens. Om deze rechten uit te oefenen, neem contact met mij op via de <a href=\"/contact\">contactpagina</a>."
+      }
+    ]
+  },
+  "terms": {
+    "label": "JURIDISCH KADER",
+    "title": "Algemene Voorwaarden",
+    "lastUpdated": "Laatst bijgewerkt: 20 februari 2026",
+    "sections": [
+      {
+        "heading": "1. Websitegebruik",
+        "body": "Door deze portfolio te bezoeken ga je akkoord met wettig gebruik ervan. Ongeautoriseerde scraping, verspreiding van malware of pogingen om de beveiliging van deze site te doorbreken zijn strikt verboden."
+      },
+      {
+        "heading": "2. Dienstverlening (B2B)",
+        "body": "De volgende voorwaarden zijn van toepassing op alle professionele engineering diensten, consultancy en software-oplevering door Alessio Miccichè:",
+        "list": [
+          "<strong>Inspanningsverbintenis:</strong> Diensten worden uitgevoerd naar best vermogen (inspanningsverbintenis). Geen specifiek resultaat wordt gegarandeerd tenzij uitdrukkelijk schriftelijk overeengekomen.",
+          "<strong>Browser Support:</strong> Support wordt gegarandeerd voor de laatste twee grote versies van Chrome, Safari, Firefox en Edge. Legacy browsers worden niet ondersteund.",
+          "<strong>Aanlevering van Gegevens:</strong> De klant is verantwoordelijk voor het tijdig aanleveren van benodigde materialen (API keys, credentials, designs). Vertragingen veroorzaakt door de klant zijn voor risico van de klant."
+        ]
+      },
+      {
+        "heading": "3. Betalingen & Laattijdigheid",
+        "body": "Facturen dienen betaald te worden binnen <strong>30 dagen</strong>. Bij niet-tijdige betaling is de klant van rechtswege in gebreke. In dat geval wordt een nalatigheidsintrest van 10% per jaar en een forfaitaire schadevergoeding van 10% (min. €75) aangerekend."
+      },
+      {
+        "heading": "4. Intellectueel Eigendom & Licentie",
+        "body": "Alle broncode, ontwerpen en documentatie blijven mijn exclusief intellectueel eigendom. De klant ontvangt een niet-exclusieve, niet-overdraagbare licentie om de software te gebruiken pas <strong>na volledige betaling</strong>."
+      },
+      {
+        "heading": "5. Aansprakelijkheid & Derden",
+        "body": "Mijn aansprakelijkheid is beperkt tot de factuurwaarde van het project. Ik ben niet aansprakelijk voor indirecte schade, gegevensverlies of storingen veroorzaakt door diensten van derden (bv. AWS, Stripe, hosting providers). Updates vereist door \"breaking changes\" van derden worden beschouwd als meerwerk."
+      },
+      {
+        "heading": "6. Bevoegde Rechtbank",
+        "body": "Deze voorwaarden worden beheerst door het <strong>Belgisch recht</strong>. Geschillen worden uitsluitend beslecht door de rechtbanken van het gerechtelijk arrondissement <strong>Limburg, afdeling Hasselt</strong>."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Full Stack Engineer & Aspiring DevSecOps",
+    "navTitle": "Navigatie",
+    "home": "Home",
+    "services": "Diensten",
+    "projects": "Projecten",
+    "about": "Over Mij",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "connectTitle": "Verbinden",
+    "sponsor": "Sponsor",
+    "termsLink": "Algemene Voorwaarden",
+    "privacyLink": "Privacybeleid",
+    "copyright": "Gebouwd met Passie & Security"
+  }
+}

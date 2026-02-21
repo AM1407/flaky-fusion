@@ -51,12 +51,21 @@ import Footer from '../components/footer.astro';
     }
   </style>
 
-  <script>
-    window.addEventListener('splash-finished', () => {
-      const wrapper = document.getElementById('site-wrapper');
-      if (wrapper) {
+  <script is:inline>
+    window.addEventListener('splash-finished', function () {
+      var wrapper = document.getElementById('site-wrapper');
+      if (wrapper) wrapper.classList.add('visible');
+    });
+
+    // Safety fallback: guarantee the wrapper becomes visible even if
+    // the splash event never fires (e.g. module-loading delay).
+    setTimeout(function () {
+      var wrapper = document.getElementById('site-wrapper');
+      if (wrapper && !wrapper.classList.contains('visible')) {
+        var overlay = document.getElementById('splash-overlay');
+        if (overlay) overlay.style.display = 'none';
         wrapper.classList.add('visible');
       }
-    });
+    }, 5000);
   </script>
 </Layout>

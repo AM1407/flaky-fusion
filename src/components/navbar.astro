@@ -1,3 +1,7 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.tsx';
+---
+
 <style>
     .logo {
         width: 60px;
@@ -23,11 +27,17 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-right: 150px;
+    }
+
     .nav-links {
         display: flex;
         gap: 15px;
         color: var(--gordian-text);
-        margin-right: 150px;
     }
     p {
         font-family: var(--font-main);
@@ -41,7 +51,6 @@
         letter-spacing: -0.05em;
         color: var(--gordian-text);
         text-decoration: none;
-        /* Nodig voor de positionering van de underline */
         position: relative;
         padding-bottom: 2px;
     }
@@ -51,7 +60,7 @@
         content: '';
         position: absolute;
         width: 100%;
-        height: 1.5px; /* Dikte van de underline */
+        height: 1.5px;
         bottom: 0;
         left: 0;
         background-color: var(--gordian-blue);
@@ -70,17 +79,51 @@
         transform-origin: bottom left;
     }
 
+    /* Language switcher styles */
+    :global(.lang-switcher) {
+        display: flex;
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 8px;
+        padding: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    :global(.lang-btn) {
+        font-family: var(--font-main);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 5px 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background: transparent;
+        color: var(--gordian-text);
+        transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    :global(.lang-btn:hover) {
+        color: #fff;
+    }
+
+    :global(.lang-btn.active) {
+        background: var(--gordian-blue);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 136, 204, 0.35);
+    }
 </style>
-
-
-
 
 <nav>
     <a href="/" class="logo-link"><img src="img/Gordian400dpi.svg" alt="Logo" class="logo" /></a>
-    <div class="nav-links">
-    <a href="/about">About Me</a>
-    <a href="/projects">Projects</a>  
-    <a href="/blog">Blog</a>
-    <a href="/contact">Contact</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="/about" data-i18n="nav.about">About Me</a>
+        <a href="/services" data-i18n="nav.services">Services</a>
+        <a href="/projects" data-i18n="nav.projects">Projects</a>  
+        <a href="/blog" data-i18n="nav.blog">Blog</a>
+        <a href="/contact" data-i18n="nav.contact">Contact</a>
+      </div>
+      <LanguageSwitcher client:load />
     </div>
 </nav>

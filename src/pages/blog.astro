@@ -12,8 +12,8 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
   <Navbar />
   <main class="container">
     <header class="blog-header">
-      <h1 class="page-title">Blog</h1>
-      <p class="page-subtitle">Thoughts on security, infrastructure, and modern web development.</p>
+      <h1 class="page-title" data-i18n="blog.title">Blog</h1>
+      <p class="page-subtitle" data-i18n="blog.subtitle">Thoughts on security, infrastructure, and modern web development.</p>
     </header>
 
     <!-- Search & Filter Controls -->
@@ -24,6 +24,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
           type="text"
           id="search-input"
           placeholder="Search posts..."
+          data-i18n-placeholder="blog.searchPlaceholder"
           autocomplete="off"
           maxlength="120"
           aria-label="Search blog posts"
@@ -34,14 +35,14 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       </div>
       <div class="filter-row">
         <div class="date-filter">
-          <label for="date-from">From</label>
+          <label for="date-from" data-i18n="blog.filterFrom">From</label>
           <input type="date" id="date-from" aria-label="Filter from date" />
         </div>
         <div class="date-filter">
-          <label for="date-to">To</label>
+          <label for="date-to" data-i18n="blog.filterTo">To</label>
           <input type="date" id="date-to" aria-label="Filter to date" />
         </div>
-        <button id="clear-filters" class="clear-filters-btn">Clear Filters</button>
+        <button id="clear-filters" class="clear-filters-btn" data-i18n="blog.clearFilters">Clear Filters</button>
       </div>
     </div>
 
@@ -51,7 +52,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     <!-- Empty state -->
     <div class="empty-state" id="empty-state" style="display:none;">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <p>No posts match your search.</p>
+      <p data-i18n="blog.noResults">No posts match your search.</p>
     </div>
 
     <!-- Pagination -->
@@ -66,6 +67,9 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
 </script>
 
 <script>
+  import { locale } from '../stores/languageStore';
+  import { t, tObj } from '../i18n/index';
+
   document.addEventListener('DOMContentLoaded', () => {
     const POSTS_PER_PAGE = 4;
     const allPosts: Array<{slug:string; title:string; excerpt:string; image:string; date:string; author:string; tags:string[]}> = (window as any).__BLOG_DATA__;
@@ -80,6 +84,19 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     const clearFilters = document.getElementById('clear-filters')!;
 
     let currentPage = 1;
+
+    /** Get translated post data if available, falling back to original */
+    function getTranslatedPost(post: typeof allPosts[0]) {
+      const lang = locale.get();
+      const blogPosts = tObj('blog.posts', lang) as Array<{slug:string; title:string; excerpt:string}> | undefined;
+      if (blogPosts) {
+        const translated = blogPosts.find(p => p.slug === post.slug);
+        if (translated) {
+          return { ...post, title: translated.title, excerpt: translated.excerpt };
+        }
+      }
+      return post;
+    }
 
     // ── Sanitisation: escape HTML entities ──
     function esc(str: string): string {
@@ -100,9 +117,10 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       const to = dateTo.value ? new Date(dateTo.value + 'T23:59:59') : null;
 
       return allPosts.filter((post) => {
+        const tp = getTranslatedPost(post);
         // Text search across title, excerpt, tags
         if (query) {
-          const haystack = `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase();
+          const haystack = `${tp.title} ${tp.excerpt} ${post.tags.join(' ')}`.toLowerCase();
           if (!haystack.includes(query)) return false;
         }
         // Date range
@@ -115,6 +133,8 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
 
     // ── Render cards ──
     function renderCards(posts: typeof allPosts, page: number) {
+      const lang = locale.get();
+      const readMoreText = t('blog.readMore', lang);
       const start = (page - 1) * POSTS_PER_PAGE;
       const pageSlice = posts.slice(start, start + POSTS_PER_PAGE);
 
@@ -127,25 +147,27 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       emptyEl.style.display = 'none';
 
       listEl.innerHTML = pageSlice.map((post, i) => {
+        const tp = getTranslatedPost(post);
         const globalIndex = start + i;
         const dir = globalIndex % 2 === 0 ? 'img-left' : 'img-right';
-        const dateFormatted = new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-        const tagsHtml = post.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('');
+        const dateLocale = lang === 'nl' ? 'nl-BE' : 'en-GB';
+        const dateFormatted = new Date(post.date).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+        const tagsHtml = post.tags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('');
 
         return `
           <article class="blog-card ${dir}">
             <div class="card-image">
-              <img src="${esc(post.image)}" alt="${esc(post.title)}" />
+              <img src="${esc(post.image)}" alt="${esc(tp.title)}" />
             </div>
             <div class="card-body">
               <div class="card-meta">
                 <time datetime="${esc(post.date)}">${esc(dateFormatted)}</time>
                 <div class="card-tags">${tagsHtml}</div>
               </div>
-              <h2 class="card-title">${esc(post.title)}</h2>
-              <p class="card-excerpt">${esc(post.excerpt)}</p>
+              <h2 class="card-title">${esc(tp.title)}</h2>
+              <p class="card-excerpt">${esc(tp.excerpt)}</p>
               <a href="/blog/${encodeURIComponent(post.slug)}" class="read-more">
-                Read Article <span class="arrow">&rarr;</span>
+                ${esc(readMoreText)} <span class="arrow">&rarr;</span>
               </a>
             </div>
           </article>
@@ -231,6 +253,11 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     // Prevent form submission on Enter
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') e.preventDefault();
+    });
+
+    // Re-render on language change
+    locale.listen(() => {
+      update();
     });
 
     // Initial render
