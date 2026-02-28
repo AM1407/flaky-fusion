@@ -1,19 +1,38 @@
 [
   {
-    "id": "project-gordian",
-    "title": "Project Gordian Knot",
-    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
-    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
-    "image": "/img/Gordian400dpi.svg",
-    "stack": ["Terraform", "AWS", "Security"],
+    "id": "Stoned.io",
+    "title": {
+      "nl": "Stoned.io",
+      "en": "Stoned.io"
+    },
+    "description": {
+      "nl": "Een fullstack website met Stripe integratie in plain PHP",
+      "en": "A fullstack website with Stripe integration in plain PHP"
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/scrstoned.png",
+    "stack": ["PHP", "Stripe", "MySQL", "Tailwind"],
     "featured": true
   },
   {
-    "id": "api-shield",
-    "title": "API Shield",
-    "description": "Rate limiting en WAF implementatie voor microservices.",
-    "image": "/img/Gordian400dpi.svg",
-    "stack": ["Go", "Kubernetes", "WAF"],
+    "id": "KotCompass",
+    "title": {
+      "nl": "KotCompass",
+      "en": "KotCompass"
+    },
+    "description": {
+      "nl": "Eindwerk voor mijn opleiding, een fullstack website met Laravel, Angular en Stripe integratie",
+      "en": "Thesis project for my education, a fullstack website with Laravel, Angular and Stripe integration"
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/scrkotcompass.png",
+    "stack": ["Laravel", "Stripe", "MySQL", "Tailwind", "Angular"],
     "featured": false
   },
     {

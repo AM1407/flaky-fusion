@@ -1,56 +1,114 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/navbar.astro';
+import Footer from '../../components/footer.astro';
 import projectsData from '../../data/projects.json';
 
-// Generate a static page for each project ID
+interface MultilangText {
+  nl: string;
+  en: string;
+}
+
+interface Project {
+  id: string;
+  title: MultilangText;
+  description: MultilangText;
+  fullDescription?: MultilangText;
+  image?: string;
+  stack?: string[];
+  featured?: boolean;
+}
+
 export async function getStaticPaths() {
-  return projectsData.map((project) => ({
+  const typedProjects = projectsData as Project[];
+  return typedProjects.map((project) => ({
     params: { id: project.id },
     props: { project },
   }));
 }
 
-// Retrieve the project matching the current URL
-const { project } = Astro.props;
+const { id } = Astro.params;
+const project = Astro.props.project as Project;
 
-// Redirect to 404 if no matching project is found
-if (!project) {
-  return Astro.redirect('/404');
-}
+// VERBETERDE TAALDETECTIE:
+// Controleer eerst of de locale in de URL zit, anders fallback naar de standaard
+const lang = (Astro.currentLocale || 'nl') as keyof MultilangText;
+
+// Laad beide content versies in voor de client-side switch
+let ContentNL, ContentEN;
+try {
+  const modNL = await import(`../../data/projecttext/${id}-nl.md`);
+  ContentNL = modNL.Content;
+} catch (e) { ContentNL = null; }
+
+try {
+  const modEN = await import(`../../data/projecttext/${id}-en.md`);
+  ContentEN = modEN.Content;
+} catch (e) { ContentEN = null; }
+
+if (!project) return Astro.redirect('/404');
 ---
 
-<Layout title={`${project.title} | Projects`} description={project.description}>
+<Layout 
+  title={`${project.title[lang]} | Projects`} 
+  description={project.description[lang]}
+>
   <Navbar />
   
   <article class="project-detail">
     <header>
       <a href="/projects" class="back-link" data-i18n="projectDetail.backLink">&larr; Back to Overview</a>
-      <h1>{project.title}</h1>
+      <h1 data-field="title">{project.title[lang]}</h1>
       
       <div class="tech-stack">
-        {/* Render tech badges if stack data exists */}
-        {project.stack && project.stack.map((tech) => (
+        {project.stack?.map((tech) => (
           <span class="badge">{tech}</span>
         ))}
       </div>
     </header>
 
     <div class="detail-content">
-      {/* Project hero image with fallback */}
-      <img 
-        src={project.image || "/img/placeholder.jpg"} 
-        alt={project.title} 
-        class="hero-img" 
-      />
+      <img src={project.image} alt={project.title[lang]} class="hero-img" />
       
-      <div class="description">
-        {/* Show full description if available, otherwise the short one */}
-        <p>{project.fullDescription || project.description}</p>
+      <div class="description-container">
+        {/* Render BEIDE talen en laat CSS/JS bepalen welke zichtbaar is */}
+        <div id="content-nl" style={lang === 'nl' ? "display: block" : "display: none"}>
+           {ContentNL ? <ContentNL /> : <p>{project.fullDescription?.nl || project.description.nl}</p>}
+        </div>
+        <div id="content-en" style={lang === 'en' ? "display: block" : "display: none"}>
+           {ContentEN ? <ContentEN /> : <p>{project.fullDescription?.en || project.description.en}</p>}
+        </div>
       </div>
     </div>
   </article>
+  <Footer />
 </Layout>
+
+<script define:vars={{ project }}>
+  function switchDetailLanguage(newLang) {
+    // 1. Update de statische tekst (Titel)
+    const titleEl = document.querySelector('[data-field="title"]');
+    if (titleEl) titleEl.textContent = project.title[newLang];
+
+    // 2. Switch de Markdown/FullDescription containers
+    const nlContainer = document.getElementById('content-nl');
+    const enContainer = document.getElementById('content-en');
+
+    if (nlContainer && enContainer) {
+      nlContainer.style.display = newLang === 'nl' ? 'block' : 'none';
+      enContainer.style.display = newLang === 'en' ? 'block' : 'none';
+    }
+  }
+
+  // Luister naar de Nano Store event uit je languageStore.ts
+  window.addEventListener('locale-changed', (event) => {
+    switchDetailLanguage(event.detail);
+  });
+
+  // Initialisatie bij laden
+  const currentLang = localStorage.getItem('lang') || 'en';
+  switchDetailLanguage(currentLang);
+</script>
 
 <style>
   .project-detail { 
@@ -61,27 +119,35 @@ if (!project) {
   }
 
   .back-link {
-    color: var(--cyber-blue, #0088cc);
+    color: var(--cyber-blue, #60a5fa);
     text-decoration: none;
     display: inline-block;
     margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-img { 
     width: 100%; 
     border: 1px solid rgba(255,255,255,0.1); 
     margin: 2rem 0; 
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   }
 
   .badge { 
     display: inline-block;
-    border: 1px solid var(--cyber-blue, #0088cc); 
-    color: var(--cyber-blue, #0088cc); 
+    border: 1px solid var(--cyber-blue, #60a5fa); 
+    color: var(--cyber-blue, #60a5fa); 
     padding: 4px 12px; 
     margin: 5px 10px 5px 0; 
     font-size: 0.8rem; 
     text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .description {
@@ -89,4 +155,9 @@ if (!project) {
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.8);
   }
+
+  .markdown-body :global(h2) { color: #fff; margin: 2rem 0 1rem; font-size: 1.8rem; }
+  .markdown-body :global(p) { margin-bottom: 1.5rem; }
+  .markdown-body :global(ul) { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+  .markdown-body :global(li) { margin-bottom: 0.5rem; }
 </style>

@@ -4,17 +4,23 @@ import Navbar from '../components/navbar.astro';
 import Footer from '../components/footer.astro';
 
 const techStack = [
-  { name: "TypeScript", icon: "fa-brands fa-js" },
-  { name: "React", icon: "fa-brands fa-react" },
-  { name: "Node.js", icon: "fa-brands fa-node-js" },
-  { name: "Python", icon: "fa-brands fa-python" },
-  { name: "Docker", icon: "fa-brands fa-docker" },
-  { name: "AWS", icon: "fa-brands fa-aws" },
+  { name: "HTML5", icon:"fa-brands fa-html5" },
+  { name: "CSS", icon:"fa-brands fa-css3-alt" },
+  { name: "Bootstrap", icon:"fa-brands fa-bootstrap" },
+  { name: "Tailwind", icon:"custom-svg", svgPath: "M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" },
+  { name: "Typescript", icon:"custom-svg", svgPath: "M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.106.156.252.304.437.444s.423.276.714.41c.29.135.634.285 1.033.451 1.258.528 2.179 1.1 2.763 1.72s.874 1.403.874 2.345c0 .596-.109 1.14-.325 1.63a3.504 3.504 0 0 1-.905 1.328 4.21 4.21 0 0 1-1.404.912c-.546.216-1.146.322-1.802.322-.647 0-1.242-.061-1.786-.182a7.61 7.61 0 0 1-1.554-.516v-2.702c.433.297.913.541 1.441.731.528.19 1.077.284 1.646.284.887 0 1.517-.202 1.89-.608.238-.258.358-.596.358-1.014 0-.252-.05-.472-.15-.66a1.19 1.19 0 0 0-.414-.46c-.175-.119-.408-.235-.698-.35s-.644-.258-1.062-.435c-.742-.313-1.344-.644-1.806-.993a3.511 3.511 0 0 1-1.117-1.31 3.56 3.56 0 0 1-.397-1.698c0-.946.337-1.735 1.011-2.368.675-.632 1.573-.949 2.695-.949zm-15.451.127h8.216v2.332H8.539v10.316H5.775V12.209H3.037V9.877z"},
+  { name: "Javascript", icon:"fa-brands fa-js" },
+  { name: "Angular", icon:"fa-brands fa-angular" },
+  { name: "Vite", icon:"custom-svg", svgPath: "M18.598 2.81a.675.675 0 0 0-1.215.002L3.996 22.507a.675.675 0 0 0 .777.937l5.313-1.332a.675.675 0 0 1 .792.906l-1.335 3.012a.675.675 0 0 0 1.144.733L21.94 9.15a.675.675 0 0 0-.547-1.116l-5.326.01a.675.675 0 0 1-.62-.916l3.15-4.309z" },
+  { name: "Astro", icon:"custom-svg", svgPath:"M0 19.5103C0 19.5103 3.99947 17.5552 8.01012 17.5552L11.034 8.16461C11.1472 7.71047 11.4778 7.40185 11.8509 7.40185C12.2241 7.40185 12.5547 7.71047 12.6679 8.16461L15.6918 17.5552C20.4418 17.5552 23.7019 19.5103 23.7019 19.5103C23.7019 19.5103 16.9085 0.939907 16.8952 0.902648C16.7002 0.353607 16.3711 0 15.9273 0H7.77531C7.33154 0 7.01567 0.353607 6.80741 0.902648C6.79274 0.939204 0 19.5103 0 19.5103Z M7.70883 25.5523C6.35819 24.3134 5.9639 21.7103 6.52661 19.8245C7.50233 21.0135 8.85426 21.3901 10.2546 21.6027C12.4164 21.9308 14.5395 21.8081 16.5477 20.8166C16.7774 20.7031 16.9897 20.5522 17.2407 20.3993C17.4292 20.9478 17.4782 21.5017 17.4124 22.0653C17.2524 23.4381 16.5716 24.4985 15.4887 25.3023C15.0557 25.6238 14.5975 25.9112 14.1503 26.2144C12.7765 27.1462 12.4048 28.2387 12.921 29.828C12.9333 29.8667 12.9443 29.9054 12.972 29.9999C12.2705 29.6849 11.7582 29.2263 11.3678 28.6232C10.9554 27.9867 10.7592 27.2826 10.7489 26.5208C10.7437 26.1501 10.7437 25.776 10.694 25.4106C10.5727 24.5195 10.1559 24.1205 9.37051 24.0975C8.56451 24.0739 7.92694 24.5739 7.75787 25.3613C7.74497 25.4217 7.72625 25.4814 7.70754 25.5516L7.70883 25.5523Z"},
+  { name: "Laravel", icon:"fa-brands fa-laravel" },
+  { name: "PHP", icon:"fa-brands fa-php" },
   { name: "Linux", icon: "fa-brands fa-linux" },
   { name: "Git", icon: "fa-brands fa-git-alt" },
-  { name: "Astro", icon: "fa-solid fa-rocket" },
-  { name: "PostgreSQL", icon: "fa-solid fa-database" },
-  { name: "Terraform", icon: "fa-solid fa-cubes" },
+  { name: "nodeJS", icon:"fa-brands fa-node-js" },
+  { name: "mySQL", icon: "fa-solid fa-database" },
+  { name: "Python", icon:"fa-brands fa-python" },
+  { name: "NPM", icon:"fa-brands fa-npm" },
   { name: "CI/CD", icon: "fa-solid fa-arrows-spin" },
 ];
 
@@ -67,7 +73,15 @@ const whyMeCards = [
       <div class="stack-grid">
         {techStack.map((tech) => (
           <div class="stack-block">
-            <i class={tech.icon}></i>
+            {tech.icon === "custom-svg" ? (
+              /* Handmatige Tailwind SVG omdat de CDN versie 7.2.0 niet ondersteunt */
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d={tech.svgPath} />
+              </svg>
+            ) : (
+              /* Standaard FontAwesome iconen */
+              <i class={tech.icon}></i>
+            )}
             <span>{tech.name}</span>
           </div>
         ))}
@@ -229,7 +243,7 @@ const whyMeCards = [
       border-color 0.3s ease;
   }
 
-  .stack-block:hover {
+  .stack-block:hover, {
     transform: translateY(-6px) scale(1.04);
     border-color: rgba(0, 136, 204, 0.4);
     box-shadow:
@@ -245,7 +259,7 @@ const whyMeCards = [
     filter: drop-shadow(0 2px 6px rgba(0, 136, 204, 0.3));
   }
 
-  .stack-block:hover i {
+  .stack-block:hover i{
     color: #33aaee;
     transform: scale(1.15);
   }
@@ -262,6 +276,30 @@ const whyMeCards = [
   .stack-block:hover span {
     color: #fff;
   }
+
+  /* 1. Zorg dat de SVG standaard de cyber-blue kleur en gloed heeft */
+.stack-block svg {
+  width: 1.50rem !important;
+  height: 1.50rem !important;
+  color: var(--gordian-blue);
+  fill: var(--gordian-blue);
+  filter: drop-shadow(0 0 2px var(--gordian-blue));
+  transition: all 0.3s ease; /* Zorg voor een vloeiende overgang */
+}
+
+/* 2. De Hover State: Wanneer je over het VAKJE (stack-block) gaat */
+.stack-block:hover i,
+.stack-block:hover svg {
+  color: #fff !important; /* Of een andere kleur die je voor je hover gebruikt */
+  fill: #fff !important;
+  filter: drop-shadow(0 0 12px var(--gordian-blue)); /* Versterk de gloed bij hover */
+  transform: translateY(-2px); /* Optioneel: een kleine subtiele lift */
+}
+
+/* 3. Specifieke overrule voor de path kleur */
+.stack-block svg path {
+  fill: currentColor;
+}
 
   /* Differentiator cards */
   .why-section {

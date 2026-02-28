@@ -10,16 +10,16 @@
     "name": "Alessio Miccichè",
     "role1": "Full Stack Engineer",
     "role2": "Aspiring DevSecOps",
-    "bio": "Gedreven om complexe digitale uitdagingen te <span class=\"red-text\">ontwarren</span> door middel van logica en design. Ik overbrug de kloof tussen development en beveiliging om systemen te bouwen die <span class=\"blue-text\">standaard veilig</span> en <span class=\"blue-text\">schaalbaar</span> zijn.",
+    "bio": "Software Engineer uit Zutendaal met een scherpe focus op security en DevSecOps principes. Ik bouw digitale fundamenten die blijven staan.",
     "contactLink": "Contacteer Mij",
     "watermark": "Hello World;"
   },
   "about": {
     "title": "Over Mij",
     "paragraphs": [
-      "Hallo, ik ben Alessio — full stack developer en DevSecOps consultant gevestigd in België. Met ervaring doorheen de tech-industrie specialiseer ik mij in het bouwen van veilige, schaalbare webapplicaties en infrastructuur voor klanten in heel Europa en daarbuiten.",
-      "Mijn reis in tech begon met een passie voor programmeren en het oplossen van uitdagingen, wat mij ertoe bracht om allerlei programmeertalen en frameworks te verkennen. Doorheen de jaren heb ik mijn vaardigheden verfijnd in zowel front-end als back-end development, alsook cloud architecture en security best practices.",
-      "Als ik niet aan het programmeren ben, vind je mij bezig met de nieuwste technologische trends, bijdragen aan open source projecten, of genieten van de natuur. Ik sta altijd klaar om nieuwe uitdagingen aan te gaan en samen te werken met gelijkgestemde mensen aan impactvolle oplossingen."
+      "Hoi, ik ben Alessio, een Full Stack Developer met een sterke focus op DevSecOps, gevestigd in Limburg. Mijn drijfveer is het bouwen van veilige, schaalbare webapplicaties en robuuste infrastructuur die technisch écht klopt.",
+      "Mijn traject in de tech-sector begon vanuit een pure passie voor coding en problem-solving. Dat vertaalde zich snel in een diepe duik in zowel front-end als back-end development, waarbij ik me specifiek toeleg op cloud architectuur en security best practices. Ik geloof niet in 'quick fixes', maar in systemen die vanaf de eerste lijn code veilig zijn ontworpen.",
+      "Wanneer ik niet achter mijn scherm zit, ben ik meestal bezig met de laatste tech-trends of draag ik mijn steentje bij aan open-source projecten. Naast het programmeren vind je me vaak buiten, aan de biljarttafel, of tussen mijn huisdieren — de dagelijkse zorg voor mijn dieren houdt me scherp en herinnert me aan het belang van verantwoordelijkheid en geduld, zowel in het leven als in mijn code."
     ],
     "profileAlt": "Profielfoto",
     "stackTitle": "Tech Stack",

@@ -10,16 +10,16 @@
     "name": "Alessio Miccichè",
     "role1": "Full Stack Engineer",
     "role2": "Aspiring DevSecOps",
-    "bio": "Dedicated to <span class=\"red-text\">untangling</span> complex digital challenges through logic and design. I bridge the gap between development and protection to create systems that are <span class=\"blue-text\">secure by default</span> and <span class=\"blue-text\">scalable</span> by nature.",
+    "bio": "Software Engineer based in Zutendaal with a sharp focus on security and DevSecOps principles. Building digital foundations that last.",
     "contactLink": "Contact Me",
     "watermark": "Hello World;"
   },
   "about": {
     "title": "About Me",
     "paragraphs": [
-      "Hi, I'm Alessio, a full stack developer and DevSecOps consultant based in Belgium. With experience across the tech industry, I specialise in building secure, scalable web applications and infrastructure for clients across Europe and beyond.",
-      "My journey in tech started with a passion for coding and problem-solving, which led me to explore various programming languages and frameworks. Over the years, I've honed my skills in both front-end and back-end development, as well as cloud architecture and security best practices.",
-      "When I'm not coding, you can find me exploring the latest trends in technology, contributing to open source projects, or enjoying the great outdoors. I'm always eager to take on new challenges and collaborate with like-minded individuals to create impactful solutions."
+      "Hi, I'm Alessio, a Full Stack Developer with a strong focus on DevSecOps, based in Limburg. I specialise in building secure, scalable web applications and robust infrastructure that is technically sound from the ground up.",
+      "My journey in tech started with a passion for coding and problem-solving, which led me to dive deep into both front-end and back-end development. I particularly focus on cloud architecture and security best practices, believing in systems that are secure by design rather than just patched later.",
+      "When I'm not coding, you'll find me exploring the latest tech trends or contributing to open-source projects. Outside of tech, I enjoy the outdoors, a good game of billiards, or spending time with my pets—caring for them keeps me grounded and reinforces a sense of responsibility and patience that I carry over into my engineering work."
     ],
     "profileAlt": "Profile Picture",
     "stackTitle": "Tech Stack",
