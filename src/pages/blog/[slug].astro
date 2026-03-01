@@ -37,6 +37,7 @@ const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
 <Layout title={`${post.title} | Blog`} description={post.excerpt}>
   <Navbar />
 
+  <main>
   <article class="post-container">
     <a href="/blog" class="back-link" data-i18n="blog.backToBlog">&larr; Back to Blog</a>
 
@@ -66,6 +67,7 @@ const paragraphs = content.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
       ))}
     </div>
   </article>
+  </main>
 
   <Footer />
 </Layout>
