@@ -51,33 +51,33 @@
     "items": [
       {
         "title": "Full Stack Web Development",
-        "description": "Op maat gemaakte webapplicaties, van de grond af opgebouwd met moderne frameworks. Responsive front-ends gecombineerd met robuuste, schaalbare back-end APIs — ontworpen voor performance en onderhoudbaarheid.",
-        "highlights": ["React / Astro / Next.js", "Node.js / Python APIs", "PostgreSQL / MongoDB", "REST & GraphQL"]
+        "description": "Ik bouw complete, schaalbare webapplicaties van scratch. Of het nu gaat om een complex huurdersportaal in Laravel en Angular of een interactieve webshop met TypeScript en PHP-logica, ik zorg voor een naadloze integratie tussen frontend en backend.",
+        "highlights": ["Angular / Astro / Typescript", "PHP / Laravel", "SQL & JSON Databases", "REST APIs"]
       },
       {
-        "title": "DevSecOps Consulting",
-        "description": "Security verweven in elke fase van je development pipeline. Ik help teams om te shiften naar links door geautomatiseerde scanning, policy-as-code en veilige architectuurpatronen te integreren vanaf dag één.",
-        "highlights": ["CI/CD hardening", "SAST & DAST integratie", "Container security", "Compliance automatisering"]
+        "title": "Real-Time Data & Dashboarding",
+        "description": "Ik specialiseer me in het visualiseren van live data-stromen. Met technologieën zoals WebSockets en Lightstreamer bouw ik dashboards die real-time telemetrie direct vertalen naar een overzichtelijke en interactieve gebruikersinterface.",
+        "highlights": ["WebSockets", "Astro Islands", "Data Visualisatie", "Real-Time Monitoring"]
       },
       {
-        "title": "Cloud Architecture & Infrastructuur",
-        "description": "Schaalbare, kostenefficiënte cloud infrastructuur op AWS, Azure of GCP. Infrastructure as Code zorgt ervoor dat je omgevingen reproduceerbaar, versiebeheerd en audit-ready zijn.",
-        "highlights": ["Terraform / Pulumi", "AWS / Azure / GCP", "Kubernetes & Docker", "Kostenoptimalisatie"]
+        "title": "UX Storytelling & Creative Design",
+        "description": "Ik geloof dat een sterke user experience start bij een goed verhaal. Ik combineer modern design met creatieve copywriting en humor om applicaties te bouwen die niet alleen werken, maar ook een blijvende indruk achterlaten.",
+        "highlights": ["UX Writing", "Tailwind CSS/Bootstrap", "Interactive Branding"]
       },
       {
-        "title": "CI/CD Pipeline Design",
-        "description": "Geautomatiseerde build-, test- en deployment-pipelines die je code sneller en veiliger naar productie brengen. Van GitHub Actions tot GitLab CI — ik ontwerp workflows waar teams graag mee werken.",
-        "highlights": ["GitHub Actions / GitLab CI", "Geautomatiseerde test gates", "Blue-green deployments", "Rollback strategieën"]
+        "title": "Security Audits & Tooling",
+        "description": "Veiligheid is geen bijzaak. Ik voer security-assessments uit en ontwikkel custom Python-scripts voor netwerkanalyses. Ik focus me op proactieve beveiliging, van dependency-audits tot het dichten van OWASP-kwetsbaarheden.",
+        "highlights": ["Python Security Tools", "Network Scanning", "OWASP", "Vulnerability Research" ]
       },
       {
-        "title": "Security Audits & Penetration Testing",
-        "description": "Uitgebreide security assessments van je applicaties en infrastructuur. Ik identificeer kwetsbaarheden, geef concrete remediatiestappen en help je bij het opbouwen van een sterkere security posture.",
-        "highlights": ["Web app pen testing", "Infrastructuur review", "Dependency auditing", "Remediatie roadmaps"]
+        "title": "API Development & Integration",
+        "description": "Ik ontwerp en implementeer robuuste API-koppelingen. Van het integreren van externe diensten zoals OpenWeatherMap en EmailJS tot het bouwen van eigen PHP-endpoints voor complexe datastructuren; ik zorg dat systemen veilig en snel met elkaar communiceren.",
+        "highlights": ["Fetch API", "EmailJS", "JSON-server", "API Architecture"]
       },
       {
-        "title": "Technisch Advies & Mentoring",
-        "description": "Strategische begeleiding voor teams die hun engineering practices naar een hoger niveau willen tillen. Of het nu gaat om IaC adopteren, code review cultuur verbeteren of bijscholen in security — ik vertrek vanuit waar jullie staan.",
-        "highlights": ["Architecture reviews", "Team workshops", "Best practice gidsen", "1-op-1 mentoring"]
+        "title": "Mentoring & Code Quality",
+        "description": "Ik hanteer strikte coderichtlijnen en naming conventions om de onderhoudbaarheid van projecten te garanderen. Ik help teams hun workflow te verbeteren via gestructureerd versiebeheer (Git) en peer-reviews, met een sterke focus op \"clean code\" principes.",
+        "highlights": ["Clean Code", "Git Strategy", "Technical Documentation", "Best Practices"]
       }
     ],
     "processTitle": "Hoe Ik Werk",

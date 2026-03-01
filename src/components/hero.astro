@@ -33,6 +33,7 @@
     justify-content: center;
     padding: 0 5%;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   .content {
@@ -42,6 +43,7 @@
     width: 100%;
     text-align: left;
     transform: translateY(-8vh);
+    box-sizing: border-box;
   }
 
   .bg-watermark {
@@ -68,11 +70,13 @@
   .name {
     font-family: var(--font-main);
     font-variation-settings: "wght" 800, "wdth" 110;
-    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    font-size: clamp(2.5rem, 8vw, 7.5rem);
     color: #fff;
     margin: 0;
     line-height: 0.9;
     text-shadow: 0 10px 50px rgba(0,0,0,0.9);
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .roles {
@@ -99,6 +103,8 @@
     color: rgba(255, 255, 255, 0.5);
     max-width: 550px;
     margin-bottom: 3rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .contact-link {
@@ -115,5 +121,61 @@
     color: var(--cyber-blue);
     border-color: var(--cyber-blue);
     padding-left: 10px;
+  }
+
+  /* ── Mobile responsiveness ── */
+  @media (max-width: 768px) {
+    .hero-section {
+      flex-direction: column;
+      flex: none;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 3vh 6% 0;
+    }
+
+    .content {
+      transform: none;
+      flex-shrink: 0;
+    }
+
+    .name {
+      font-size: clamp(2rem, 10vw, 3.5rem);
+    }
+
+    .roles {
+      flex-wrap: wrap;
+      margin: 1rem 0 0.8rem;
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
+    }
+
+    .bio {
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      max-width: 100%;
+    }
+
+    .bg-watermark {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      margin-top: 0;
+      font-size: 13vw;
+      white-space: nowrap;
+      align-self: flex-start;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .name {
+      font-size: clamp(1.8rem, 9vw, 2.5rem);
+    }
+
+    .roles {
+      font-size: 0.8rem;
+    }
+
+    .bio {
+      font-size: 0.88rem;
+    }
   }
 </style>

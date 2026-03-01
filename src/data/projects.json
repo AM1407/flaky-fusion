@@ -15,6 +15,7 @@
     },
     "image": "/img/scrstoned.png",
     "stack": ["PHP", "Stripe", "MySQL", "Tailwind"],
+    "github": "https://github.com/AM1407/Stoned.io",
     "featured": true
   },
   {
@@ -33,60 +34,83 @@
     },
     "image": "/img/scrkotcompass.png",
     "stack": ["Laravel", "Stripe", "MySQL", "Tailwind", "Angular"],
+    "github": "https://github.com/woutvanlommel/TheBuggyLandlords",
+    "featured": false
+  },
+  {
+    "id": "Portscanner",
+    "title": {
+      "nl": "Portscanner",
+      "en": "Portscanner"
+    },
+    "description": {
+      "nl": "Een eenvoudige portscanner geschreven in Python, een experiment om Python te leren",
+      "en": "A simple portscanner written in Python, an experiment to learn Python"
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/portscanner.png",
+    "stack": ["Python", "Terminal"],
+    "github": "https://github.com/AM1407/portscanner",
     "featured": false
   },
     {
-    "id": "project-gordian",
-    "title": "Project Gordian Knot",
-    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
-    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
-    "image": "/img/Gordian400dpi.svg",
-    "stack": ["Terraform", "AWS", "Security"],
+    "id": "Telemetry",
+    "title": {
+      "nl": "NASA Telemetry",
+      "en": "NASA Telemetry"
+    },
+    "description": {
+      "nl": "Een real-time ISS telemetry dashboard dat de Urine Processing Assembly (UPA) aan boord van het International Space Station monitort.",
+      "en": "A real-time ISS telemetry dashboard that monitors the Urine Processing Assembly (UPA) aboard the International Space Station."
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/telemetry.png",
+    "stack": ["php", "Astro", "Preact", "Leaflet", "Lightstreamer" ],
+    "github": "https://github.com/AM1407/Space-telemetry-project",
     "featured": false
   },
-    {
-    "id": "project-gordian",
-    "title": "Project Gordian Knot",
-    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
-    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
-    "image": "/img/Gordian400dpi.svg",
-    "stack": ["Terraform", "AWS", "Security"],
+  {
+    "id": "WeatherApp",
+    "title": {
+      "nl": "Weer App",
+      "en": "Weather App"
+    },
+    "description": {
+      "nl": "Een school project waarbij we een weer app hebben gemaakt met behulp van de OpenWeather API, geschreven in JavaScript",
+      "en": "A school project where we created a weather app using the OpenWeather API, written in JavaScript"
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/weather_app.png",
+    "stack": ["JavaScript", "OpenWeather API"],
+    "github": "https://github.com/AM1407/VampireWeatherApp",
     "featured": false
   },
-    {
-    "id": "project-gordian",
-    "title": "Project Gordian Knot",
-    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
-    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
-    "image": "/img/Gordian400dpi.svg",
-    "stack": ["Terraform", "AWS", "Security"],
-    "featured": false
-  },
-    {
-    "id": "project-gordian",
-    "title": "Project Gordian Knot",
-    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
-    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
-    "image": "/img/Gordian400dpi.svg",
-    "stack": ["Terraform", "AWS", "Security"],
-    "featured": false
-  },
-    {
-    "id": "project-gordian",
-    "title": "Project Gordian Knot",
-    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
-    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
-    "image": "/img/Gordian400dpi.svg",
-    "stack": ["Terraform", "AWS", "Security"],
-    "featured": false
-  },
-    {
-    "id": "project-gordian",
-    "title": "Project Gordian Knot",
-    "description": "Een full-scale IaC deployment met focus op zero-trust principes.",
-    "fullDescription": "Gedetailleerde uitleg voor de nieuwe pagina...",
-    "image": "/img/Gordian400dpi.svg",
-    "stack": ["Terraform", "AWS", "Security"],
+  {
+    "id": "SantaWebshop",
+    "title": {
+      "nl": "Kerstman's Webshop",
+      "en": "Santa's Webshop"
+    },
+    "description": {
+      "nl": "Een voorbeeld webshop met emailJS en FETCH-API van JSON-server, geschreven in JavaScript",
+      "en": "A sample webshop with emailJS and FETCH-API from JSON-server, written in JavaScript"
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/SW_scrsh.png",
+    "stack": ["JavaScript", "emailJS", "JSON-server"],
+    "github": "https://github.com/AM1407/SantaWebshop",
     "featured": false
   }
 ]

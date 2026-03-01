@@ -11,25 +11,25 @@
       "highlights": ["React / Astro / Next.js", "Node.js / Python APIs", "PostgreSQL / MongoDB", "REST & GraphQL"]
     },
     {
-      "icon": "fa-solid fa-shield-halved",
+      "icon": "fa-solid fa-magnifying-glass-chart",
       "title": "DevSecOps Consulting",
       "description": "Security woven into every stage of your development pipeline. I help teams shift left by integrating automated scanning, policy-as-code, and secure architecture patterns from day one.",
       "highlights": ["CI/CD hardening", "SAST & DAST integration", "Container security", "Compliance automation"]
     },
     {
-      "icon": "fa-solid fa-cloud",
+      "icon": "fa-solid fa-pen-nib",
       "title": "Cloud Architecture & Infrastructure",
       "description": "Scalable, cost-efficient cloud infrastructure on AWS, Azure, or GCP. Infrastructure as Code ensures your environments are reproducible, version-controlled, and audit-ready.",
       "highlights": ["Terraform / Pulumi", "AWS / Azure / GCP", "Kubernetes & Docker", "Cost optimisation"]
     },
     {
-      "icon": "fa-solid fa-arrows-spin",
+      "icon": "fa-solid fa-shield-halved",
       "title": "CI/CD Pipeline Design",
       "description": "Automated build, test, and deployment pipelines that get your code to production faster and safer. From GitHub Actions to GitLab CI — I design workflows that teams actually enjoy using.",
       "highlights": ["GitHub Actions / GitLab CI", "Automated testing gates", "Blue-green deployments", "Rollback strategies"]
     },
     {
-      "icon": "fa-solid fa-magnifying-glass-chart",
+      "icon": "fa-solid fa-arrows-spin",
       "title": "Security Audits & Penetration Testing",
       "description": "Comprehensive security assessments of your applications and infrastructure. I identify vulnerabilities, provide actionable remediation steps, and help you build a stronger security posture.",
       "highlights": ["Web app pen testing", "Infrastructure review", "Dependency auditing", "Remediation roadmaps"]

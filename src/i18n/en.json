@@ -51,33 +51,33 @@
     "items": [
       {
         "title": "Full Stack Web Development",
-        "description": "Custom web applications built from the ground up using modern frameworks. Responsive front-ends paired with robust, scalable back-end APIs — designed for performance and maintainability.",
-        "highlights": ["React / Astro / Next.js", "Node.js / Python APIs", "PostgreSQL / MongoDB", "REST & GraphQL"]
+        "description": "I build complete, scalable web applications from scratch. Whether it's a complex tenant portal in Laravel and Angular or an interactive webshop with TypeScript and PHP logic, I ensure seamless integration between frontend and backend.",
+        "highlights": ["Angular / Astro / Typescript", "PHP / Laravel", "SQL & JSON Databases", "REST APIs"]
       },
       {
-        "title": "DevSecOps Consulting",
-        "description": "Security woven into every stage of your development pipeline. I help teams shift left by integrating automated scanning, policy-as-code, and secure architecture patterns from day one.",
-        "highlights": ["CI/CD hardening", "SAST & DAST integration", "Container security", "Compliance automation"]
+        "title": "Real-Time Data & Dashboarding",
+        "description": "I specialise in visualising live data streams. Using technologies like WebSockets and Lightstreamer, I build dashboards that translate real-time telemetry directly into a clear and interactive user interface.",
+        "highlights": ["WebSockets", "Astro Islands", "Data Visualisation", "Real-Time Monitoring"]
       },
       {
-        "title": "Cloud Architecture & Infrastructure",
-        "description": "Scalable, cost-efficient cloud infrastructure on AWS, Azure, or GCP. Infrastructure as Code ensures your environments are reproducible, version-controlled, and audit-ready.",
-        "highlights": ["Terraform / Pulumi", "AWS / Azure / GCP", "Kubernetes & Docker", "Cost optimisation"]
+        "title": "UX Storytelling & Creative Design",
+        "description": "I believe a strong user experience starts with a good story. I combine modern design with creative copywriting and humour to build applications that don't just work, but also leave a lasting impression.",
+        "highlights": ["UX Writing", "Tailwind CSS/Bootstrap", "Interactive Branding"]
       },
       {
-        "title": "CI/CD Pipeline Design",
-        "description": "Automated build, test, and deployment pipelines that get your code to production faster and safer. From GitHub Actions to GitLab CI — I design workflows that teams actually enjoy using.",
-        "highlights": ["GitHub Actions / GitLab CI", "Automated testing gates", "Blue-green deployments", "Rollback strategies"]
+        "title": "Security Audits & Tooling",
+        "description": "Security is never an afterthought. I perform security assessments and develop custom Python scripts for network analysis. My focus is on proactive protection, from dependency audits to patching OWASP vulnerabilities.",
+        "highlights": ["Python Security Tools", "Network Scanning", "OWASP", "Vulnerability Research"]
       },
       {
-        "title": "Security Audits & Penetration Testing",
-        "description": "Comprehensive security assessments of your applications and infrastructure. I identify vulnerabilities, provide actionable remediation steps, and help you build a stronger security posture.",
-        "highlights": ["Web app pen testing", "Infrastructure review", "Dependency auditing", "Remediation roadmaps"]
+        "title": "API Development & Integration",
+        "description": "I design and implement robust API integrations. From connecting external services like OpenWeatherMap and EmailJS to building custom PHP endpoints for complex data structures — I make sure systems communicate securely and efficiently.",
+        "highlights": ["Fetch API", "EmailJS", "JSON-server", "API Architecture"]
       },
       {
-        "title": "Technical Consulting & Mentoring",
-        "description": "Strategic guidance for teams looking to level up their engineering practices. Whether it's adopting IaC, improving code review culture, or upskilling on security — I meet you where you are.",
-        "highlights": ["Architecture reviews", "Team workshops", "Best practice guides", "1-on-1 mentoring"]
+        "title": "Mentoring & Code Quality",
+        "description": "I maintain strict coding guidelines and naming conventions to ensure project maintainability. I help teams improve their workflow through structured version control (Git) and peer reviews, with a strong focus on clean code principles.",
+        "highlights": ["Clean Code", "Git Strategy", "Technical Documentation", "Best Practices"]
       }
     ],
     "processTitle": "How I Work",
