@@ -19,15 +19,22 @@ import I18nScript from '../components/I18nScript.astro';
 		<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
 
 		<!-- SECURITY FIX: Fixed relative favicon path — was breaking on nested routes -->
-		<link rel="icon" type="image/svg+xml" href="/img/Gordian400dpi.svg" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 
 		<!-- Preconnect to external font and icon CDNs -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
-		<!-- Font Awesome icons -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!-- Google Fonts: loaded non-blocking via preload + onload swap -->
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap" media="print" onload="this.media='all'" />
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap" /></noscript>
+
+		<!-- Font Awesome icons: loaded non-blocking -->
+		<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+		<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></noscript>
 
 		<!-- Fade-in transition: body starts invisible until content is ready -->
 		<style is:inline>
@@ -44,18 +51,18 @@ import I18nScript from '../components/I18nScript.astro';
 		<slot />
 		<I18nScript />
 
-		<!-- Reveal page after all resources load, with a 1.5s safety timeout -->
+		<!-- Reveal page after DOM is ready, with a 1s safety timeout -->
 		<script is:inline>
-			if (document.readyState === 'complete') {
+			if (document.readyState === 'complete' || document.readyState === 'interactive') {
 				document.body.classList.add('page-ready');
 			} else {
-				window.addEventListener('load', function () {
+				document.addEventListener('DOMContentLoaded', function () {
 					document.body.classList.add('page-ready');
 				});
 			}
 			setTimeout(function () {
 				document.body.classList.add('page-ready');
-			}, 1500);
+			}, 1000);
 		</script>
 	</body>
 </html>

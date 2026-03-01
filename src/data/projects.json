@@ -13,7 +13,7 @@
       "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
       "en": "Detailed explanation for the new page..."
     },
-    "image": "/img/scrstoned.png",
+    "image": "/img/scrstoned.webp",
     "stack": ["PHP", "Stripe", "MySQL", "Tailwind"],
     "github": "https://github.com/AM1407/Stoned.io",
     "featured": true
@@ -32,7 +32,7 @@
       "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
       "en": "Detailed explanation for the new page..."
     },
-    "image": "/img/scrkotcompass.png",
+    "image": "/img/scrkotcompass.webp",
     "stack": ["Laravel", "Stripe", "MySQL", "Tailwind", "Angular"],
     "github": "https://github.com/woutvanlommel/TheBuggyLandlords",
     "featured": false
@@ -51,7 +51,7 @@
       "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
       "en": "Detailed explanation for the new page..."
     },
-    "image": "/img/portscanner.png",
+    "image": "/img/portscanner.webp",
     "stack": ["Python", "Terminal"],
     "github": "https://github.com/AM1407/portscanner",
     "featured": false
@@ -70,7 +70,7 @@
       "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
       "en": "Detailed explanation for the new page..."
     },
-    "image": "/img/telemetry.png",
+    "image": "/img/telemetry.webp",
     "stack": ["php", "Astro", "Preact", "Leaflet", "Lightstreamer" ],
     "github": "https://github.com/AM1407/Space-telemetry-project",
     "featured": false
@@ -89,7 +89,7 @@
       "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
       "en": "Detailed explanation for the new page..."
     },
-    "image": "/img/weather_app.png",
+    "image": "/img/weather_app.webp",
     "stack": ["JavaScript", "OpenWeather API"],
     "github": "https://github.com/AM1407/VampireWeatherApp",
     "featured": false
@@ -108,7 +108,7 @@
       "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
       "en": "Detailed explanation for the new page..."
     },
-    "image": "/img/SW_scrsh.png",
+    "image": "/img/SW_scrsh.webp",
     "stack": ["JavaScript", "emailJS", "JSON-server"],
     "github": "https://github.com/AM1407/SantaWebshop",
     "featured": false

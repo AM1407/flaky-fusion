@@ -78,7 +78,7 @@ if (!project) return Astro.redirect('/404');
     </header>
 
     <div class="detail-content">
-      <img src={project.image} alt={project.title[lang]} class="hero-img" />
+      <img src={project.image} alt={project.title[lang]} class="hero-img" width="1200" height="630" loading="lazy" />
       
       <div class="description-container">
         {/* Render BEIDE talen en laat CSS/JS bepalen welke zichtbaar is */}

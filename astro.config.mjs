@@ -4,6 +4,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  prefetch: true,
   // Voeg i18n ondersteuning toe
   i18n: {
     defaultLocale: 'en',

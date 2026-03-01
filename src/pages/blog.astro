@@ -158,7 +158,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
         return `
           <article class="blog-card ${dir}">
             <div class="card-image">
-              <img src="${esc(post.image)}" alt="${esc(tp.title)}" />
+              <img src="${esc(post.image)}" alt="${esc(tp.title)}" width="600" height="400" loading="lazy" />
             </div>
             <div class="card-body">
               <div class="card-meta">

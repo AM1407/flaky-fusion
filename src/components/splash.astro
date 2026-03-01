@@ -8,12 +8,18 @@
       id="splash-blue" 
       class="absolute w-full h-full object-contain pointer-events-none" 
       alt=""
+      width="350"
+      height="350"
+      fetchpriority="high"
     />
     <img 
       src="/img/gordianlogored.svg" 
       id="splash-red" 
       class="absolute w-full h-full object-contain pointer-events-none" 
       alt=""
+      width="350"
+      height="350"
+      fetchpriority="high"
     />
   </div>
 </div>
@@ -81,15 +87,13 @@
 <script>
   import { gsap } from 'gsap';
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const hasSeenSplash = sessionStorage.getItem('splashSeen');
+  // Module scripts are deferred — DOM is already parsed when this runs
+  const hasSeenSplash = sessionStorage.getItem('splashSeen');
 
-    if (hasSeenSplash) {
-      // Splash already shown this session — skip animation
-      window.dispatchEvent(new Event('splash-finished'));
-      return;
-    }
-
+  if (hasSeenSplash) {
+    // Splash already shown this session — skip animation
+    window.dispatchEvent(new Event('splash-finished'));
+  } else {
     // First visit: play the logo entrance animation
     document.body.classList.add('loading');
 
@@ -117,5 +121,5 @@
       duration: 0.8, 
       delay: 0.8 
     });
-  });
+  }
 </script>
