@@ -1,129 +1,193 @@
 <section class="hero-section">
+  <!-- Dot-grid background -->
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <!-- Scanning line — very subtle, slow sweep -->
+  <div class="scan-line" aria-hidden="true"></div>
+
   <div class="content">
-    <h1 class="name" data-i18n="hero.name">Alessio Miccichè</h1>
-    <h2><b>Website update in progress</b></h2>
-    <div class="roles">
-      <span class="blue-text" data-i18n="hero.role1">Full Stack Engineer</span> 
-      <span style="opacity: 0.3; margin: 0 10px; color: #fff;">|</span> 
-      <span class="red-text" data-i18n="hero.role2">Aspiring DevSecOps</span>
+    <!-- Terminal prompt -->
+    <div class="terminal-prompt" aria-hidden="true">
+      <span class="p-user">alessio</span><span class="p-sep">@</span><span class="p-host">portfolio</span><span class="p-sep">:</span><span class="p-path">~/</span><span class="p-sep">$</span><span class="p-cmd"> whoami</span>
     </div>
+
+    <!-- Name with glitch animation -->
+    <h1 class="name" data-i18n="hero.name">Alessio Miccichè</h1>
+
+    <!-- Roles -->
+    <div class="roles">
+      <span class="role-green" data-i18n="hero.role1">Full Stack Engineer</span>
+      <span class="role-sep" aria-hidden="true">|</span>
+      <span class="role-cyan" data-i18n="hero.role2">Aspiring CyberSec</span>
+    </div>
+
+    <!-- Bio -->
     <p class="bio" data-i18n-html="hero.bio">
-      Dedicated to <span class="red-text">untangling</span> complex digital challenges through logic and design. 
-      I bridge the gap between development and protection to create systems that are 
-      secure by default</span> and <span class="blue-text">scalable</span> by nature.
+      Dedicated to <span class="role-cyan">untangling</span> complex digital challenges through logic and design.
+      I bridge the gap between development and protection to create systems that are
+      <span class="role-green">secure by default</span> and scalable by nature.
     </p>
-    <a href="contact" class="contact-link"><span data-i18n="hero.contactLink">Contact Me</span> &rarr;</a>
+
+    <!-- CTA -->
+    <a href="/contact" class="cta-btn">
+      <span class="cta-prefix" aria-hidden="true">&gt;_</span>
+      <span data-i18n="hero.contactLink">Contact Me</span>
+    </a>
   </div>
 
-  <div class="bg-watermark" data-i18n="hero.watermark">Hello World;</div>
+  <div class="bg-watermark" aria-hidden="true" data-i18n="hero.watermark">Hello World;</div>
 </section>
 
 <style>
-  :root {
-    --cyber-blue: #0088cc;
-    --cyber-red: #ff4d4d;
-  }
-
   .hero-section {
     position: relative;
     flex: 1;
     width: 100%;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     padding: 0 5%;
     overflow: hidden;
     box-sizing: border-box;
   }
 
+  /* Subtle radial dot-grid — fades at edges */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0, 255, 65, 0.07) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  /* Scan line — near-invisible, 9s cycle, professional */
+  .scan-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 65, 0.18) 40%, rgba(0, 255, 65, 0.18) 60%, transparent 100%);
+    animation: scan-down 9s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
   .content {
     position: relative;
-    z-index: 2; 
+    z-index: 2;
     max-width: 900px;
     width: 100%;
     text-align: left;
-    transform: translateY(-8vh);
+    transform: translateY(-6vh);
     box-sizing: border-box;
   }
 
+  /* Terminal prompt line */
+  .terminal-prompt {
+    font-family: var(--font-mono);
+    font-size: clamp(0.72rem, 1.1vw, 0.85rem);
+    margin-bottom: 14px;
+    opacity: 0.75;
+  }
+
+  .p-user { color: var(--cyber-green); font-weight: 700; }
+  .p-sep  { color: var(--text-secondary); }
+  .p-host { color: var(--cyber-cyan); }
+  .p-path { color: var(--cyber-cyan); }
+  .p-cmd  { color: var(--text-primary); }
+
+  /* Name — glitch fires infrequently, stays readable */
+  .name {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 8vw, 7rem);
+    color: var(--text-primary);
+    margin: 0 0 4px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    animation: glitch 10s ease-in-out infinite;
+  }
+
+  /* Roles */
+  .roles {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 14px;
+    font-family: var(--font-mono);
+    font-size: clamp(0.8rem, 1.3vw, 0.98rem);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    flex-wrap: wrap;
+  }
+
+  .role-green { color: var(--cyber-green); }
+  .role-cyan  { color: var(--cyber-cyan); }
+  .role-sep   { color: var(--text-dim); }
+
+  /* Bio */
+  .bio {
+    font-family: var(--font-body);
+    font-size: clamp(0.92rem, 1.15vw, 1.05rem);
+    line-height: 1.75;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* CTA button */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--cyber-green);
+    text-decoration: none;
+    border: 1px solid var(--border-green);
+    border-radius: 4px;
+    padding: 10px 22px;
+    background: rgba(0, 255, 65, 0.04);
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    background: rgba(0, 255, 65, 0.08);
+    box-shadow: var(--glow-green);
+    transform: translateX(4px);
+  }
+
+  .cta-prefix {
+    font-weight: 800;
+    color: var(--cyber-green);
+  }
+
+  /* Watermark */
   .bg-watermark {
     position: absolute;
-    bottom: 0; 
+    bottom: 0;
     left: -1vw;
-    z-index: 1; 
-    font-family: var(--font-main);
+    z-index: 1;
+    font-family: var(--font-mono);
     font-size: 16vw;
     font-weight: 900;
     line-height: 0.8;
     white-space: nowrap;
     user-select: none;
     pointer-events: none;
-    background: linear-gradient(
-      to right, 
-      rgba(255, 255, 255, 0.05) 0%, 
-      rgba(255, 255, 255, 0.01) 100%
-    );
+    background: linear-gradient(to right, rgba(0, 255, 65, 0.025) 0%, rgba(0, 255, 65, 0.005) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .name {
-    font-family: var(--font-main);
-    font-variation-settings: "wght" 800, "wdth" 110;
-    font-size: clamp(2.5rem, 8vw, 7.5rem);
-    color: #fff;
-    margin: 0;
-    line-height: 0.9;
-    text-shadow: 0 10px 50px rgba(0,0,0,0.9);
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-
-  .roles {
-    margin: 2rem 0 1rem 0;
-    font-family: var(--font-main);
-    font-size: clamp(1rem, 1.5vw, 1.3rem);
-    letter-spacing: 0.1em;
-    font-weight: 500;
-  }
-
-  /* Color accent classes */
-  .blue-text { 
-    color: var(--gordian-blue); 
-    font-weight: 600;
-  }
-  .red-text { 
-    color: var(--gordian-red); 
-    font-weight: 600;
-  }
-
-  .bio {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.5);
-    max-width: 550px;
-    margin-bottom: 3rem;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-
-  .contact-link {
-    font-family: var(--font-main);
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 5px;
-    transition: all 0.3s ease;
-  }
-
-  .contact-link:hover {
-    color: var(--cyber-blue);
-    border-color: var(--cyber-blue);
-    padding-left: 10px;
-  }
-
-  /* ── Mobile responsiveness ── */
+  /* ── Mobile ─────────────────────────────────────────── */
   @media (max-width: 768px) {
     .hero-section {
       flex-direction: column;
@@ -138,44 +202,30 @@
       flex-shrink: 0;
     }
 
-    .name {
-      font-size: clamp(2rem, 10vw, 3.5rem);
-    }
+    .name { font-size: clamp(2rem, 10vw, 3.5rem); }
 
     .roles {
-      flex-wrap: wrap;
       margin: 1rem 0 0.8rem;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      font-size: clamp(0.75rem, 3vw, 0.88rem);
     }
 
     .bio {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       margin-bottom: 2rem;
       max-width: 100%;
     }
 
     .bg-watermark {
       position: relative;
-      bottom: auto;
-      left: auto;
+      bottom: auto; left: auto;
       margin-top: 0;
       font-size: 13vw;
-      white-space: nowrap;
-      align-self: flex-start;
     }
   }
 
   @media (max-width: 400px) {
-    .name {
-      font-size: clamp(1.8rem, 9vw, 2.5rem);
-    }
-
-    .roles {
-      font-size: 0.8rem;
-    }
-
-    .bio {
-      font-size: 0.88rem;
-    }
+    .name   { font-size: clamp(1.8rem, 9vw, 2.5rem); }
+    .roles  { font-size: 0.75rem; }
+    .bio    { font-size: 0.88rem; }
   }
 </style>

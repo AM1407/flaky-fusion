@@ -1,24 +1,213 @@
-
-/* Design tokens and global styles */
+/* ============================================================
+   CYBERSEC DESIGN SYSTEM — global.css
+   ============================================================ */
 :root {
-  --gordian-blue: #0088cc;
-  --gordian-red: #cc0000;
-  --gordian-black: #000000;
-  --gordian-white: #ffffff;
-  --gordian-text: #778F93;
-  --font-main:'Roboto Flex', sans-serif;
+  /* Backgrounds */
+  --bg-primary: #050a0e;
+  --bg-surface: #0a1520;
+  --bg-surface-2: #0d1f2d;
+  --bg-surface-3: #112233;
+
+  /* Brand accents */
+  --cyber-green: #00ff41;
+  --cyber-green-dim: rgba(0, 255, 65, 0.5);
+  --cyber-cyan: #00d4ff;
+  --cyber-cyan-dim: rgba(0, 212, 255, 0.5);
+  --cyber-red: #ff003c;
+  --cyber-red-dim: rgba(255, 0, 60, 0.5);
+  --cyber-yellow: #ffd700;
+
+  /* Text */
+  --text-primary: #e8f4f8;
+  --text-secondary: #7a9bb5;
+  --text-dim: rgba(232, 244, 248, 0.4);
+
+  /* Borders */
+  --border-green: rgba(0, 255, 65, 0.18);
+  --border-cyan: rgba(0, 212, 255, 0.18);
+  --border-dim: rgba(232, 244, 248, 0.06);
+
+  /* Glows — kept restrained for professional look */
+  --glow-green: 0 0 8px rgba(0, 255, 65, 0.25), 0 0 24px rgba(0, 255, 65, 0.06);
+  --glow-cyan:  0 0 8px rgba(0, 212, 255, 0.25), 0 0 24px rgba(0, 212, 255, 0.06);
+  --glow-red:   0 0 8px rgba(255, 0, 60, 0.25),  0 0 24px rgba(255, 0, 60, 0.06);
+
+  /* Typography */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-main: var(--font-mono); /* legacy alias */
+
+  /* Legacy color aliases — keeps old components working during restyle */
+  --gordian-blue: var(--cyber-cyan);
+  --gordian-red: var(--cyber-red);
+  --gordian-black: var(--bg-primary);
+  --gordian-white: var(--text-primary);
+  --gordian-text: var(--text-secondary);
 }
 
-/* Base body styles */
+/* Base styles */
 body {
-    min-height: 100vh;
-    background: #2B2F36;
-    background: linear-gradient(0deg,rgba(43, 47, 54, 1) 53%, rgba(11, 13, 16, 1) 100%);
-    color: var(--gordian-white);
-    margin: 0;
-    padding: 80px 0 0;
-    font-family: var(--font-main);
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 80px 0 0;
+  font-family: var(--font-body);
 }
 
-.text-blue { color: var(--gordian-blue); }
-.text-red { color: var(--gordian-red); }
+/* Very subtle scanlines — barely perceptible, adds texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.018) 2px,
+    rgba(0, 0, 0, 0.018) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ── Animations ─────────────────────────────────────────────
+   All animations are restrained — professional, not cluttered.
+   Glitch fires 6% of the cycle (~0.5s per 8s). Scan line is
+   near-invisible. Transitions max 0.3s.
+   ─────────────────────────────────────────────────────────── */
+
+/* Glitch: sporadic, brief, mostly static */
+@keyframes glitch {
+  0%, 85%, 100% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+  86% {
+    transform: translate(-2px, 0);
+    text-shadow: 2px 0 var(--cyber-cyan);
+  }
+  88% {
+    transform: translate(2px, 0);
+    text-shadow: -2px 0 var(--cyber-red);
+  }
+  90% {
+    transform: translate(-1px, 0);
+    text-shadow: 1px 0 var(--cyber-cyan);
+  }
+  92% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Scan line for hero — very low opacity, slow, non-distracting */
+@keyframes scan-down {
+  0%   { top: 0%; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Reduced motion: disable all animations ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Utility classes ──────────────────────────────────────── */
+
+.text-green  { color: var(--cyber-green); }
+.text-cyan   { color: var(--cyber-cyan); }
+.text-red    { color: var(--cyber-red); }
+.text-dim    { color: var(--text-dim); }
+.text-blue   { color: var(--cyber-cyan); }   /* legacy */
+
+/* Blinking cursor block */
+.cursor {
+  display: inline-block;
+  width: 9px;
+  height: 1.05em;
+  background: var(--cyber-green);
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Terminal window chrome (title bar) */
+.terminal-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--bg-surface-2);
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.terminal-chrome .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.terminal-chrome .dot-red    { background: #ff5f57; }
+.terminal-chrome .dot-yellow { background: #febc2e; }
+.terminal-chrome .dot-green  { background: #28c840; }
+
+.terminal-chrome .chrome-title {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--cyber-green);
+  border: 1px solid var(--border-green);
+  border-radius: 3px;
+  padding: 2px 8px;
+}
+
+.status-badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyber-green);
+  box-shadow: 0 0 5px var(--cyber-green);
+  animation: cursor-blink 2.5s ease-in-out infinite;
+}
+
+/* Section label with terminal prefix */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--cyber-green);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.section-label::before { content: '> '; }

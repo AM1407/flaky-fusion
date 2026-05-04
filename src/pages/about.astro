@@ -53,6 +53,7 @@ const whyMeCards = [
   <main class="container">
     <!-- Bio and profile picture -->
     <section class="about-section">
+      <p class="section-label">cat about.txt</p>
       <h1 class="section-title" data-i18n="about.title">About Me</h1>
       <div class="aboutcontent">
         <div class="about-text">
@@ -68,6 +69,7 @@ const whyMeCards = [
 
     <!-- Technologies and tools -->
     <section class="stack-section">
+      <p class="section-label">ls --tech-stack</p>
       <h2 class="section-title" data-i18n="about.stackTitle">Tech Stack</h2>
       <p class="section-subtitle" data-i18n="about.stackSubtitle">The tools and technologies I use to bring ideas to life.</p>
       <div class="stack-grid">
@@ -90,6 +92,7 @@ const whyMeCards = [
 
     <!-- Differentiators -->
     <section class="why-section">
+      <p class="section-label">grep --why-choose-me</p>
       <h2 class="section-title" data-i18n="about.whyTitle">Why Me?</h2>
       <p class="section-subtitle" data-i18n="about.whySubtitle">Here's what sets me apart from the rest.</p>
       <div class="why-grid">
@@ -109,115 +112,98 @@ const whyMeCards = [
 </Layout>
 
 <style>
-  /* Page layout */
   .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 24px 60px;
+    padding: 0 24px 80px;
   }
 
+  /* Section label — defined in global.css, mirrored here for scoping */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--cyber-green);
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  .section-label::before { content: '> '; }
+
   .section-title {
-    font-family: var(--font-main);
-    font-variation-settings: "wght" 800, "wdth" 110;
-    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--text-primary);
     font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    letter-spacing: -0.03em;
+    line-height: 1;
   }
 
   .section-subtitle {
-    color: var(--gordian-text);
-    font-size: 1.05rem;
-    margin-bottom: 24px;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 26px;
     line-height: 1.6;
   }
 
   /* Bio section */
   .about-section {
-    padding-top: 16px;
-    margin-bottom: 48px;
+    padding-top: 24px;
+    margin-bottom: 60px;
   }
 
   .aboutcontent {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 40px;
+    gap: 48px;
     margin-top: 24px;
   }
 
-  .about-text {
-    flex: 1;
-  }
+  .about-text { flex: 1; }
 
   .about-text p {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
     line-height: 1.8;
     margin-bottom: 16px;
     font-size: 1rem;
   }
 
-  /* Profile image with 3D border ring */
+  /* Profile picture */
   .profile-pic-wrapper {
     flex-shrink: 0;
-    position: relative;
     width: 180px;
     height: 180px;
-    border-radius: 50%;
-    /* 3D layered ring */
-    background: conic-gradient(
-      from 0deg,
-      var(--gordian-blue),
-      #1a3a5c,
-      var(--gordian-blue),
-      #0d2f50,
-      var(--gordian-blue)
-    );
-    padding: 4px;
-    box-shadow:
-      0 4px 15px rgba(0, 136, 204, 0.35),
-      0 8px 30px rgba(0, 136, 204, 0.15),
-      inset 0 2px 4px rgba(255, 255, 255, 0.15),
-      0 12px 40px rgba(0, 0, 0, 0.5);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-
-  .profile-pic-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    border: 2px solid rgba(0, 136, 204, 0.15);
-    pointer-events: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--cyber-green), var(--cyber-cyan));
+    padding: 2px;
+    box-shadow: var(--glow-green);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
 
   .profile-pic-wrapper:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow:
-      0 6px 20px rgba(0, 136, 204, 0.5),
-      0 12px 40px rgba(0, 136, 204, 0.25),
-      inset 0 2px 4px rgba(255, 255, 255, 0.2),
-      0 16px 50px rgba(0, 0, 0, 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 0 16px rgba(0, 255, 65, 0.4), 0 0 50px rgba(0, 255, 65, 0.1);
   }
 
   .profile-pic {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 4px;
     object-fit: cover;
-    background: #2B2F36;
+    background: var(--bg-surface);
     display: block;
   }
 
-  /* Technology stack grid blocks */
-  .stack-section {
-    margin-bottom: 48px;
-  }
+  /* Tech stack */
+  .stack-section { margin-bottom: 60px; }
 
   .stack-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
   }
 
   .stack-block {
@@ -226,178 +212,135 @@ const whyMeCards = [
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 24px 12px;
-    border-radius: 12px;
+    padding: 20px 10px;
+    border-radius: 6px;
     cursor: default;
-    /* 3D surface */
-    background: linear-gradient(145deg, #33373f, #282c33);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    /* 3D depth */
-    box-shadow:
-      6px 6px 14px rgba(0, 0, 0, 0.45),
-      -3px -3px 10px rgba(255, 255, 255, 0.03),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    transition:
-      transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      box-shadow 0.3s ease,
-      border-color 0.3s ease;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dim);
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
   }
 
-  .stack-block:hover, {
-    transform: translateY(-6px) scale(1.04);
-    border-color: rgba(0, 136, 204, 0.4);
-    box-shadow:
-      0 12px 28px rgba(0, 136, 204, 0.2),
-      0 4px 12px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  .stack-block:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-green);
+    box-shadow: var(--glow-green);
   }
 
   .stack-block i {
-    font-size: 1.8rem;
-    color: var(--gordian-blue);
-    transition: color 0.3s ease, transform 0.3s ease;
-    filter: drop-shadow(0 2px 6px rgba(0, 136, 204, 0.3));
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+    transition: color 0.25s;
   }
 
-  .stack-block:hover i{
-    color: #33aaee;
-    transform: scale(1.15);
+  .stack-block:hover i {
+    color: var(--cyber-green);
+    filter: drop-shadow(0 0 4px var(--cyber-green));
   }
+
+  .stack-block svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--text-secondary);
+    transition: fill 0.25s, filter 0.25s;
+  }
+
+  .stack-block:hover svg {
+    fill: var(--cyber-green);
+    filter: drop-shadow(0 0 4px var(--cyber-green));
+  }
+
+  .stack-block svg path { fill: currentColor; }
 
   .stack-block span {
-    font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: color 0.25s;
   }
 
-  .stack-block:hover span {
-    color: #fff;
-  }
+  .stack-block:hover span { color: var(--cyber-green); }
 
-  /* 1. Zorg dat de SVG standaard de cyber-blue kleur en gloed heeft */
-.stack-block svg {
-  width: 1.50rem !important;
-  height: 1.50rem !important;
-  color: var(--gordian-blue);
-  fill: var(--gordian-blue);
-  filter: drop-shadow(0 0 2px var(--gordian-blue));
-  transition: all 0.3s ease; /* Zorg voor een vloeiende overgang */
-}
-
-/* 2. De Hover State: Wanneer je over het VAKJE (stack-block) gaat */
-.stack-block:hover i,
-.stack-block:hover svg {
-  color: #fff !important; /* Of een andere kleur die je voor je hover gebruikt */
-  fill: #fff !important;
-  filter: drop-shadow(0 0 12px var(--gordian-blue)); /* Versterk de gloed bij hover */
-  transform: translateY(-2px); /* Optioneel: een kleine subtiele lift */
-}
-
-/* 3. Specifieke overrule voor de path kleur */
-.stack-block svg path {
-  fill: currentColor;
-}
-
-  /* Differentiator cards */
-  .why-section {
-    margin-bottom: 20px;
-  }
+  /* Why Me cards */
+  .why-section { margin-bottom: 20px; }
 
   .why-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 16px;
   }
 
   .why-card {
     padding: 28px 24px;
-    border-radius: 14px;
-    background: linear-gradient(145deg, #33373f, #282c33);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow:
-      6px 6px 14px rgba(0, 0, 0, 0.4),
-      -3px -3px 10px rgba(255, 255, 255, 0.02),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition:
-      transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
+    border-radius: 6px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dim);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+
+  /* Top accent line reveals on hover */
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyber-green), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
   .why-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(0, 136, 204, 0.3);
-    box-shadow:
-      0 14px 32px rgba(0, 136, 204, 0.15),
-      0 6px 14px rgba(0, 0, 0, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-color: var(--border-green);
+    transform: translateY(-4px);
+    box-shadow: var(--glow-green);
   }
 
+  .why-card:hover::before { opacity: 1; }
+
   .why-card-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
-    background: rgba(0, 136, 204, 0.1);
-    border: 1px solid rgba(0, 136, 204, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 136, 204, 0.15);
+    background: rgba(0, 255, 65, 0.06);
+    border: 1px solid var(--border-green);
   }
 
   .why-card-icon i {
-    font-size: 1.2rem;
-    color: var(--gordian-blue);
+    font-size: 1.1rem;
+    color: var(--cyber-green);
   }
 
   .why-card h3 {
-    color: #fff;
-    font-size: 1.1rem;
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    font-size: 1rem;
     font-weight: 700;
     margin: 0 0 10px;
     letter-spacing: -0.01em;
   }
 
   .why-card p {
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.92rem;
-    line-height: 1.7;
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.75;
     margin: 0;
   }
 
-  /* Mobile layout adjustments */
+  /* Mobile */
   @media (max-width: 700px) {
-    .aboutcontent {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .profile-pic-wrapper {
-      order: -1;
-      width: 150px;
-      height: 150px;
-    }
-
-    .why-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .stack-grid {
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 12px;
-    }
-
-    .stack-block {
-      padding: 18px 10px;
-    }
-
-    .stack-block i {
-      font-size: 1.5rem;
-    }
+    .aboutcontent { flex-direction: column; align-items: center; text-align: center; }
+    .profile-pic-wrapper { order: -1; width: 150px; height: 150px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+    .stack-block { padding: 16px 8px; }
   }
 </style>

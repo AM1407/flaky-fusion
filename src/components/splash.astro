@@ -1,125 +1,204 @@
 ---
-// Splash screen overlay with animated logo reveal using GSAP
+// Terminal boot splash — replaces logo animation
 ---
-<div id="splash-overlay" class="fixed inset-0 z-[10000] bg-black flex items-center justify-center overflow-hidden">
-  <div class="logo-wrapper relative w-[250px] h-[250px] md:w-[350px] md:h-[350px]"> 
-    <img 
-      src="/img/gordianlogoblue.svg" 
-      id="splash-blue" 
-      class="absolute w-full h-full object-contain pointer-events-none" 
-      alt=""
-      width="350"
-      height="350"
-      fetchpriority="high"
-    />
-    <img 
-      src="/img/gordianlogored.svg" 
-      id="splash-red" 
-      class="absolute w-full h-full object-contain pointer-events-none" 
-      alt=""
-      width="350"
-      height="350"
-      fetchpriority="high"
-    />
+
+<div id="splash-overlay">
+  <div class="terminal-boot">
+    <div class="boot-header">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span class="boot-title">boot.sh — root@portfolio:~</span>
+    </div>
+    <div class="boot-body">
+      <div class="boot-line" id="bl-0">
+        <span class="prompt">root@portfolio:~$</span>
+        <span class="cmd"> ./init.sh --mode=secure</span>
+      </div>
+      <div class="boot-line hidden" id="bl-1">&gt; Initializing system kernel...</div>
+      <div class="boot-line hidden" id="bl-2">
+        &gt; Loading security modules&nbsp;&nbsp;&nbsp;
+        <span class="progress-bar" id="progress-bar"></span>
+        <span class="ok hidden" id="ok-modules">[OK]</span>
+      </div>
+      <div class="boot-line hidden" id="bl-3">&gt; Verifying TLS certificates&nbsp;&nbsp;&nbsp;&nbsp;<span class="ok">[VERIFIED]</span></div>
+      <div class="boot-line hidden" id="bl-4">&gt; Establishing secure channel&nbsp;&nbsp;&nbsp;<span class="ok">[ENCRYPTED]</span></div>
+      <div class="boot-line hidden accent" id="bl-5">&gt; ACCESS GRANTED<span class="cursor-boot"></span></div>
+    </div>
   </div>
 </div>
 
 <style>
-  /* Prevent scrolling while splash is visible */
   :global(body.loading) {
     overflow: hidden;
   }
 
-  /* Full-screen overlay background */
   #splash-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #2B2F36;
-    background: linear-gradient(0deg,rgba(43, 47, 54, 1) 53%, rgba(11, 13, 16, 1) 100%);
+    inset: 0;
+    background: #050a0e;
     z-index: 10000;
-    /* Center the logo wrapper */
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .terminal-boot {
+    width: min(520px, 88vw);
+    background: #0a1520;
+    border: 1px solid rgba(0, 255, 65, 0.22);
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0, 255, 65, 0.04),
+      0 24px 60px rgba(0, 0, 0, 0.7);
   }
 
-  /* Logo container — controls splash logo dimensions */
-  .logo-wrapper {
-    position: relative;
-    /* Adjust these values to scale the logo */
-    width: 250px !important; 
-    height: 250px !important;
-    padding: 0;
-    margin: 0;
+  .boot-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #0d1f2d;
+    border-bottom: 1px solid rgba(232, 244, 248, 0.06);
   }
 
-  /* Logo images fill the wrapper and preserve aspect ratio */
-  #splash-blue, #splash-red {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain;
-    margin: 0;
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-red    { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green  { background: #28c840; }
+
+  .boot-title {
+    margin-left: 8px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: #7a9bb5;
+    letter-spacing: 0.02em;
   }
 
-  /* Larger logo on desktop viewports */
-  @media (min-width: 768px) {
-    .logo-wrapper {
-      width: 350px !important;
-      height: 350px !important;
-    }
+  .boot-body {
+    padding: 22px 22px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-height: 180px;
+  }
+
+  .boot-line {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.82rem;
+    color: #7a9bb5;
+    white-space: nowrap;
+    transition: opacity 0.15s ease;
+  }
+
+  .boot-line.hidden { opacity: 0; }
+
+  .boot-line .prompt { color: #00ff41; font-weight: 700; }
+  .boot-line .cmd    { color: #e8f4f8; }
+
+  .boot-line.accent {
+    color: #00ff41;
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .ok {
+    color: #00ff41;
+    font-weight: 600;
+  }
+
+  .ok.hidden { opacity: 0; }
+
+  .progress-bar {
+    color: #00ff41;
+    font-size: 0.75rem;
+    letter-spacing: -1px;
+  }
+
+  .cursor-boot {
+    display: inline-block;
+    width: 8px;
+    height: 0.95em;
+    background: #00ff41;
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    animation: cursor-blink 1s step-end infinite;
   }
 </style>
 
-<!-- Synchroon inline script: verbergt overlay VOOR render als splash al gezien is -->
+<!-- Hide immediately if already seen this session -->
 <script is:inline>
-  if (sessionStorage.getItem('splashSeen')) {
-    document.getElementById('splash-overlay').style.display = 'none';
-  }
+  (function () {
+    if (sessionStorage.getItem('splashSeen')) {
+      var el = document.getElementById('splash-overlay');
+      if (el) el.style.display = 'none';
+    }
+  })();
 </script>
 
 <script>
   import { gsap } from 'gsap';
 
-  // Module scripts are deferred — DOM is already parsed when this runs
   const hasSeenSplash = sessionStorage.getItem('splashSeen');
 
   if (hasSeenSplash) {
-    // Splash already shown this session — skip animation
     window.dispatchEvent(new Event('splash-finished'));
   } else {
-    // First visit: play the logo entrance animation
     document.body.classList.add('loading');
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        const overlay = document.getElementById('splash-overlay');
-        if (overlay) overlay.style.display = 'none';
-        document.body.classList.remove('loading');
-        sessionStorage.setItem('splashSeen', 'true');
-        window.dispatchEvent(new Event('splash-finished'));
-      }
-    });
+    const PROGRESS_FULL = '████████████████';
+    const progressEl = document.getElementById('progress-bar')!;
+    const okModules  = document.getElementById('ok-modules')!;
 
-    tl.fromTo("#splash-blue", 
-      { x: -400, y: -200, opacity: 0 }, 
-      { x: -17, y: -17, opacity: 1, duration: 1.5, ease: "power4.out" }
-    )
-    .fromTo("#splash-red", 
-      { x: 400, y: 200, opacity: 0 }, 
-      { x: 17, y: 17, opacity: 1, duration: 1.5, ease: "power4.out" }, 
-      "<"
-    )
-    .to("#splash-overlay", { 
-      opacity: 0, 
-      duration: 0.8, 
-      delay: 0.8 
-    });
+    function animateProgress(onDone: () => void) {
+      let i = 0;
+      const interval = setInterval(() => {
+        progressEl.textContent = PROGRESS_FULL.slice(0, i + 1);
+        i++;
+        if (i >= PROGRESS_FULL.length) {
+          clearInterval(interval);
+          onDone();
+        }
+      }, 55);
+    }
+
+    const finish = () => {
+      gsap.to('#splash-overlay', {
+        opacity: 0,
+        duration: 0.5,
+        delay: 0.4,
+        ease: 'power1.in',
+        onComplete: () => {
+          const overlay = document.getElementById('splash-overlay');
+          if (overlay) overlay.style.display = 'none';
+          document.body.classList.remove('loading');
+          sessionStorage.setItem('splashSeen', 'true');
+          window.dispatchEvent(new Event('splash-finished'));
+        }
+      });
+    };
+
+    const tl = gsap.timeline({ onComplete: finish });
+
+    tl
+      .to('#bl-1', { opacity: 1, duration: 0 }, 0.25)
+      .to('#bl-2', {
+        opacity: 1, duration: 0,
+        onComplete: () => animateProgress(() => {
+          okModules.classList.remove('hidden');
+          gsap.to(okModules, { opacity: 1, duration: 0.1 });
+        })
+      }, 0.6)
+      .to('#bl-3', { opacity: 1, duration: 0 }, 1.8)
+      .to('#bl-4', { opacity: 1, duration: 0 }, 2.3)
+      .to('#bl-5', { opacity: 1, duration: 0 }, 2.8);
   }
 </script>
