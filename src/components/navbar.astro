@@ -186,33 +186,44 @@ import LanguageSwitcher from './LanguageSwitcher.tsx';
     .site-nav .hamburger { display: flex; }
 
     .site-nav .nav-right {
-      display: none;
+      display: flex;
       position: fixed;
-      inset: 0;
+      top: 64px;
+      left: 0; right: 0; bottom: 0;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 2rem;
-      padding-top: 80px;
       background: rgba(5, 10, 14, 0.98);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      z-index: 1050;
+      z-index: 999;
       overflow-y: auto;
+      /* hidden by default */
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
     }
 
-    .site-nav .nav-right.open { display: flex; }
+    .site-nav .nav-right.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
 
     .site-nav .nav-links {
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem;
     }
 
     .site-nav .nav-links a {
       font-size: 1.1rem;
       color: var(--text-primary);
-      padding: 8px 20px;
+      padding: 12px 32px;
+      width: 100%;
+      text-align: center;
     }
 
     .nav-extras {
@@ -227,6 +238,12 @@ import LanguageSwitcher from './LanguageSwitcher.tsx';
   const toggle = document.getElementById('nav-toggle')!;
   const menu   = document.getElementById('nav-menu')!;
 
+  function closeMenu() {
+    toggle.classList.remove('active');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   toggle.addEventListener('click', () => {
     toggle.classList.toggle('active');
     menu.classList.toggle('open');
@@ -234,10 +251,10 @@ import LanguageSwitcher from './LanguageSwitcher.tsx';
   });
 
   menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      toggle.classList.remove('active');
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
   });
 </script>

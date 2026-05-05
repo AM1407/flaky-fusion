@@ -8,13 +8,6 @@ export default defineConfig({
   output: 'static',
   adapter: netlify(),
   prefetch: true,
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'nl'],
-    routing: {
-      prefixDefaultLocale: false
-    }
-  },
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()]
