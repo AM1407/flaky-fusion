@@ -1,0 +1,21 @@
+Is AI "Too Dangerous to Release" if we can't secure the release itself?
+
+Anthropic called Claude Mythos too powerful for the public. It can find thousands of zero-day vulnerabilities in hours, which makes it a serious tool for defensive security.
+
+> The real problem is not whether the model is powerful enough. It is whether the release process is secure enough.
+
+## What the breach actually shows
+
+The report that a Discord group gained access on day one through third-party credentials should make us uncomfortable for a very specific reason: it is not an AI failure, it is an operational failure.
+
+## Why that matters
+
+- We are rushing to ship increasingly capable systems while still struggling with basic credential management.
+- Supply chain security remains a weak point even in organizations that care deeply about safety.
+- A model can be technically impressive and still be wrapped in a fragile release process.
+
+## The takeaway
+
+Before we rely on AI to fix our code, we need to fix the environment it lives in. AI is a tool, not a magic shield, and this incident shows that even the most "secure" systems are still vulnerable to the human element.
+
+Let’s stop treating AI as "perfect" and start treating it as what it is: a powerful, high-stakes technology that requires a security-first mindset.

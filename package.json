@@ -9,17 +9,19 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/netlify": "^7.0.8",
+    "@astrojs/react": "^5.0.4",
     "@nanostores/react": "^1.0.0",
     "@tailwindcss/vite": "^4.2.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.18.0",
+    "astro": "^6.2.2",
     "dompurify": "^3.3.1",
     "gsap": "^3.14.2",
     "nanostores": "^1.1.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "resend": "^6.12.2",
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {

@@ -9,8 +9,8 @@
   --bg-surface-3: #112233;
 
   /* Brand accents */
-  --cyber-green: #00ff41;
-  --cyber-green-dim: rgba(0, 255, 65, 0.5);
+  --cyber-green: #00d4ff;
+  --cyber-green-dim: rgba(0, 212, 255, 0.5);
   --cyber-cyan: #00d4ff;
   --cyber-cyan-dim: rgba(0, 212, 255, 0.5);
   --cyber-red: #ff003c;
@@ -23,12 +23,12 @@
   --text-dim: rgba(232, 244, 248, 0.4);
 
   /* Borders */
-  --border-green: rgba(0, 255, 65, 0.18);
+  --border-green: rgba(0, 212, 255, 0.18);
   --border-cyan: rgba(0, 212, 255, 0.18);
   --border-dim: rgba(232, 244, 248, 0.06);
 
   /* Glows — kept restrained for professional look */
-  --glow-green: 0 0 8px rgba(0, 255, 65, 0.25), 0 0 24px rgba(0, 255, 65, 0.06);
+  --glow-green: 0 0 8px rgba(0, 212, 255, 0.25), 0 0 24px rgba(0, 212, 255, 0.06);
   --glow-cyan:  0 0 8px rgba(0, 212, 255, 0.25), 0 0 24px rgba(0, 212, 255, 0.06);
   --glow-red:   0 0 8px rgba(255, 0, 60, 0.25),  0 0 24px rgba(255, 0, 60, 0.06);
 

@@ -1,0 +1,16 @@
+The Ferrari with a Steam Engine: Why AI's Vertical Obsession is a Trap
+
+We’ve spent the last few years cheering for "Vertical Progress"—bigger models, $100 billion clusters, and frontier benchmarks that can pass the Bar exam. But as a skeptic and a developer, I don't see a revolution; I see massive technical debt.
+
+**OpenAI and Anthropic are doing incredible work,** but their infrastructure is a "luxury item." As of early 2026, global data center consumption is hitting 1,050 TWh—that’s more electricity than most countries. We’re using a multi-billion dollar "God Model" to help "Linda" find a pancake recipe. It’s a thermodynamic catastrophe masquerading as innovation.
+
+>If we want to avoid the 2000 Dotcom fate, we need to stop looking up and start looking across. 
+> - Efficiency > Scale: The "bigger is better" era is hitting a wall. We don't need a trillion-parameter model to debug a local script. We need "Horizontal" growth: making AI as affordable and invisible as the Wi-Fi in your walls. 
+> - The "AI Router" (Edge Sovereignty): The future isn't a centralized brain in a desert. It’s a Jetson-class module (like the AGX series) in every home. Running an 8B model locally on 15 watts of power is 18x cheaper than a cloud API call. It's the "gasoline" we forgot to invent while building faster cars. 
+> - Cybersecurity as Infrastructure: We are training models we can’t even secure. Moving to local, "AIRouter" hardware isn't just about cost—it’s the only way to air-gap our lives from the "Claude Mythos" hacking the neighborhood. Secure the data where it lives; don't ship it to a third party and hope for the best.
+
+## I’m not a "believer" or a "hater."
+
+I’m a full-stack engineer looking at a bill that doesn't add up. We’ve built the Ferrari engines; it’s time to stop powering them with coal and start building the roads for them to drive on.
+
+Progress isn't just about what a model can do. It's about what it costs to do it.

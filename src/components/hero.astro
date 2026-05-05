@@ -36,6 +36,9 @@
   </div>
 
   <div class="bg-watermark" aria-hidden="true" data-i18n="hero.watermark">Hello World;</div>
+
+  <!-- Logo background — right side, low opacity, decorative -->
+  <img src="/img/Gordian400dpi.svg" class="hero-logo-bg" aria-hidden="true" alt="" />
 </section>
 
 <style>
@@ -55,7 +58,7 @@
   .hero-grid {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(0, 255, 65, 0.07) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(0, 212, 255, 0.07) 1px, transparent 1px);
     background-size: 36px 36px;
     pointer-events: none;
     mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
@@ -67,7 +70,7 @@
     position: absolute;
     left: 0; right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 65, 0.18) 40%, rgba(0, 255, 65, 0.18) 60%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.18) 40%, rgba(0, 212, 255, 0.18) 60%, transparent 100%);
     animation: scan-down 9s linear infinite;
     pointer-events: none;
     z-index: 1;
@@ -154,12 +157,12 @@
     border: 1px solid var(--border-green);
     border-radius: 4px;
     padding: 10px 22px;
-    background: rgba(0, 255, 65, 0.04);
+    background: rgba(0, 212, 255, 0.04);
     transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
   }
 
   .cta-btn:hover {
-    background: rgba(0, 255, 65, 0.08);
+    background: rgba(0, 212, 255, 0.08);
     box-shadow: var(--glow-green);
     transform: translateX(4px);
   }
@@ -176,19 +179,37 @@
     left: -1vw;
     z-index: 1;
     font-family: var(--font-mono);
-    font-size: 16vw;
+    font-size: 12vw;
     font-weight: 900;
     line-height: 0.8;
     white-space: nowrap;
     user-select: none;
     pointer-events: none;
-    background: linear-gradient(to right, rgba(0, 255, 65, 0.025) 0%, rgba(0, 255, 65, 0.005) 100%);
+    overflow: hidden;
+    max-width: 101vw;
+    background: linear-gradient(to right, rgba(0, 212, 255, 0.025) 0%, rgba(0, 212, 255, 0.005) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
+  /* Logo background — right side, decorative */
+  .hero-logo-bg {
+    position: absolute;
+    right: 19%;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 40%;
+    max-width: 490px;
+    opacity: 0.07;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+
   /* ── Mobile ─────────────────────────────────────────── */
   @media (max-width: 768px) {
+    .hero-logo-bg { display: none; }
+
     .hero-section {
       flex-direction: column;
       flex: none;
@@ -215,12 +236,7 @@
       max-width: 100%;
     }
 
-    .bg-watermark {
-      position: relative;
-      bottom: auto; left: auto;
-      margin-top: 0;
-      font-size: 13vw;
-    }
+    .bg-watermark { display: none; }
   }
 
   @media (max-width: 400px) {

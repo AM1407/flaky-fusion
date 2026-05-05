@@ -1,0 +1,17 @@
+De Ferrari met een stoommachine: Waarom de verticale obsessie van AI een valstrik is
+
+We hebben de afgelopen jaren gejuicht voor "verticale vooruitgang" — grotere modellen, clusters van $100 miljard en benchmarks die het Amerikaanse advocatenexamen kunnen halen. Maar als scepticus en ontwikkelaar zie ik geen revolutie; ik zie enorme technische schuld.
+
+** OpenAI en Anthropic leveren ongelooflijk werk,** maar hun infrastructuur is een "luxeartikel". Begin 2026 tikt het wereldwijde verbruik van datacenters de 1.050 TWh aan — dat is meer elektriciteit dan de meeste landen verbruiken. We gebruiken een "God-model" van miljarden dollars om "Linda" te helpen met een pannenkoekenrecept. Het is een thermodynamische catastrofe vermomd als innovatie.
+
+
+> Als we het lot van de dot-com-bubbel uit 2000 willen vermijden, moeten we ophouden met naar boven te kijken en in de breedte gaan kijken.
+> - Efficiëntie > Schaal: Het tijdperk van "groter is beter" loopt tegen een muur aan. We hebben geen model met een biljoen parameters nodig om een lokaal script te debuggen. We hebben "horizontale" groei nodig: AI net zo betaalbaar en onzichtbaar maken als de wifi in je muren.
+> - De "AI Router" (Edge-soevereiniteit): De toekomst is geen gecentraliseerd brein in een woestijn. Het is een module uit de Jetson-klasse (zoals de AGX-serie) in elk huis. Een 8B-model lokaal draaien op 15 watt is 18x goedkoper dan een cloud-API-call. Het is de "benzine" die we vergaten uit te vinden terwijl we snellere auto's bouwden.
+> - Cybersecurity als infrastructuur: We trainen modellen die we niet eens kunnen beveiligen. De overstap naar lokale "AIRouter"-hardware gaat niet alleen over kosten — het is de enige manier om ons leven fysiek te scheiden (air-gapping) van zaken als "Claude Mythos" die de buurt hacken. Beveilig de data waar deze leeft; stuur het niet naar een derde partij in de hoop op het beste.
+
+## Ik ben geen "gelovige" en ook geen "hater". 
+
+Ik ben een full-stack engineer die naar een rekening kijkt die simpelweg niet klopt. We hebben Ferrari-motoren gebouwd; het is tijd om te stoppen ze met kolen aan te drijven en te beginnen met het aanleggen van de wegen waarop ze kunnen rijden.
+
+Vooruitgang gaat niet alleen over wat een model kan doen. Het gaat over wat het kost om het te doen.

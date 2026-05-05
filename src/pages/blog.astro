@@ -72,7 +72,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
 
   document.addEventListener('DOMContentLoaded', () => {
     const POSTS_PER_PAGE = 4;
-    const allPosts: Array<{slug:string; title:string; excerpt:string; image:string; date:string; author:string; tags:string[]}> = (window as any).__BLOG_DATA__;
+    const allPosts: Array<{slug:string; title:string; excerpt:string; image:string; date:string; author:string; tags:string[]; lang?: string}> = (window as any).__BLOG_DATA__;
 
     const listEl = document.getElementById('blog-list')!;
     const paginationEl = document.getElementById('pagination')!;
@@ -92,7 +92,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
       if (blogPosts) {
         const translated = blogPosts.find(p => p.slug === post.slug);
         if (translated) {
-          return { ...post, title: translated.title, excerpt: translated.excerpt };
+          return { ...post, title: translated.title, ...(translated.excerpt ? { excerpt: translated.excerpt } : {}) };
         }
       }
       return post;
@@ -112,11 +112,15 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
 
     // Apply search query and date range filters to the post list
     function getFilteredPosts() {
+      const lang = locale.get();
       const query = sanitiseQuery(searchInput.value).toLowerCase();
       const from = dateFrom.value ? new Date(dateFrom.value) : null;
       const to = dateTo.value ? new Date(dateTo.value + 'T23:59:59') : null;
 
       return allPosts.filter((post) => {
+        // Language filter: hide posts tagged for another language
+        if (post.lang && post.lang !== 'both' && post.lang !== lang) return false;
+
         const tp = getTranslatedPost(post);
         // Match against title, excerpt, and tags
         if (query) {
@@ -322,7 +326,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
 
   .search-bar:focus-within {
     border-color: var(--border-green);
-    box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.06);
+    box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.06);
   }
 
   .search-icon {
@@ -467,18 +471,17 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
 
   /* Card thumbnail */
   .blog-list :global(.card-image) {
-    flex: 0 0 220px;
+    flex: 0 0 260px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--bg-surface-2);
-    padding: 24px;
+    padding: 12px;
     overflow: hidden;
   }
 
   .blog-list :global(.card-image img) {
     width: 100%;
-    max-width: 140px;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
@@ -562,7 +565,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
     border: 1px solid var(--border-green);
     border-radius: 4px;
     padding: 7px 16px;
-    background: rgba(0, 255, 65, 0.04);
+    background: rgba(0, 212, 255, 0.04);
     width: fit-content;
     transition: background 0.2s, box-shadow 0.2s;
   }
@@ -570,7 +573,7 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
   .blog-list :global(.read-more::before) { content: '>_ '; }
 
   .blog-list :global(.read-more:hover) {
-    background: rgba(0, 255, 65, 0.08);
+    background: rgba(0, 212, 255, 0.08);
     box-shadow: var(--glow-green);
   }
 
@@ -621,8 +624,8 @@ const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new D
   @media (max-width: 700px) {
     .blog-list :global(.blog-card.img-left),
     .blog-list :global(.blog-card.img-right) { flex-direction: column; }
-    .blog-list :global(.card-image) { flex: none; padding: 20px; }
-    .blog-list :global(.card-image img) { max-width: 100px; }
+    .blog-list :global(.card-image) { flex: none; padding: 12px; }
+    .blog-list :global(.card-image img) { max-width: 160px; }
     .blog-list :global(.card-body) { padding: 18px 20px 22px; }
     .blog-list :global(.card-title) { font-size: 1rem; }
     .filter-row { flex-direction: column; align-items: stretch; }

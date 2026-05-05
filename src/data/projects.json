@@ -16,7 +16,7 @@
     "image": "/img/scrstoned.webp",
     "stack": ["PHP", "Stripe", "MySQL", "Tailwind"],
     "github": "https://github.com/AM1407/Stoned.io",
-    "featured": true
+    "featured": false
   },
   {
     "id": "KotCompass",
@@ -35,7 +35,7 @@
     "image": "/img/scrkotcompass.webp",
     "stack": ["Laravel", "Stripe", "MySQL", "Tailwind", "Angular"],
     "github": "https://github.com/woutvanlommel/TheBuggyLandlords",
-    "featured": false
+    "featured": true
   },
   {
     "id": "Portscanner",

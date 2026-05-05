@@ -1,5 +1,5 @@
 ---
-// Terminal boot splash — replaces logo animation
+// Terminal boot splash
 ---
 
 <div id="splash-overlay">
@@ -36,7 +36,7 @@
   #splash-overlay {
     position: fixed;
     inset: 0;
-    background: #050a0e;
+    background: var(--bg-primary);
     z-index: 10000;
     display: flex;
     align-items: center;
@@ -45,12 +45,12 @@
 
   .terminal-boot {
     width: min(520px, 88vw);
-    background: #0a1520;
-    border: 1px solid rgba(0, 255, 65, 0.22);
+    background: var(--bg-surface);
+    border: 1px solid rgba(0, 212, 255, 0.22);
     border-radius: 8px;
     overflow: hidden;
     box-shadow:
-      0 0 0 1px rgba(0, 255, 65, 0.04),
+      0 0 0 1px rgba(0, 212, 255, 0.04),
       0 24px 60px rgba(0, 0, 0, 0.7);
   }
 
@@ -59,8 +59,8 @@
     align-items: center;
     gap: 6px;
     padding: 10px 14px;
-    background: #0d1f2d;
-    border-bottom: 1px solid rgba(232, 244, 248, 0.06);
+    background: var(--bg-surface-2);
+    border-bottom: 1px solid var(--border-dim);
   }
 
   .dot {
@@ -75,9 +75,9 @@
 
   .boot-title {
     margin-left: 8px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
-    color: #7a9bb5;
+    color: var(--text-secondary);
     letter-spacing: 0.02em;
   }
 
@@ -90,20 +90,20 @@
   }
 
   .boot-line {
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-family: var(--font-mono);
     font-size: 0.82rem;
-    color: #7a9bb5;
+    color: var(--text-secondary);
     white-space: nowrap;
     transition: opacity 0.15s ease;
   }
 
   .boot-line.hidden { opacity: 0; }
 
-  .boot-line .prompt { color: #00ff41; font-weight: 700; }
-  .boot-line .cmd    { color: #e8f4f8; }
+  .boot-line .prompt { color: var(--cyber-cyan); font-weight: 700; }
+  .boot-line .cmd    { color: var(--text-primary); }
 
   .boot-line.accent {
-    color: #00ff41;
+    color: var(--cyber-cyan);
     font-weight: 700;
     font-size: 0.88rem;
     margin-top: 6px;
@@ -111,14 +111,14 @@
   }
 
   .ok {
-    color: #00ff41;
+    color: var(--cyber-cyan);
     font-weight: 600;
   }
 
   .ok.hidden { opacity: 0; }
 
   .progress-bar {
-    color: #00ff41;
+    color: var(--cyber-cyan);
     font-size: 0.75rem;
     letter-spacing: -1px;
   }
@@ -127,7 +127,7 @@
     display: inline-block;
     width: 8px;
     height: 0.95em;
-    background: #00ff41;
+    background: var(--cyber-cyan);
     margin-left: 4px;
     vertical-align: text-bottom;
     animation: cursor-blink 1s step-end infinite;
@@ -167,7 +167,7 @@
           clearInterval(interval);
           onDone();
         }
-      }, 55);
+      }, 35);
     }
 
     const finish = () => {
@@ -189,16 +189,16 @@
     const tl = gsap.timeline({ onComplete: finish });
 
     tl
-      .to('#bl-1', { opacity: 1, duration: 0 }, 0.25)
+      .to('#bl-1', { opacity: 1, duration: 0 }, 0.15)
       .to('#bl-2', {
         opacity: 1, duration: 0,
         onComplete: () => animateProgress(() => {
           okModules.classList.remove('hidden');
           gsap.to(okModules, { opacity: 1, duration: 0.1 });
         })
-      }, 0.6)
-      .to('#bl-3', { opacity: 1, duration: 0 }, 1.8)
-      .to('#bl-4', { opacity: 1, duration: 0 }, 2.3)
-      .to('#bl-5', { opacity: 1, duration: 0 }, 2.8);
+      }, 0.4)
+      .to('#bl-3', { opacity: 1, duration: 0 }, 1.1)
+      .to('#bl-4', { opacity: 1, duration: 0 }, 1.25)
+      .to('#bl-5', { opacity: 1, duration: 0 }, 1.5);
   }
 </script>
