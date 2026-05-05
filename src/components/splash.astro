@@ -15,15 +15,13 @@
         <span class="prompt">root@portfolio:~$</span>
         <span class="cmd"> ./init.sh --mode=secure</span>
       </div>
-      <div class="boot-line hidden" id="bl-1">&gt; Initializing system kernel...</div>
-      <div class="boot-line hidden" id="bl-2">
-        &gt; Loading security modules&nbsp;&nbsp;&nbsp;
-        <span class="progress-bar" id="progress-bar"></span>
-        <span class="ok hidden" id="ok-modules">[OK]</span>
+      <div class="boot-line anim-1" id="bl-1">&gt; Initializing system kernel...</div>
+      <div class="boot-line anim-2" id="bl-2">
+        &gt; Loading security modules&nbsp;&nbsp;&nbsp;<span class="progress-bar">████████████████</span><span class="ok anim-ok">[OK]</span>
       </div>
-      <div class="boot-line hidden" id="bl-3">&gt; Verifying TLS certificates&nbsp;&nbsp;&nbsp;&nbsp;<span class="ok">[VERIFIED]</span></div>
-      <div class="boot-line hidden" id="bl-4">&gt; Establishing secure channel&nbsp;&nbsp;&nbsp;<span class="ok">[ENCRYPTED]</span></div>
-      <div class="boot-line hidden accent" id="bl-5">&gt; ACCESS GRANTED<span class="cursor-boot"></span></div>
+      <div class="boot-line anim-3" id="bl-3">&gt; Verifying TLS certificates&nbsp;&nbsp;&nbsp;&nbsp;<span class="ok">[VERIFIED]</span></div>
+      <div class="boot-line anim-4" id="bl-4">&gt; Establishing secure channel&nbsp;&nbsp;&nbsp;<span class="ok">[ENCRYPTED]</span></div>
+      <div class="boot-line anim-5 accent" id="bl-5">&gt; ACCESS GRANTED<span class="cursor-boot"></span></div>
     </div>
   </div>
 </div>
@@ -41,6 +39,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: splashFadeOut 0.5s 2.2s ease-in both;
+  }
+
+  @keyframes splashFadeOut {
+    to { opacity: 0; }
   }
 
   .terminal-boot {
@@ -94,10 +97,22 @@
     font-size: 0.82rem;
     color: var(--text-secondary);
     white-space: nowrap;
-    transition: opacity 0.15s ease;
+    opacity: 0;
+    animation: lineAppear 0.001s both;
   }
 
-  .boot-line.hidden { opacity: 0; }
+  /* bl-0 visible immediately */
+  #bl-0 { opacity: 1; animation: none; }
+
+  .anim-1 { animation-delay: 0.15s; }
+  .anim-2 { animation-delay: 0.4s; }
+  .anim-3 { animation-delay: 1.1s; }
+  .anim-4 { animation-delay: 1.25s; }
+  .anim-5 { animation-delay: 1.5s; }
+
+  @keyframes lineAppear {
+    to { opacity: 1; }
+  }
 
   .boot-line .prompt { color: var(--cyber-cyan); font-weight: 700; }
   .boot-line .cmd    { color: var(--text-primary); }
@@ -115,12 +130,27 @@
     font-weight: 600;
   }
 
-  .ok.hidden { opacity: 0; }
-
+  /* Progress bar grows char-by-char via steps */
   .progress-bar {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 0;
+    white-space: nowrap;
     color: var(--cyber-cyan);
     font-size: 0.75rem;
     letter-spacing: -1px;
+    vertical-align: bottom;
+    animation: growBar 0.56s 0.4s steps(16, end) both;
+  }
+
+  @keyframes growBar {
+    to { max-width: 16ch; }
+  }
+
+  /* [OK] appears after progress bar finishes */
+  .ok.anim-ok {
+    opacity: 0;
+    animation: lineAppear 0.001s 0.96s both;
   }
 
   .cursor-boot {
@@ -139,66 +169,27 @@
   (function () {
     if (sessionStorage.getItem('splashSeen')) {
       var el = document.getElementById('splash-overlay');
-      if (el) el.style.display = 'none';
+      if (el) { el.style.display = 'none'; el.style.animation = 'none'; }
     }
   })();
 </script>
 
 <script>
-  import { gsap } from 'gsap';
-
   const hasSeenSplash = sessionStorage.getItem('splashSeen');
 
   if (hasSeenSplash) {
     window.dispatchEvent(new Event('splash-finished'));
   } else {
     document.body.classList.add('loading');
+    const overlay = document.getElementById('splash-overlay')!;
 
-    const PROGRESS_FULL = '████████████████';
-    const progressEl = document.getElementById('progress-bar')!;
-    const okModules  = document.getElementById('ok-modules')!;
-
-    function animateProgress(onDone: () => void) {
-      let i = 0;
-      const interval = setInterval(() => {
-        progressEl.textContent = PROGRESS_FULL.slice(0, i + 1);
-        i++;
-        if (i >= PROGRESS_FULL.length) {
-          clearInterval(interval);
-          onDone();
-        }
-      }, 35);
-    }
-
-    const finish = () => {
-      gsap.to('#splash-overlay', {
-        opacity: 0,
-        duration: 0.5,
-        delay: 0.4,
-        ease: 'power1.in',
-        onComplete: () => {
-          const overlay = document.getElementById('splash-overlay');
-          if (overlay) overlay.style.display = 'none';
-          document.body.classList.remove('loading');
-          sessionStorage.setItem('splashSeen', 'true');
-          window.dispatchEvent(new Event('splash-finished'));
-        }
-      });
-    };
-
-    const tl = gsap.timeline({ onComplete: finish });
-
-    tl
-      .to('#bl-1', { opacity: 1, duration: 0 }, 0.15)
-      .to('#bl-2', {
-        opacity: 1, duration: 0,
-        onComplete: () => animateProgress(() => {
-          okModules.classList.remove('hidden');
-          gsap.to(okModules, { opacity: 1, duration: 0.1 });
-        })
-      }, 0.4)
-      .to('#bl-3', { opacity: 1, duration: 0 }, 1.1)
-      .to('#bl-4', { opacity: 1, duration: 0 }, 1.25)
-      .to('#bl-5', { opacity: 1, duration: 0 }, 1.5);
+    overlay.addEventListener('animationend', (e) => {
+      if ((e as AnimationEvent).animationName === 'splashFadeOut' && e.target === overlay) {
+        overlay.style.display = 'none';
+        document.body.classList.remove('loading');
+        sessionStorage.setItem('splashSeen', 'true');
+        window.dispatchEvent(new Event('splash-finished'));
+      }
+    });
   }
 </script>
