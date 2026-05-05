@@ -43,7 +43,11 @@
         "title": "Duidelijke Communicatie",
         "text": "Geen jargon, geen verdwijntrucjes. Ik hou je op de hoogte met transparante updates, eerlijke deadlines en heldere uitleg — zodat je altijd weet waar je project staat."
       }
-    ]
+    ],
+    "logoTitle": "Het Symbool",
+    "logoSubtitle": "Waarom de Gordiaanse Knoop?",
+    "logoText0": "De Gordiaanse knoop staat symbool voor een legendarische uitdaging die niet door geduld, maar door gedurfd en daadkrachtig optreden werd opgelost. Toen Alexander de Grote de ingewikkelde kluwen tegenkwam, negeerde hij de conventionele methoden en hakte hem met zijn zwaard doormidden. Dit is nog altijd een tijdloos symbool voor het omzetten van \"onmogelijke\" complexiteit in een duidelijke weg vooruit.",
+    "logoText1": "In mijn werk binnen full-stack engineering en cybersecurity pas ik deze zelfde filosofie toe op moderne technologie. Ik ben gespecialiseerd in het ontwarren van complexe systeemarchitecturen en het neutraliseren van geavanceerde digitale dreigingen door middel van elegante, onconventionele oplossingen. Of ik nu code stroomlijn of een netwerk beveilig, mijn doel is om door de ruis heen te snijden en resultaten te leveren die zowel veilig als efficiënt zijn."
   },
   "services": {
     "heroTitle": "Diensten",
@@ -104,24 +108,19 @@
     "backToBlog": "← Terug naar Blog",
     "posts": [
       {
-        "slug": "securing-your-ci-cd-pipeline",
-        "title": "Je CI/CD Pipeline Beveiligen: Een Praktische Gids",
-        "excerpt": "De meeste teams schroeven security er pas op het einde bij. Hier lees je hoe je het in elke fase van je CI/CD pipeline kan verweven — van commit hooks tot production deploy gates — zonder iemand te vertragen."
+        "slug": "is-ai-too-dangerous",
+        "title": "Is AI \"Te Gevaarlijk om Uit te Brengen\" als we de Release Zelf Niet Eens Kunnen Beveiligen?",
+        "excerpt": "De gerapporteerde inbreuk op Claude Mythos bewijst dat \"goddelijke\" AI-intelligentie nutteloos is als we de basis van referentiebeheer en supply chain security nog niet eens onder de knie hebben."
       },
       {
-        "slug": "why-i-switched-to-astro",
-        "title": "Waarom Ik Naar Astro Ben Overgestapt (En Nooit Meer Terugging)",
-        "excerpt": "Na jaren met zware SPA frameworks bouwde ik mijn portfolio met Astro. Standaard geen client-side JS, islands architecture en razendsnelle build times — hier is mijn eerlijke mening na zes maanden."
+        "slug": "Elon-Musk-proposes-UHI",
+        "title": "Elon Musk heeft onlangs Universal High Income voorgesteld",
+        "excerpt": "Universal High Income is een gedurfde visie, maar het bouwen van een permanent globaal welzijnssysteem op een \"productiviteitsoverschot\" dat nog niet bestaat, is een hoogst riskante gok met de geschiedenis. Terwijl AI post-schaarste belooft, suggereren de groeiende scheuren in de winstgevendheid van de industrie en stijgende kosten dat we misschien dezelfde catastrofale waarderingsfouten van het dot-com tijdperk aan het herhalen zijn."
       },
       {
-        "slug": "infrastructure-as-code-101",
-        "title": "Infrastructure as Code 101: Terraform voor Beginners",
-        "excerpt": "Klikken door cloud consoles schaalt niet. Dit artikel begeleidt je door je eerste Terraform project — van provider setup tot het deployen van een echte VPC — in minder dan dertig minuten."
-      },
-      {
-        "slug": "zero-trust-architecture",
-        "title": "Zero Trust Architecture: Meer Dan Een Buzzword",
-        "excerpt": "Iedereen praat over Zero Trust, maar weinigen implementeren het correct. Ik ontleed de kernprincipes, toon echte netwerkdiagrammen en deel de fouten die ik maakte zodat jij ze niet hoeft te maken."
+        "slug": "Ferrari-with-a-Steam-Engine",
+        "title": "Waarom AI's Verticale Obsessie een Valstrik is",
+        "excerpt": "We bouwen \"God Models\" met onhoudbare energiekosten, waardoor een thermodynamische catastrofe ontstaat die zich voordoet als innovatie. Om een dot-com stijl ineenstorting te voorkomen, moeten we pivoteren van enorme gecentraliseerde clusters naar efficiënte, gelokaliseerde \"horizontale\" groei."
       }
     ]
   },
@@ -304,7 +303,7 @@
     "about": "Over Mij",
     "contact": "Contact",
     "faq": "FAQ",
-    "connectTitle": "Verbinden",
+    "connectTitle": "Connect",
     "sponsor": "Sponsor",
     "termsLink": "Algemene Voorwaarden",
     "privacyLink": "Privacybeleid",

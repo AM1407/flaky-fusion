@@ -2,15 +2,17 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
+  output: 'static',
+  adapter: netlify(),
   prefetch: true,
-  // Voeg i18n ondersteuning toe
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'nl'],
     routing: {
-      prefixDefaultLocale: false // 'en' is op de root, 'nl' krijgt /nl/
+      prefixDefaultLocale: false
     }
   },
   integrations: [react()],

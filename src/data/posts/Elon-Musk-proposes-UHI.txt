@@ -1,0 +1,21 @@
+Elon Musk recently proposed Universal High Income — government checks for everyone to offset AI-driven unemployment. Genuinely interesting idea. But let's be honest about what it actually requires to work.
+
+UHI assumes AI generates a permanent, massive productivity surplus that governments can simply redistribute. That surplus doesn't exist yet.
+
+> The same industry promising post-scarcity is quietly showing cracks:
+> - Anthropic raised effective token costs by 35% through a new tokenizer
+> - GitHub is pulling free education plans for students
+> - Not a single major AI company is profitable
+> - $539 billion in AI capex in 2026 — with deeply uncertain returns
+
+You don't build a permanent welfare system on a foundation that hasn't been proven yet.
+
+And we've seen this before. In 2000 the internet was also going to change everything — and eventually it did. But the companies promising infinite growth were gone within 2 years. Policy built on dotcom valuations would have been catastrophic.
+
+## AI needs to first prove surplus in the things people actually need — food, housing, energy, healthcare. Not just make text generation cheaper.
+
+The industrial revolution took 150 years to create real abundance in basic goods. AI deserves the chance to prove itself. But that proof has to come before the policy, not after.
+
+## Build the foundation first. Then talk redistribution.
+
+What do you think — should policy wait for proof, or bet on the projection?

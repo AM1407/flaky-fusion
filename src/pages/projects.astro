@@ -9,7 +9,7 @@ const lang = Astro.currentLocale || 'nl';
 
 const featured = projectsData.find((p) => p.featured);
 const otherProjects = projectsData.filter((p) => !p.featured);
-const CARDS_PER_PAGE = 4;
+const CARDS_PER_PAGE = 6;
 ---
 
 <Layout title="Projects" description="Explore projects by Alessio Miccichè — from zero-trust infrastructure deployments to secure API gateways and full stack applications.">
@@ -74,31 +74,239 @@ const CARDS_PER_PAGE = 4;
 </Layout>
 
 <style>
-  /* Je bestaande styles blijven ongewijzigd */
-  .projects-overview { max-width: 1100px; margin: 8vh auto 6rem; padding: 0 5%; color: #fff; }
-  .projects-overview h1 { margin-bottom: 2.5rem; }
-  .featured-card { display: grid; grid-template-columns: 1fr 1fr; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; overflow: hidden; text-decoration: none; color: #fff; margin-bottom: 6rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .featured-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45); }
-  .featured-img { width: 100%; height: 100%; min-height: 280px; object-fit: cover; }
-  .featured-body { padding: 2rem; display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; }
-  .featured-label { display: inline-block; width: fit-content; background: var(--gordian-blue, #0088cc); color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 4px 14px; border-radius: 3px; }
-  .featured-body h2 { margin: 0; font-size: 1.6rem; }
-  .featured-body p { margin: 0; color: rgba(255, 255, 255, 0.7); line-height: 1.6; }
-  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .project-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; overflow: hidden; text-decoration: none; color: #fff; transition: transform 0.25s ease, box-shadow 0.25s ease; }
-  .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4); }
-  .card-img { width: 100%; height: 180px; object-fit: cover; }
-  .card-body { padding: 1.25rem; }
-  .card-body h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
-  .card-body p { margin: 0 0 0.75rem; font-size: 0.92rem; color: rgba(255, 255, 255, 0.65); line-height: 1.5; }
-  .badge { display: inline-block; border: 1px solid var(--gordian-blue, #0088cc); color: var(--gordian-blue, #0088cc); padding: 3px 10px; margin: 4px 6px 4px 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; }
-  .card-cta { display: inline-block; margin-top: auto; font-size: 0.85rem; font-weight: 600; color: rgba(255, 255, 255, 0.5); transition: color 0.2s ease; }
-  .pagination { display: flex; justify-content: center; gap: 0.5rem; margin-top: 2.5rem; }
-  .pagination :global(button) { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.6); width: 38px; height: 38px; border-radius: 6px; cursor: pointer; }
-  .pagination :global(button.active) { background: var(--gordian-blue, #0088cc); color: #fff; font-weight: 700; }
+  main { max-width: 1100px; margin: 0 auto; padding: 0 5% 80px; }
+
+  .projects-overview { padding-top: 24px; }
+
+  .projects-overview h1 {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text-primary);
+    margin: 0 0 8px;
+    letter-spacing: -0.03em;
+  }
+
+  .projects-overview h1::before {
+    content: '> ';
+    color: var(--cyber-green);
+    font-size: 0.6em;
+    vertical-align: middle;
+  }
+
+  /* Featured card — terminal window chrome */
+  .featured-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border-green);
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    margin: 24px 0 40px;
+    background: var(--bg-surface);
+    transition: box-shadow 0.25s, transform 0.25s;
+    position: relative;
+  }
+
+  /* Terminal chrome header bar */
+  .featured-card::before {
+    content: 'featured_project.sh';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 7px 14px;
+    background: var(--bg-surface-2);
+    border-bottom: 1px solid var(--border-dim);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--cyber-green);
+    z-index: 1;
+  }
+
+  .featured-card:hover {
+    box-shadow: var(--glow-green);
+    transform: translateY(-3px);
+  }
+
+  .featured-img {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    object-fit: cover;
+    display: block;
+    margin-top: 28px;
+  }
+
+  .featured-body {
+    padding: 44px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .featured-label {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyber-green);
+    border: 1px solid var(--border-green);
+    border-radius: 3px;
+    padding: 2px 8px;
+    align-self: flex-start;
+  }
+
+  .featured-body h2 {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .featured-body p {
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Tech stack badges */
+  .tech-stack {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--cyber-cyan);
+    border: 1px solid var(--border-cyan);
+    border-radius: 3px;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    background: rgba(0, 212, 255, 0.04);
+  }
+
+  .card-cta {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--cyber-green);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .card-cta::before { content: '>_ '; }
+
+  /* Project grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dim);
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    position: relative;
+  }
+
+  /* Terminal chrome bar at top of each card */
+  .project-card::before {
+    content: '';
+    display: block;
+    height: 26px;
+    background: var(--bg-surface-2);
+    border-bottom: 1px solid var(--border-dim);
+    flex-shrink: 0;
+  }
+
+  .project-card:hover {
+    border-color: var(--border-green);
+    box-shadow: var(--glow-green);
+    transform: translateY(-4px);
+  }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .card-body h2 {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .card-body p {
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.87rem;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  .pagination :global(button) {
+    min-width: 36px;
+    height: 36px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dim);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+
+  .pagination :global(button:hover),
+  .pagination :global(button.active) {
+    border-color: var(--border-green);
+    color: var(--cyber-green);
+    box-shadow: var(--glow-green);
+  }
 
   @media (max-width: 768px) {
     .featured-card { grid-template-columns: 1fr; }
+    .featured-img  { min-height: 200px; }
     .projects-grid { grid-template-columns: 1fr; }
   }
 </style>

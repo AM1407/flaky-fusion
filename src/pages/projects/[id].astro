@@ -143,10 +143,12 @@ if (!project) return Astro.redirect('/404');
     margin-bottom: 1.5rem;
   }
 
-  .hero-img { 
-    width: 100%; 
-    border: 1px solid rgba(255,255,255,0.1); 
-    margin: 2rem 0; 
+  .hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border-dim);
+    margin: 2rem 0;
     border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   }

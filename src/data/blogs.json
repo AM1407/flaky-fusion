@@ -1,47 +1,32 @@
 [
   {
-    "slug": "securing-your-ci-cd-pipeline",
-    "title": "Securing Your CI/CD Pipeline: A Practical Guide",
-    "excerpt": "Most teams bolt security on at the end. Here's how to weave it into every stage of your CI/CD pipeline — from commit hooks to production deploy gates — without slowing anyone down.",
-    "image": "/img/Gordian400dpi.svg",
-    "date": "2026-02-18",
+    "slug": "is-ai-too-dangerous",
+    "title": "Is AI \"Too Dangerous to Release\" if we can’t secure the release itself?",
+    "excerpt": "The reported breach of Claude Mythos proves that \"god-like\" AI intelligence is useless if we can’t master the basics of credential management and supply chain security.",
+    "image": "/img/AI_Danger.png",
+    "date": "2026-05-04",
     "author": "Alessio Miccichè",
-    "tags": ["DevSecOps", "CI/CD", "Security"]
+    "tags": ["Anthropic", "AI", "Security"],
+    "lang": "both"
   },
   {
-    "slug": "why-i-switched-to-astro",
-    "title": "Why I Switched to Astro (And Never Looked Back)",
-    "excerpt": "After years of heavy SPA frameworks, I built my portfolio with Astro. Zero client-side JS by default, islands architecture, and blazing build times — here's my honest take after six months.",
-    "image": "/img/gordianlogoblue.svg",
-    "date": "2026-02-10",
+    "slug": "Elon-Musk-proposes-UHI",
+    "title": "Elon Musk recently proposed Universal High Income",
+    "excerpt": "Universal High Income is a bold vision, but building a permanent global welfare system on a \"productivity surplus\" that doesn't yet exist is a high-stakes gamble with history. While AI promises post-scarcity, the growing cracks in the industry's profitability and rising costs suggest we may be repeating the catastrophic valuation mistakes of the dot-com era.",
+    "image": "/img/UHI.png",
+    "date": "2026-05-05",
     "author": "Alessio Miccichè",
-    "tags": ["Astro", "Web Dev", "Performance"]
+    "tags": ["Elon Musk", "Universal High Income", "AI", "Economy"],
+    "lang": "both"
   },
   {
-    "slug": "infrastructure-as-code-101",
-    "title": "Infrastructure as Code 101: Terraform for Beginners",
-    "excerpt": "Clicking through cloud consoles doesn't scale. This post walks you through your first Terraform project — from provider setup to deploying a real VPC — in under thirty minutes.",
-    "image": "/img/gordianlogored.svg",
-    "date": "2026-01-28",
+    "slug": "Ferrari-with-a-Steam-Engine",
+    "title": "Why AI's Vertical Obsession is a Trap",
+    "excerpt": "We are building \"God Models\" with unsustainable energy costs, creating a thermodynamic catastrophe masquerading as innovation. To avoid a dot-com style collapse, we must pivot from massive centralized clusters to efficient, localized \"horizontal\" growth.",
+    "image": "/img/steamferrari.png",
+    "date": "2026-05-01",
     "author": "Alessio Miccichè",
-    "tags": ["Terraform", "AWS", "IaC"]
-  },
-  {
-    "slug": "zero-trust-architecture",
-    "title": "Zero Trust Architecture: Beyond the Buzzword",
-    "excerpt": "Everyone talks about Zero Trust, but few implement it properly. I break down the core principles, show real network diagrams, and share the mistakes I made so you don't have to.",
-    "image": "/img/Gordian400dpi.svg",
-    "date": "2026-01-15",
-    "author": "Alessio Miccichè",
-    "tags": ["Security", "Architecture", "Networking"]
-  },
-    {
-    "slug": "zero-trust-architecture",
-    "title": "Zero Trust Architecture: Beyond the Buzzword",
-    "excerpt": "Everyone talks about Zero Trust, but few implement it properly. I break down the core principles, show real network diagrams, and share the mistakes I made so you don't have to.",
-    "image": "/img/Gordian400dpi.svg",
-    "date": "2026-01-15",
-    "author": "Alessio Miccichè",
-    "tags": ["Security", "Architecture", "Networking"]
+    "tags": ["AI", "Economy", "Ecology", "Progress"],
+    "lang": "both"
   }
 ]

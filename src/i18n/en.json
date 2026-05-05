@@ -43,7 +43,11 @@
         "title": "Clear Communication",
         "text": "No jargon, no disappearing acts. I keep you in the loop with transparent updates, honest timelines, and straightforward explanations — so you always know where your project stands."
       }
-    ]
+    ],
+    "logoTitle": "The Symbol",
+    "logoSubtitle": "Why the Gordian Knot?",
+    "logoText0": "The Gordian Knot represents a legendary challenge solved not by patience, but by a stroke of bold, decisive action. When Alexander the Great encountered the intricate tangle, he bypassed conventional methods and sliced through it with his sword. This remains a timeless symbol for turning \"impossible\" complexity into a clear path forward.",
+    "logoText1": "In my work across the full stack and cybersecurity, I apply this same philosophy to modern technology. I specialize in untangling complex system architectures and neutralizing sophisticated digital threats through elegant, unconventional problem-solving. Whether I am streamlining code or securing a network, my goal is to cut through the noise to deliver results that are both secure and efficient."
   },
   "services": {
     "heroTitle": "Services",
@@ -104,25 +108,18 @@
     "backToBlog": "← Back to Blog",
     "posts": [
       {
-        "slug": "securing-your-ci-cd-pipeline",
-        "title": "Securing Your CI/CD Pipeline: A Practical Guide",
-        "excerpt": "Most teams bolt security on at the end. Here's how to weave it into every stage of your CI/CD pipeline — from commit hooks to production deploy gates — without slowing anyone down."
+        "slug": "is-ai-too-dangerous",
+        "title": "Is AI \"Too Dangerous to Release\" if we can't secure the release itself?"
       },
       {
-        "slug": "why-i-switched-to-astro",
-        "title": "Why I Switched to Astro (And Never Looked Back)",
-        "excerpt": "After years of heavy SPA frameworks, I built my portfolio with Astro. Zero client-side JS by default, islands architecture, and blazing build times — here's my honest take after six months."
+        "slug": "Elon-Musk-proposes-UHI",
+        "title": "Elon Musk recently proposed Universal High Income"
       },
       {
-        "slug": "infrastructure-as-code-101",
-        "title": "Infrastructure as Code 101: Terraform for Beginners",
-        "excerpt": "Clicking through cloud consoles doesn't scale. This post walks you through your first Terraform project — from provider setup to deploying a real VPC — in under thirty minutes."
-      },
-      {
-        "slug": "zero-trust-architecture",
-        "title": "Zero Trust Architecture: Beyond the Buzzword",
-        "excerpt": "Everyone talks about Zero Trust, but few implement it properly. I break down the core principles, show real network diagrams, and share the mistakes I made so you don't have to."
+        "slug": "Ferrari-with-a-Steam-Engine",
+        "title": "Why AI's Vertical Obsession is a Trap"
       }
+
     ]
   },
   "projects": {

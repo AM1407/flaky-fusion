@@ -3,209 +3,229 @@ import LanguageSwitcher from './LanguageSwitcher.tsx';
 ---
 
 <nav class="site-nav">
-    <a href="/" class="logo-link"><img src="/img/Gordian400dpi.svg" alt="Logo" class="logo" width="60" height="60" fetchpriority="high" /></a>
+  <a href="/" class="logo-link">
+    <img src="/img/Gordian400dpi.svg" alt="Gordian Logo" class="nav-logo-img" width="44" height="44" fetchpriority="high" />
+  </a>
 
-    <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-    <div class="nav-right" id="nav-menu">
-      <div class="nav-links">
-        <a href="/about" data-i18n="nav.about">About Me</a>
-        <a href="/services" data-i18n="nav.services">Services</a>
-        <a href="/projects" data-i18n="nav.projects">Projects</a>  
-        <a href="/blog" data-i18n="nav.blog">Blog</a>
-        <a href="/contact" data-i18n="nav.contact">Contact</a>
-      </div>
-      <LanguageSwitcher client:load />
+  <div class="nav-right" id="nav-menu">
+    <div class="nav-links">
+      <a href="/about"    data-i18n="nav.about">About Me</a>
+      <a href="/services" data-i18n="nav.services">Services</a>
+      <a href="/projects" data-i18n="nav.projects">Projects</a>
+      <a href="/blog"     data-i18n="nav.blog">Blog</a>
+      <a href="/contact"  data-i18n="nav.contact">Contact</a>
     </div>
+    <div class="nav-extras">
+      <LanguageSwitcher client:load />
+      <span class="nav-secure-badge">[SECURE]</span>
+    </div>
+  </div>
 </nav>
 
 <style is:global>
-    .site-nav .logo {
-        width: 60px;
-        height: auto;
-    }
-    .site-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        padding: 10px 5%;
-        margin: 0;
-        font-size: 20px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: rgba(11, 13, 16, 0.85);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
+  /* ── Navbar ────────────────────────────────────────────── */
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 5%;
+    height: 64px;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(5, 10, 14, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  }
+
+  /* Logo */
+  .logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Right side */
+  .site-nav .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-extras {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Nav links */
+  .site-nav .nav-links {
+    display: flex;
+    gap: 2px;
+  }
+
+  .site-nav .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    position: relative;
+  }
+
+  .site-nav .nav-links a:hover {
+    color: var(--cyber-green);
+    border-color: var(--border-green);
+    background: rgba(0, 212, 255, 0.04);
+  }
+
+  /* [SECURE] badge */
+  .nav-secure-badge {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--cyber-green);
+    border: 1px solid var(--border-green);
+    border-radius: 3px;
+    padding: 3px 8px;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  /* Language switcher */
+  .lang-switcher {
+    display: flex;
+    gap: 2px;
+    background: rgba(0, 212, 255, 0.03);
+    border-radius: 4px;
+    padding: 2px;
+    border: 1px solid var(--border-dim);
+  }
+
+  .lang-btn {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-secondary);
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .lang-btn:hover { color: var(--cyber-green); }
+
+  .lang-btn.active {
+    background: var(--cyber-green);
+    color: #050a0e;
+    font-weight: 800;
+  }
+
+  /* Hamburger */
+  .site-nav .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: 1px solid var(--border-dim);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    z-index: 1100;
+    flex-shrink: 0;
+  }
+
+  .site-nav .hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--cyber-green);
+    border-radius: 1px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .site-nav .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .site-nav .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .site-nav .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Mobile ──────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .site-nav .hamburger { display: flex; }
 
     .site-nav .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+      display: none;
+      position: fixed;
+      inset: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding-top: 80px;
+      background: rgba(5, 10, 14, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1050;
+      overflow-y: auto;
     }
+
+    .site-nav .nav-right.open { display: flex; }
 
     .site-nav .nav-links {
-        display: flex;
-        gap: 15px;
-        color: var(--gordian-text);
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .site-nav a {
-        font-family: var(--font-main);
-        text-transform: uppercase;
-        letter-spacing: -0.05em;
-        color: var(--gordian-text);
-        text-decoration: none;
-        position: relative;
-        padding-bottom: 2px;
+    .site-nav .nav-links a {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      padding: 8px 20px;
     }
 
-    /* Animated underline effect on hover */
-    .site-nav a:not(.logo-link)::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 1.5px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--gordian-blue);
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 0.3s ease-out;
+    .nav-extras {
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
     }
-
-    .site-nav a:hover {
-        color: var(--gordian-blue);
-        transition: color 0.3s ease;
-    }
-
-    .site-nav a:not(.logo-link):hover::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-    }
-
-    /* Hamburger button — hidden on desktop */
-    .site-nav .hamburger {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        gap: 6px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-        z-index: 1100;
-        position: relative;
-    }
-
-    .site-nav .hamburger span {
-        display: block;
-        width: 26px;
-        height: 3px;
-        background: #fff;
-        border-radius: 2px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .site-nav .hamburger.active span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
-    .site-nav .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .site-nav .hamburger.active span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
-
-    /* Language toggle button styles */
-    .lang-switcher {
-        display: flex;
-        gap: 4px;
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 8px;
-        padding: 3px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .lang-btn {
-        font-family: var(--font-main);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        padding: 5px 12px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        background: transparent;
-        color: var(--gordian-text);
-        transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    .lang-btn:hover {
-        color: #fff;
-    }
-
-    .lang-btn.active {
-        background: var(--gordian-blue);
-        color: #fff;
-        box-shadow: 0 2px 8px rgba(0, 136, 204, 0.35);
-    }
-
-    /* ── Mobile styles ── */
-    @media (max-width: 768px) {
-        .site-nav .hamburger {
-            display: flex;
-        }
-
-        .site-nav .nav-right {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            padding-top: 80px;
-            background: rgba(11, 13, 16, 0.97);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            z-index: 1050;
-            overflow-y: auto;
-        }
-
-        .site-nav .nav-right.open {
-            display: flex;
-        }
-
-        .site-nav .nav-links {
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .site-nav .nav-links a {
-            font-size: 1.4rem;
-            color: #fff;
-        }
-    }
+  }
 </style>
 
 <script>
   const toggle = document.getElementById('nav-toggle')!;
-  const menu = document.getElementById('nav-menu')!;
+  const menu   = document.getElementById('nav-menu')!;
 
   toggle.addEventListener('click', () => {
     toggle.classList.toggle('active');
@@ -213,7 +233,6 @@ import LanguageSwitcher from './LanguageSwitcher.tsx';
     document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
   });
 
-  // Close menu when a link is clicked
   menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       toggle.classList.remove('active');

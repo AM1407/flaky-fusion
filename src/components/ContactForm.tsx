@@ -21,15 +21,22 @@ const ContactForm = () => {
     setStatus('SENDING');
 
     const formData = new FormData(e.currentTarget);
+
     try {
-      // SECURITY FIX: Replace placeholder Formspree ID with your real form ID
-      const response = await fetch("https://formspree.io/f/YOUR_REAL_FORM_ID", {
-        method: "POST",
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:     formData.get('name'),
+          email:    formData.get('email'),
+          message:  formData.get('message'),
+          _gotcha:  formData.get('_gotcha'),
+        }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.ok) {
         setStatus('SUCCESS');
         setToast({ message: t('contact.toastSuccess', lang), type: 'success' });
         (e.target as HTMLFormElement).reset();

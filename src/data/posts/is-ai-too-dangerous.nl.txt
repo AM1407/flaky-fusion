@@ -1,0 +1,21 @@
+Is AI "te gevaarlijk om uit te brengen" als we de release zelf niet eens kunnen beveiligen?
+
+Anthropic noemde Claude Mythos te krachtig voor het publiek. Het model kan binnen enkele uren duizenden zero-day kwetsbaarheden vinden en is daarmee een game-changer voor defensieve beveiliging.
+
+> Het echte probleem is niet of het model krachtig genoeg is. Het probleem is of het releaseproces veilig genoeg is.
+
+## Wat deze inbreuk echt laat zien
+
+Dat een Discord-groep naar verluidt op de eerste dag al toegang kreeg via inloggegevens van derden, is vooral verontrustend omdat het geen AI-fout is, maar een operationele fout.
+
+## Waarom dat belangrijk is
+
+- We haasten ons om steeds krachtigere systemen uit te brengen, terwijl we nog steeds worstelen met basiszaken als referentiebeheer.
+- De veiligheid van de toeleveringsketen blijft een zwakke plek, zelfs bij organisaties die veiligheid serieus nemen.
+- Een model kan technisch indrukwekkend zijn en toch verpakt worden in een kwetsbaar releaseproces.
+
+## De conclusie
+
+Voordat we op AI vertrouwen om onze code te repareren, moeten we de omgeving waarin de AI leeft repareren. AI is een hulpmiddel, geen magisch schild, en deze inbreuk laat zien dat zelfs de meest "veilige" systemen nog steeds kwetsbaar zijn voor de menselijke factor.
+
+Laten we stoppen met AI als "perfect" te behandelen en het gaan zien voor wat het werkelijk is: een krachtige technologie met grote belangen die een security-first mindset vereist.
