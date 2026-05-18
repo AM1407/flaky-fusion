@@ -47,7 +47,7 @@ Het deployen van het Filament admin panel op een subdomein liep vast op een conf
 
 ## 🏆 De Uitkomst
 
-Een strakke, snelle en volledig beheerde website opgeleverd voor een echte klant, met een formeel contract en een jaarlijkse SLA. Mijn eerste professionele factuur. Mijn eerste productie-deployment. En een bevestiging dat debuggen op een live server om 23u met alleen Termius op je iPhone ook gewoon een skill is.
+Een strakke, snelle en volledig beheerde website opgeleverd voor een klant, met een formeel contract en een jaarlijkse SLA. Mijn eerste professionele factuur. Mijn eerste productie-deployment. En een bevestiging dat debuggen op een live server om 23u met alleen Termius op je iPhone ook gewoon een skill is.
 
 ---
 
