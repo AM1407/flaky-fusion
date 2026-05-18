@@ -129,7 +129,6 @@
     },
     "image": "/img/v&dscrsh.webp",
     "stack": ["Laravel", "Filament", "Resend integration", "Google Places API"],
-    "github": "Private",
     "featured": true
   }
 ]
