@@ -1,6 +1,6 @@
 # 🏗️ V&D Solutions – Website & Admin Dashboard
 
-**Een website bouwen voor een klein renovatiebedrijf klinkt eenvoudig.** Tot je beslist om het te deployen op shared hosting met een volledige CI/CD-pipeline, een Filament 5 admin dashboard op een subdomein wil zetten, en toevallig een confirmed bug tegenkomt tussen Laravel 13.1 en Filament 5 die niemand nog had opgelost. Welkom bij mijn eerste professionele klantproject.
+**Een website bouwen voor een klein renovatiebedrijf klinkt eenvoudig.** Tot je beslist om het te deployen op shared hosting met een volledige CI/CD-pipeline, een Filament 5 admin dashboard op een subdomein wil zetten, en toevallig een confirmed bug tegenkomt tussen Laravel 13.1 en Filament 5 die niemand nog had opgelost. Welkom bij mijn eerste professionele klantproject. [https://www.v-dsolutions.com/](https://www.v-dsolutions.com/)
 
 ---
 
