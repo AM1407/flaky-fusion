@@ -35,7 +35,7 @@
     "image": "/img/scrkotcompass.webp",
     "stack": ["Laravel", "Stripe", "MySQL", "Tailwind", "Angular"],
     "github": "https://github.com/woutvanlommel/TheBuggyLandlords",
-    "featured": true
+    "featured": false
   },
   {
     "id": "Portscanner",
@@ -112,5 +112,24 @@
     "stack": ["JavaScript", "emailJS", "JSON-server"],
     "github": "https://github.com/AM1407/SantaWebshop",
     "featured": false
+  },
+  {
+    "id": "V&D_Solutions",
+    "title": {
+      "nl": "V&D Solutions",
+      "en": "V&D Solutions"
+    },
+    "description": {
+      "nl": "Een project voor een renovatiebedrijf gebouwd in Laravel met een CMS systeem in Filament, geschreven in PHP",
+      "en": "A project for a renovation company built in Laravel with a CMS system in Filament, written in PHP"
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/v&dscrsh.webp",
+    "stack": ["Laravel", "Filament", "Resend integration", "Google Places API"],
+    "github": "Private",
+    "featured": true
   }
 ]
