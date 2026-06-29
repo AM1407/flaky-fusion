@@ -1,4 +1,41 @@
 [
+    {
+    "id": "KotKompas_V2",
+    "title": {
+      "nl": "KotKompas V2",
+      "en": "KotKompas V2"
+    },
+    "description": {
+      "nl": "Back-end eindwerk voor mijn opleiding, een fullstack content management systeem (CMS) met Laravel en Filament.",
+      "en": "Back-end thesis project for my education, a fullstack content management system (CMS) with Laravel and Filament."
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/KotKompasHero.webp",
+    "stack": ["Laravel","Filament","PHP","Alpine.js","Livewire","WebSockets","AI","Stripe","Tailwind CSS"],
+    "github": "https://github.com/woutvanlommel/KotKompas",
+    "featured": true
+  },
+  {
+    "id": "V&D_Solutions",
+    "title": {
+      "nl": "V&D Solutions",
+      "en": "V&D Solutions"
+    },
+    "description": {
+      "nl": "Een project voor een renovatiebedrijf gebouwd in Laravel met een CMS systeem in Filament, geschreven in PHP",
+      "en": "A project for a renovation company built in Laravel with a CMS system in Filament, written in PHP"
+    },
+    "fullDescription": {
+      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
+      "en": "Detailed explanation for the new page..."
+    },
+    "image": "/img/v&dscrsh.webp",
+    "stack": ["Laravel", "Filament", "Resend integration", "Google Places API"],
+    "featured": false
+  },
   {
     "id": "Stoned.io",
     "title": {
@@ -19,14 +56,14 @@
     "featured": false
   },
   {
-    "id": "KotCompass",
+    "id": "KotCompass_V1",
     "title": {
-      "nl": "KotCompass",
-      "en": "KotCompass"
+      "nl": "KotCompass V1",
+      "en": "KotCompass V1"
     },
     "description": {
-      "nl": "Eindwerk voor mijn opleiding, een fullstack website met Laravel, Angular en Stripe integratie",
-      "en": "Thesis project for my education, a fullstack website with Laravel, Angular and Stripe integration"
+      "nl": "Front-end eindwerk voor mijn opleiding, een fullstack website met Laravel, Angular en Stripe integratie",
+      "en": "Front-and thesis project for my education, a fullstack website with Laravel, Angular and Stripe integration"
     },
     "fullDescription": {
       "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
@@ -112,23 +149,5 @@
     "stack": ["JavaScript", "emailJS", "JSON-server"],
     "github": "https://github.com/AM1407/SantaWebshop",
     "featured": false
-  },
-  {
-    "id": "V&D_Solutions",
-    "title": {
-      "nl": "V&D Solutions",
-      "en": "V&D Solutions"
-    },
-    "description": {
-      "nl": "Een project voor een renovatiebedrijf gebouwd in Laravel met een CMS systeem in Filament, geschreven in PHP",
-      "en": "A project for a renovation company built in Laravel with a CMS system in Filament, written in PHP"
-    },
-    "fullDescription": {
-      "nl": "Gedetailleerde uitleg voor de nieuwe pagina...",
-      "en": "Detailed explanation for the new page..."
-    },
-    "image": "/img/v&dscrsh.webp",
-    "stack": ["Laravel", "Filament", "Resend integration", "Google Places API"],
-    "featured": true
   }
 ]
